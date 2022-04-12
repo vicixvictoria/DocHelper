@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="patientData" class="mat-elevation-z8 demo-table">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Adresse </th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="svnr">
+    <th mat-header-cell *matHeaderCellDef> SV-Nr </th>
+    <td mat-cell *matCellDef="let element"> {{element.svnr}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="birthday">
+    <th mat-header-cell *matHeaderCellDef> Geburtsdatum </th>
+    <td mat-cell *matCellDef="let element"> {{element.birthday}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

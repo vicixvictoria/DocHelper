@@ -18,14 +18,8 @@ import java.util.Date;
 public class Patient {
 
     @Id
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            strategy = GenerationType.IDENTITY
     )
     @Column(name = "id", updatable = false)
     private Long id;

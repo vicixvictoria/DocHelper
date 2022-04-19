@@ -34,4 +34,15 @@ public class PatientService {
         return patientRepository.save(patient);
     }
 
+    @Transactional
+    public Patient updatePatient(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    public void deletePatient(Long patientId) {
+        if(patientValidator.validateDeletePatient(patientId)) {
+            patientRepository.deleteById(patientId);
+        }
+    }
+
 }

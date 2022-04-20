@@ -11,6 +11,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatButtonModule} from '@angular/material/button';
 import { PatientComponent } from './patient/patient.component';
 import {MatTableModule} from "@angular/material/table";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {MatTableModule} from "@angular/material/table";
     PatientComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

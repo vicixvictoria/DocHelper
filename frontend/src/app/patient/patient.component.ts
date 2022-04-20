@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Patient} from "../../dtos/patient";
+import {PatientService} from "../../services/patient.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AddPatientComponent} from "./add-patient/add-patient.component";
 
 @Component({
   selector: 'app-patient',
@@ -11,24 +14,55 @@ import {Patient} from "../../dtos/patient";
 
 export class PatientComponent implements OnInit {
 
+  error = false;
+  errorMessage = '';
+  patients: Patient[] | undefined;
+
   displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday'];
 
-  patientData: Patient[] = [
-    {id: 1, name: 'maria', address: 'weg 4', svnr: 1234567890, tests: [1], birthday: new Date(1999,1,1)},
-    {id: 2, name: 'hans', address: 'weg 7', svnr: 1234567890, tests: [1], birthday: new Date(2000,1,1)},
-    {id: 3, name: 'heri', address: 'weg 122', svnr: 1234567890, tests: [1], birthday: new Date(1999,1,1)},
-    {id: 4, name: 'karl', address: 'weg 412', svnr: 1234567890, tests: [1], birthday: new Date(2000,1,1)},
-    {id: 5, name: 'anna', address: 'weg 421', svnr: 1234567890, tests: [1], birthday: new Date(2001,1,1)},
-    {id: 6, name: 'josephine', address: 'weg 4234', svnr: 1234567890, tests: [1], birthday: new Date(1998,1,1)},
-    {id: 7, name: 'leopoldine', address: 'weg 76', svnr: 1234567890, tests: [1], birthday: new Date(1998,6,1)},
-    {id: 8, name: 'hansi', address: 'weg 76', svnr: 1234567890, tests: [1], birthday: new Date(1998,6,1)},
-    {id: 9, name: 'fritz', address: 'weg 8', svnr: 1234567890, tests: [1], birthday: new Date(1998,4,1)},
-    {id: 10, name: 'martina', address: 'weg 8', svnr: 1234567890, tests: [1], birthday: new Date(1980,3,1)},
-    {id: 11, name: 'olivia', address: 'weg 8', svnr: 1234567890, tests: [1], birthday: new Date(1970,5,1)}
-  ]
 
+
+  constructor(
+    private patientService: PatientService,
+    public dialog: MatDialog,
+  ) {
+  }
 
   ngOnInit(): void {
+    this.loadAllPatients();
+  }
+
+  addPatient(){
+    this.dialog.open(AddPatientComponent, {width: '500px'});
+  }
+
+  /**
+   * Fetches all patients from the backend.
+   */
+  private loadAllPatients() {
+    this.patientService.getAllPatients().subscribe({
+      next: data => {
+        console.log('received patients', data);
+        this.patients = data;
+      },
+      error: error => {
+        this.defaultServiceErrorHandling(error);
+      }
+    });
+  }
+
+  private defaultServiceErrorHandling(error: any) {
+    console.log(error);
+    this.error = true;
+    if (error.status === 0) {
+      // If status is 0, the backend is probably down
+      this.errorMessage = 'The backend seems not to be reachable';
+    } else if (error.error.message === 'No message available') {
+      // If no detailed error message is provided, fall back to the simple error name
+      this.errorMessage = error.error.error;
+    } else {
+      this.errorMessage = error.error.message;
+    }
   }
 
 }

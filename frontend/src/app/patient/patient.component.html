@@ -1,4 +1,10 @@
-<table mat-table [dataSource]="patientData" class="mat-elevation-z8 demo-table">
+<div style="margin-left:2%; margin-top:10px">
+<button mat-fab color="primary" aria-label="Example icon button with a home icon" (click)="addPatient()">
+  <mat-icon>add</mat-icon>
+</button>
+</div>
+
+<table mat-table class="mat-elevation-z8 demo-table">
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>

@@ -1,10 +1,15 @@
+import {Gender} from "../global/gender";
+
 export class Patient {
   constructor(
     public id: number,
-    public name: string,
-    public address: string,
+    public firstname: string,
+    public lastname: string,
     public svnr: number,
-    public tests: number[],
-    public birthday: Date) {
+    public pregnant: boolean,
+    public birthday: Date,
+    public gender: Gender
+  )
+  {
   }
 }

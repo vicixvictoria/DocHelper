@@ -16,9 +16,10 @@ export class PatientComponent implements OnInit {
 
   error = false;
   errorMessage = '';
-  patients: Patient[] | undefined;
+  // @ts-ignore
+  patients: Patient[];
 
-  displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday'];
+  displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday', 'gender', 'pregnant'];
 
 
 

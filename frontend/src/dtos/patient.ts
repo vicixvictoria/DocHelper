@@ -3,11 +3,11 @@ import {Gender} from "../global/gender";
 export class Patient {
   constructor(
     public id: number,
-    public firstname: string,
-    public lastname: string,
+    public firstName: string,
+    public lastName: string,
     public svnr: number,
     public pregnant: boolean,
-    public birthday: Date,
+    public birthDate: Date,
     public gender: Gender
   )
   {

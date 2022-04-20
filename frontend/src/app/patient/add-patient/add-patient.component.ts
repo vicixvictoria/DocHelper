@@ -22,14 +22,14 @@ export class AddPatientComponent implements OnInit {
     this.patient.pregnant = false;
 
     this.patientForm  = this.formBuilder.group({
-      firstname: new FormControl(this.patient.firstname, [
+      firstname: new FormControl(this.patient.firstName, [
         Validators.required, Validators.minLength(1), Validators.maxLength(64)]),
-      lastname: new FormControl(this.patient.lastname, [
+      lastname: new FormControl(this.patient.lastName, [
         Validators.required, Validators.minLength(1), Validators.maxLength(64)]),
       svnr: new FormControl(this.patient.svnr, [
         Validators.required,  Validators.pattern('[0-9]*'), Validators.minLength(10), Validators.maxLength(10)]),
       pregnant: new FormControl(this.patient.pregnant, []),
-      birthday: new FormControl(this.patient.birthday, [
+      birthday: new FormControl(this.patient.birthDate, [
         Validators.required]),
       gender: new FormControl(this.patient.gender, [
         Validators.required])
@@ -44,15 +44,15 @@ export class AddPatientComponent implements OnInit {
     console.log("add patient")
     if (this.patientForm.valid) {
       // @ts-ignore
-      this.patient?.firstname = this.patientForm.get('firstname')?.value;
+      this.patient?.firstName = this.patientForm.get('firstname')?.value;
       // @ts-ignore
-      this.patient?.lastname = this.patientForm.get('lastname')?.value;
+      this.patient?.lastName = this.patientForm.get('lastname')?.value;
       // @ts-ignore
       this.patient?.svnr = this.patientForm.get('svnr')?.value;
       // @ts-ignore
       this.patient?.pregnant = this.patientForm.get('pregnant')?.value;
       // @ts-ignore
-      this.patient?.birthday = this.patientForm.get('birthday')?.value;
+      this.patient?.birthDate = this.patientForm.get('birthday')?.value;
       // @ts-ignore
       this.patient?.gender = this.patientForm.get('gender')?.value;
       console.log(this.patient);

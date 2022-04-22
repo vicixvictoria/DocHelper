@@ -36,6 +36,7 @@ public class PatientService {
 
     @Transactional
     public Patient updatePatient(Patient patient) {
+        patientValidator.validateUpdatePatient(patient);
         return patientRepository.save(patient);
     }
 

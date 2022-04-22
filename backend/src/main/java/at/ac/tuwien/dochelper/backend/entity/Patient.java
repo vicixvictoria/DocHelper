@@ -1,5 +1,6 @@
 package at.ac.tuwien.dochelper.backend.entity;
 
+import at.ac.tuwien.dochelper.backend.util.Sex;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Column;
@@ -7,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -43,6 +43,10 @@ public class Patient {
     private Date birthDate;
 
     @NotNull
+    @Column(name = "sex")
+    private Sex sex;
+
+    @NotNull
     @Column(name = "pregnant")
     private boolean pregnant;
 
@@ -53,12 +57,13 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Long id, String firstName, String lastName, String svnr, Date birthDate, boolean pregnant) {
+    public Patient(Long id, String firstName, String lastName, String svnr, Date birthDate, Sex sex, boolean pregnant) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.svnr = svnr;
         this.birthDate = birthDate;
+        this.sex = sex;
         this.pregnant = pregnant;
     }
 
@@ -102,6 +107,14 @@ public class Patient {
         this.birthDate = birthDate;
     }
 
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
     public boolean isPregnant() {
         return pregnant;
     }
@@ -118,6 +131,7 @@ public class Patient {
                 ", lastName='" + lastName + '\'' +
                 ", svnr='" + svnr + '\'' +
                 ", birthDate=" + birthDate +
+                ", sex=" + sex +
                 ", pregnant=" + pregnant +
                 '}';
     }

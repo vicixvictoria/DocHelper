@@ -1,5 +1,6 @@
 package at.ac.tuwien.dochelper.backend.endpoint.dto;
 
+import at.ac.tuwien.dochelper.backend.util.Sex;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -39,14 +40,18 @@ public class PatientDto {
     private Date birthDate;
 
     @NotNull
+    private Sex sex;
+
+    @NotNull
     private boolean pregnant;
 
-    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, Date birthDate, boolean pregnant) {
+    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, Date birthDate, Sex sex, boolean pregnant) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.svnr = svnr;
         this.birthDate = birthDate;
+        this.sex = sex;
         this.pregnant = pregnant;
     }
 
@@ -89,6 +94,14 @@ public class PatientDto {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public boolean isPregnant() {

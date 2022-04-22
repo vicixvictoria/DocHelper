@@ -41,6 +41,10 @@ public class PatientValidator {
         if(patient.getBirthDate() == null) {
             //throw exception
         }
+
+        if(patient.getSex() == null) {
+            //throw exception
+        }
     }
 
     public void validateUpdatePatient(Patient patient) {
@@ -65,6 +69,10 @@ public class PatientValidator {
         }
 
         if(patient.getBirthDate() == null) {
+            //throw exception
+        }
+
+        if(patient.getSex() == null) {
             //throw exception
         }
 

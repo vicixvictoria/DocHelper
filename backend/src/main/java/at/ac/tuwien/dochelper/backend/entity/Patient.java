@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Patient")
@@ -40,7 +40,7 @@ public class Patient {
     @PastOrPresent
     @Column(name = "birth_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @NotNull
     @Column(name = "sex")
@@ -57,7 +57,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Long id, String firstName, String lastName, String svnr, Date birthDate, Sex sex, boolean pregnant) {
+    public Patient(Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -99,11 +99,11 @@ public class Patient {
         this.svnr = svnr;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

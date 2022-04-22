@@ -4,8 +4,6 @@ import at.ac.tuwien.dochelper.backend.util.Sex;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.lang.Nullable;
@@ -13,7 +11,7 @@ import org.springframework.lang.Nullable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PatientDto {
 
@@ -34,10 +32,10 @@ public class PatientDto {
 
     @NotNull
     @PastOrPresent
-    @JsonSerialize(using = DateSerializer.class)
-    @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @NotNull
     private Sex sex;
@@ -45,7 +43,7 @@ public class PatientDto {
     @NotNull
     private boolean pregnant;
 
-    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, Date birthDate, Sex sex, boolean pregnant) {
+    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -88,11 +86,11 @@ public class PatientDto {
         this.svnr = svnr;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

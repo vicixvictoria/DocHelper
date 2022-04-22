@@ -2,6 +2,7 @@ package at.ac.tuwien.dochelper.backend.validator;
 
 import at.ac.tuwien.dochelper.backend.entity.Patient;
 import at.ac.tuwien.dochelper.backend.repository.PatientRepository;
+import at.ac.tuwien.dochelper.backend.util.Sex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,6 +46,11 @@ public class PatientValidator {
         if(patient.getSex() == null) {
             //throw exception
         }
+
+        /*
+        if(patient.getSex().equals(Sex.MALE) && patient.isPregnant()) {
+            //throw exception
+        }*/
     }
 
     public void validateUpdatePatient(Patient patient) {
@@ -75,6 +81,11 @@ public class PatientValidator {
         if(patient.getSex() == null) {
             //throw exception
         }
+
+        /*
+        if(patient.getSex().equals(Sex.MALE) && patient.isPregnant()) {
+            //throw exception
+        }*/
 
         Optional<Patient> patientOptional = patientRepository.findById(patient.getId());
         if (patientOptional.isEmpty()) {

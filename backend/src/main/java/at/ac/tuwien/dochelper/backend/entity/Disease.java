@@ -1,66 +1,83 @@
-package at.ac.tuwien.dochelper.backend.endpoint.dto;
+package at.ac.tuwien.dochelper.backend.entity;
 
 import com.sun.istack.NotNull;
-import org.springframework.lang.Nullable;
 
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-public class DiseaseDto {
+@Entity
+@Table(name = "Disease")
+public class Disease {
 
-    @Nullable
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    @Column(name = "diseaseId", updatable = false)
     private Long diseaseId;
 
     @NotNull
-    @Size(max = 64)
+    @Column(name = "diseaseName", length = 64)
     private String diseaseName;
 
     @NotNull
+    @Column(name = "icdCode")
     private char icdCode;
 
     @NotNull
+    @Column(name = "description")
     private String description;
 
     @NotNull
+    @Column(name = "pregnant")
     private boolean pregnant;
 
     @NotNull
+    @Column(name = "minAge")
     private int minAge;
 
     @NotNull
+    @Column(name = "maxAge")
     private int maxAge;
 
     @NotNull
+    @Column(name = "threshold")
     private float threshold;
-    //private object labDiseaseValue;
+
+     /*
+    private List<TestValue_threshold> lab_DiseaseValue;
+    */
 
 
-    public DiseaseDto(@Nullable Long diseaseId, String diseaseName, char icdCode, String description,  boolean pregnant,
-                      int minAge, int maxAge, float threshold) {
+    public Disease(){
+
+    }
+
+    public Disease(Long diseaseId, String diseaseName, char icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
         this.description = description;
-        this.minAge = minAge;
         this.pregnant = pregnant;
+        this.minAge = minAge;
         this.maxAge = maxAge;
         this.threshold = threshold;
     }
 
-    @Nullable
-    public Long getId() {
+    public Long getDiseaseId() {
         return diseaseId;
     }
 
-    public void setId(@Nullable Long id) {
-        this.diseaseId = id;
+    public void setDiseaseId(Long diseaseId) {
+        this.diseaseId = diseaseId;
     }
 
-    public String getName() {
+    public String getDiseaseName() {
         return diseaseName;
     }
 
-    public void setName(String name) {
-        this.diseaseName = name;
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName;
     }
 
     public char getIcdCode() {
@@ -111,9 +128,10 @@ public class DiseaseDto {
         this.threshold = threshold;
     }
 
+
     @Override
     public String toString() {
-        return "DiseaseDto{" +
+        return "Disease{" +
                 "diseaseId=" + diseaseId +
                 ", diseaseName='" + diseaseName + '\'' +
                 ", icdCode=" + icdCode +

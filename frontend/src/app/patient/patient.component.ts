@@ -3,6 +3,7 @@ import {Patient} from "../../dtos/patient";
 import {PatientService} from "../../services/patient.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPatientComponent} from "./add-patient/add-patient.component";
+import {EditPatientComponent} from "./edit-patient/edit-patient.component";
 
 @Component({
   selector: 'app-patient',
@@ -21,11 +22,10 @@ export class PatientComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday', 'gender', 'pregnant', 'aktion'];
 
-
-
   constructor(
     private patientService: PatientService,
-    public dialog: MatDialog,
+    private readonly dialog: MatDialog,
+
   ) {
   }
 
@@ -37,8 +37,12 @@ export class PatientComponent implements OnInit {
     this.dialog.open(AddPatientComponent, {width: '500px'});
   }
 
-  editPatient(){
-    this.dialog.open(AddPatientComponent, {width: '500px'});
+  editPatient(patient: Patient){
+    this.dialog.open(EditPatientComponent, {
+      data: {
+        patient: patient
+      },
+      width: '500px'});
   }
 
   /**

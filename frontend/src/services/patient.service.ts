@@ -38,7 +38,16 @@ export class PatientService {
     }
 
   /**
-   * create Patient
+   * edit Patient
+   *
+   * @param patient to be edit with updated data
+   */
+  editPatient(patient: Patient): Observable<Patient> {
+    return this.httpClient.put<Patient>(baseUri + '/', patient);
+  }
+
+  /**
+   * edit Patient
    *
    * @param patient to be created
    */

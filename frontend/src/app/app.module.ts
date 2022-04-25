@@ -21,7 +21,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { EditPatientComponent } from './patient/edit-patient/edit-patient.component';
 
 @NgModule({
   declarations: [

@@ -69,4 +69,8 @@ export class AddPatientComponent implements OnInit {
     }
   }
 
+  get svnr() {
+    return this.patientForm.get('svnr') as FormControl;
+  }
+
 }

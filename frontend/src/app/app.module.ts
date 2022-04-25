@@ -11,22 +11,45 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatButtonModule} from '@angular/material/button';
 import { PatientComponent } from './patient/patient.component';
 import {MatTableModule} from "@angular/material/table";
+import {HttpClientModule} from "@angular/common/http";
+import { AddPatientComponent } from './patient/add-patient/add-patient.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { EditPatientComponent } from './patient/edit-patient/edit-patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    PatientComponent
+    PatientComponent,
+    AddPatientComponent,
+    EditPatientComponent
   ],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonToggleModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

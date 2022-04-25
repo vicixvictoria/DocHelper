@@ -1,4 +1,4 @@
-import {Gender} from "../global/gender";
+import {Sex} from "../global/sex";
 
 export class Patient {
   constructor(
@@ -8,7 +8,7 @@ export class Patient {
     public svnr: number,
     public pregnant: boolean,
     public birthDate: Date,
-    public gender: Gender
+    public gender: Sex
   )
   {
   }

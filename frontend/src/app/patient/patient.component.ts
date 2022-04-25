@@ -53,6 +53,7 @@ export class PatientComponent implements OnInit {
       next: data => {
         console.log('received patients', data);
         this.patients = data;
+        console.log(this.patients);
       },
       error: error => {
         this.defaultServiceErrorHandling(error);

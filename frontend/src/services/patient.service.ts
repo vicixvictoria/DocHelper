@@ -46,4 +46,13 @@ export class PatientService {
     return this.httpClient.post<Patient>(baseUri + '/', patient);
   }
 
+  /**
+   * Deletes the patient with the id from the backend
+   *
+   * @param id of the patient to be deleted
+   */
+  deletePatient(id: number): Observable<Patient> {
+    return this.httpClient.delete<Patient>(baseUri + '/' + id);
+  }
+
 }

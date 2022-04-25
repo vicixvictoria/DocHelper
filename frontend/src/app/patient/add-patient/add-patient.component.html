@@ -33,16 +33,16 @@
 
     <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
       <mat-label>Geschlecht</mat-label>
-      <select formControlName="gender" matNativeControl required>
+      <select #genderselection formControlName="gender" matNativeControl required>
         <option value="FEMALE">Weiblich</option>
         <option value="MALE">Männlich</option>
       </select>
     </mat-form-field>
 
-    <div style="margin-left: 10px; display: inline-block">
+    <ng-container *ngIf="genderselection.value === 'FEMALE'" style="margin-left: 10px; display: inline-block">
     Schwanger
     <mat-checkbox style="margin-left: 10px" color="primary" formControlName="pregnant" class="example-margin"></mat-checkbox>
-    </div>
+    </ng-container>
 
     <p></p>
 

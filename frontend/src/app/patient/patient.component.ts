@@ -19,7 +19,7 @@ export class PatientComponent implements OnInit {
   // @ts-ignore
   patients: Patient[];
 
-  displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday', 'gender', 'pregnant'];
+  displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday', 'gender', 'pregnant', 'aktion'];
 
 
 
@@ -37,6 +37,10 @@ export class PatientComponent implements OnInit {
     this.dialog.open(AddPatientComponent, {width: '500px'});
   }
 
+  editPatient(){
+    this.dialog.open(AddPatientComponent, {width: '500px'});
+  }
+
   /**
    * Fetches all patients from the backend.
    */
@@ -50,6 +54,27 @@ export class PatientComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
+  }
+
+  /**
+   * Deletes horse from the backend.
+   *
+   * @param patient to be deleted.
+   */
+  deletePatient(patient: Patient) {
+    if (confirm('Patient "' + patient.firstName + ' ' + patient.lastName + '" wirklich löschen?')) {
+      this.patientService.deletePatient(patient.id).subscribe({
+        next: () => {
+          console.log("Deleting Patient " + patient)
+          this.loadAllPatients();
+        }
+        ,
+        error: error => {
+          this.defaultServiceErrorHandling(error);
+        }
+      });
+
+    }
   }
 
   private defaultServiceErrorHandling(error: any) {

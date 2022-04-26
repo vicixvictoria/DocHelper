@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface LabValueRepository extends JpaRepository<LabValue, Long> {
-    List<LabValue> findAllByName(String labValName);
+    //List<LabValue> findAllByName(String labValueName);
 }

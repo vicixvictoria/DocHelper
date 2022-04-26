@@ -35,6 +35,7 @@ export class PatientComponent implements OnInit {
 
   addPatient(){
     this.dialog.open(AddPatientComponent, {width: '500px'});
+    this.loadAllPatients();
   }
 
   editPatient(patient: Patient){

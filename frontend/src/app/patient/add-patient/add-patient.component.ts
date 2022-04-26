@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Patient} from "../../../dtos/patient";
 import {PatientService} from "../../../services/patient.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-patient',
@@ -17,7 +18,8 @@ export class AddPatientComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private router: Router
   ) {
     // @ts-ignore
     this.patient = new Patient();
@@ -33,7 +35,7 @@ export class AddPatientComponent implements OnInit {
       pregnant: new FormControl(this.patient.pregnant, []),
       birthday: new FormControl(this.patient.birthDate, [
         Validators.required]),
-      gender: new FormControl(this.patient.gender, [
+      gender: new FormControl(this.patient.sex, [
         Validators.required])
     });
   }
@@ -56,12 +58,12 @@ export class AddPatientComponent implements OnInit {
       // @ts-ignore
       this.patient?.birthDate = this.patientForm.get('birthday')?.value;
       // @ts-ignore
-      this.patient?.gender = this.patientForm.get('gender')?.value;
+      this.patient?.sex = this.patientForm.get('gender')?.value;
       console.log(this.patient);
       if (this.patient) {
         this.patientService.createPatient(this.patient).subscribe({
           next: result => {
-
+            this.router.navigate(['/patients/']);
 
           },
           error: error => {

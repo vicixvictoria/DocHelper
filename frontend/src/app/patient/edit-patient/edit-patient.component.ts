@@ -37,7 +37,7 @@ export class EditPatientComponent implements OnInit {
       pregnant: new FormControl(this.patient.pregnant, []),
       birthday: new FormControl(this.patient.birthDate, [
         Validators.required]),
-      gender: new FormControl(this.patient.gender, [
+      gender: new FormControl(this.patient.sex, [
         Validators.required])
     });
   }

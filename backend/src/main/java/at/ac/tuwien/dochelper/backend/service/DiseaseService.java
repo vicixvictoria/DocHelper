@@ -3,7 +3,6 @@ package at.ac.tuwien.dochelper.backend.service;
 import at.ac.tuwien.dochelper.backend.entity.Disease;
 import at.ac.tuwien.dochelper.backend.repository.DiseaseRepository;
 import at.ac.tuwien.dochelper.backend.validator.DiseaseValidator;
-import at.ac.tuwien.dochelper.backend.validator.PatientValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

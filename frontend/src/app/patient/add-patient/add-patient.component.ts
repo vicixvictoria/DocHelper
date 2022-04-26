@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Patient} from "../../../dtos/patient";
 import {PatientService} from "../../../services/patient.service";
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
+import {PatientComponent} from "../patient.component";
 
 @Component({
   selector: 'app-add-patient',
@@ -19,7 +21,8 @@ export class AddPatientComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private router: Router
+    private router: Router,
+    private dialogRef: MatDialogRef<AddPatientComponent>
   ) {
     // @ts-ignore
     this.patient = new Patient();
@@ -63,7 +66,7 @@ export class AddPatientComponent implements OnInit {
       if (this.patient) {
         this.patientService.createPatient(this.patient).subscribe({
           next: result => {
-            this.router.navigate(['/patients/']);
+            this.dialogRef.close();
 
           },
           error: error => {

@@ -34,8 +34,10 @@ export class PatientComponent implements OnInit {
   }
 
   addPatient(){
-    this.dialog.open(AddPatientComponent, {width: '500px'});
-    this.loadAllPatients();
+    const dialog = this.dialog.open(AddPatientComponent, {width: '500px'});
+    dialog.afterClosed().subscribe(() => {
+      this.loadAllPatients();
+    })
   }
 
   editPatient(patient: Patient){
@@ -49,7 +51,7 @@ export class PatientComponent implements OnInit {
   /**
    * Fetches all patients from the backend.
    */
-  private loadAllPatients() {
+  public loadAllPatients() {
     this.patientService.getAllPatients().subscribe({
       next: data => {
         console.log('received patients', data);

@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.Size;
+import java.util.List;
 
 public class DiseaseDto {
 
@@ -31,11 +32,12 @@ public class DiseaseDto {
 
     @NotNull
     private float threshold;
-    //private object labDiseaseValue;
+
+    private List<LabValueDto> lab_DiseaseValue;
 
 
     public DiseaseDto(@Nullable Long diseaseId, String diseaseName, char icdCode, String description,  boolean pregnant,
-                      int minAge, int maxAge, float threshold) {
+                      int minAge, int maxAge, float threshold, List<LabValueDto> lab_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -44,6 +46,7 @@ public class DiseaseDto {
         this.pregnant = pregnant;
         this.maxAge = maxAge;
         this.threshold = threshold;
+        this.lab_DiseaseValue = lab_DiseaseValue;
     }
 
     @Nullable

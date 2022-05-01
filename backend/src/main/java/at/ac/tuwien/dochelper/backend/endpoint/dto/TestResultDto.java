@@ -2,11 +2,16 @@ package at.ac.tuwien.dochelper.backend.endpoint.dto;
 
 
 import at.ac.tuwien.dochelper.backend.entity.Patient;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.lang.Nullable;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDate;
 
-public class TestResultsDto {
+public class TestResultDto {
 
     @Nullable
     private long id;
@@ -15,9 +20,12 @@ public class TestResultsDto {
     private Patient patient;
 
     @NotNull
-    private Date date;
+    @PastOrPresent
+    //@JsonSerialize(using = LocalDateSerializer.class)
+    //@JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate date;
 
-    public TestResultsDto(Long id, Patient patient, Date date){
+    public TestResultDto(Long id, Patient patient, LocalDate date){
         this.id = id;
         this.patient = patient;
         this.date = date;
@@ -39,11 +47,11 @@ public class TestResultsDto {
         this.patient = patient;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

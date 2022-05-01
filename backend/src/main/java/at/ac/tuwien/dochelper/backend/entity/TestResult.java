@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "TestResults")
-public class TestResults {
+public class TestResult {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +28,10 @@ public class TestResults {
 
     //private List<LabMeasure> labMeasures;
 
-    public TestResults(){
+    public TestResult(){
     }
 
-    public TestResults(Long id, Patient patient, LocalDate date) {
+    public TestResult(Long id, Patient patient, LocalDate date) {
         this.id = id;
         this.patient = patient;
         this.date = date;

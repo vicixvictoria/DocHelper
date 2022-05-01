@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api") //was gehört da hin?
+@RequestMapping(path = "api/v1/patientId/results")
 public class TestResultsEndpoint {
     private final TestResultsService testResultsService;
     private final TestResultsMapper testResultsMapper;

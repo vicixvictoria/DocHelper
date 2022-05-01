@@ -15,12 +15,12 @@ public class TestResultsDto {
     private Patient patient;
 
     @NotNull
-    private Date dayof;
+    private Date date;
 
-    public TestResultsDto(long id, Patient patient, Date dayof){
+    public TestResultsDto(Long id, Patient patient, Date date){
         this.id = id;
         this.patient = patient;
-        this.dayof = dayof;
+        this.date = date;
     }
 
     public long getId(){
@@ -39,12 +39,12 @@ public class TestResultsDto {
         this.patient = patient;
     }
 
-    public Date getDayof() {
-        return dayof;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDayof(Date dayof) {
-        this.dayof = dayof;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TestResultsDto {
         return "TestResults{" +
                 "id=" + id +
                 ", patient=" + patient +
-                ", dayof=" + dayof +
+                ", date=" + date +
                 '}';
     }
 }

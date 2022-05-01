@@ -1,10 +1,11 @@
 package at.ac.tuwien.dochelper.backend.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
-import java.util.List;
-import at.ac.tuwien.dochelper.backend.entity.Patient;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "TestResults")
@@ -16,19 +17,21 @@ public class TestResults {
     private Long id;
 
     @NotNull
-    @Column(name = "Patient")
+    @ManyToOne
+    @JoinColumn(name = "Patient")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Patient patient;
 
     @NotNull
-    @Column(name = "dayof")
-    private Date date;
+    @Column(name = "date")
+    private LocalDate date;
 
-    //private List<LabMeassure> labMeassures;
+    //private List<LabMeasure> labMeasures;
 
     public TestResults(){
     }
 
-    public TestResults(Long id, Patient patient, Date date) {
+    public TestResults(Long id, Patient patient, LocalDate date) {
         this.id = id;
         this.patient = patient;
         this.date = date;
@@ -42,7 +45,7 @@ public class TestResults {
         return patient;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -54,7 +57,7 @@ public class TestResults {
         this.patient = patient;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

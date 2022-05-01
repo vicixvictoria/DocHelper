@@ -38,7 +38,7 @@ public class PatientEndpoint {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public PatientDto createPatient(@Valid @RequestBody PatientDto patientDto) {
-        LOGGER.info("POST /api/v1/patients: {} ", patientDto);
+        LOGGER.info("POST /api/v1/patients: {} ", patientDto.toString());
         Patient patient = patientMapper.patientDtoToPatient(patientDto);
         patient = patientService.createPatient(patient);
         return patientMapper.patientToPatientDto(patient);
@@ -47,7 +47,7 @@ public class PatientEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{patientId}")
     public PatientDto updatePatient(@Valid @RequestBody PatientDto patientDto, @PathVariable Long patientId) {
-        LOGGER.info("PUT /api/v1/patients: {} ", patientDto);
+        LOGGER.info("PUT /api/v1/patients: {} ", patientDto.toString());
         if(!patientId.equals(patientDto.getId())) {
             //throw exception
         }

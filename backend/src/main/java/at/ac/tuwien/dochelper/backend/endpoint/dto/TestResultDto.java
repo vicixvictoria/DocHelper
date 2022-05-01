@@ -21,8 +21,8 @@ public class TestResultDto {
 
     @NotNull
     @PastOrPresent
-    //@JsonSerialize(using = LocalDateSerializer.class)
-    //@JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate date;
 
     public TestResultDto(Long id, Patient patient, LocalDate date){

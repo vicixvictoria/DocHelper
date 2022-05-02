@@ -33,11 +33,9 @@ public class Disease {
     @Column(name = "pregnant")
     private boolean pregnant;
 
-    @NotNull
     @Column(name = "minAge")
     private int minAge;
 
-    @NotNull
     @Column(name = "maxAge")
     private int maxAge;
 

@@ -13,8 +13,10 @@ public class TestValue_tresholdDto {
     @NotNull
     private Type type;
 
-    @NotNull
     private float refVal_overwrite;
+
+    @NotNull
+    private float weightValue;
 
     private LabValue labVal;
 
@@ -23,11 +25,12 @@ public class TestValue_tresholdDto {
 
     }
 
-    public TestValue_tresholdDto(@Nullable Long thresholdId, Type type, float refVal_overwrite, LabValue labVal) {
+    public TestValue_tresholdDto(@Nullable Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue) {
         this.thresholdId = thresholdId;
         this.type = type;
         this.refVal_overwrite = refVal_overwrite;
         this.labVal = labVal;
+        this.weightValue = weightValue;
     }
 
     @Nullable
@@ -63,12 +66,21 @@ public class TestValue_tresholdDto {
         this.labVal = labVal;
     }
 
+    public float getWeightValue() {
+        return weightValue;
+    }
+
+    public void setWeightValue(float weightValue) {
+        this.weightValue = weightValue;
+    }
+
     @Override
     public String toString() {
         return "TestValue_tresholdDto{" +
                 "thresholdId=" + thresholdId +
                 ", type=" + type +
                 ", refVal_overwrite=" + refVal_overwrite +
+                ", weightValue=" + weightValue +
                 ", labVal=" + labVal +
                 '}';
     }

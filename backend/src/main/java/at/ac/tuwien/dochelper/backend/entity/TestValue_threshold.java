@@ -21,9 +21,12 @@ public class TestValue_threshold {
     @Column(name = "type", length = 64)
     private Type type;
 
-    @NotNull
     @Column(name = "refVal_overwrite")
     private float refVal_overwrite;
+
+    @NotNull
+    @Column(name = "weightValue")
+    private float weightValue;
 
     @ManyToOne
     //Many to Many?
@@ -35,11 +38,12 @@ public class TestValue_threshold {
 
     }
 
-    public TestValue_threshold(Long thresholdId, Type type, float refVal_overwrite, LabValue labVal) {
+    public TestValue_threshold(Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue) {
         this.thresholdId = thresholdId;
         this.type = type;
         this.refVal_overwrite = refVal_overwrite;
         this.labVal = labVal;
+        this.weightValue = weightValue;
     }
 
     public Long getThresholdId() {
@@ -74,6 +78,13 @@ public class TestValue_threshold {
         this.labVal = labVal;
     }
 
+    public float getWeightValue() {
+        return weightValue;
+    }
+
+    public void setWeightValue(float weightValue) {
+        this.weightValue = weightValue;
+    }
 
     @Override
     public String toString() {
@@ -81,6 +92,7 @@ public class TestValue_threshold {
                 "thresholdId=" + thresholdId +
                 ", type=" + type +
                 ", refVal_overwrite=" + refVal_overwrite +
+                ", weightValue=" + weightValue +
                 ", labVal=" + labVal +
                 '}';
     }

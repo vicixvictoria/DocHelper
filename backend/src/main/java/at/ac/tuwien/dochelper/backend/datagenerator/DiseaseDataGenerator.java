@@ -41,6 +41,7 @@ public class DiseaseDataGenerator {
 
     @PostConstruct
     public void generateDiseaseEntries() {
+        diseaseRepository.deleteAll();
         Disease disease_meulengracht = new Disease();
         List<TestValue_threshold> threshold_meulengracht = new ArrayList<>();
         disease_meulengracht.setDiseaseName("Morbus Meulengracht");
@@ -64,9 +65,9 @@ public class DiseaseDataGenerator {
     }
 
 
-
     //@PostConstruct
     private TestValue_threshold generateThresholdEntries(LabValue labValue, String diseaseName) {
+        testValue_thresholdRepository.deleteAll();
         TestValue_threshold threshold1 = new TestValue_threshold();
       // if(labValue != null) {
             threshold1.setType(Type.ELEVATED);

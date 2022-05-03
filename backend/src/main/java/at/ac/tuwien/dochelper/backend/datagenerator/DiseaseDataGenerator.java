@@ -21,6 +21,8 @@ import java.util.List;
 public class DiseaseDataGenerator {
 
     @Autowired
+    private final LabValueDataGenerator labValueDataGenerator;
+
     private final LabValueRepository labValueRepository;
 
     private final DiseaseRepository diseaseRepository;
@@ -28,10 +30,11 @@ public class DiseaseDataGenerator {
     //private final ThresholdDataGenerator thresholdDataGenerator;
 
 
-    public DiseaseDataGenerator(DiseaseRepository diseaseRepository, TestValue_thresholdRepository testValue_thresholdRepository, LabValueRepository labValueRepository) {
+    public DiseaseDataGenerator(DiseaseRepository diseaseRepository, TestValue_thresholdRepository testValue_thresholdRepository, LabValueRepository labValueRepository, LabValueDataGenerator labValueDataGenerator) {
         this.diseaseRepository = diseaseRepository;
         this.testValue_thresholdRepository = testValue_thresholdRepository;
         this.labValueRepository = labValueRepository;
+        this.labValueDataGenerator = labValueDataGenerator;
        // this.thresholdDataGenerator = thresholdDataGenerator;
     }
 
@@ -62,6 +65,7 @@ public class DiseaseDataGenerator {
 
 
 
+    //@PostConstruct
     private TestValue_threshold generateThresholdEntries(LabValue labValue, String diseaseName) {
         TestValue_threshold threshold1 = new TestValue_threshold();
       // if(labValue != null) {

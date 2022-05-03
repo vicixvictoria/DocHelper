@@ -24,7 +24,7 @@ public class LabValueDataGenerator {
     @Autowired
     @PostConstruct
     public void generateLabValEntries() {
-        labValueRepository.deleteAll();
+       // labValueRepository.deleteAll();
 
         LabValue labVal1 = new LabValue();
         labVal1.setLabValName("Bilirubin gesamt");

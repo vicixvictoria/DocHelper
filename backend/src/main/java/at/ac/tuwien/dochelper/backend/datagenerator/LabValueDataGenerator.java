@@ -3,21 +3,25 @@ package at.ac.tuwien.dochelper.backend.datagenerator;
 
 import at.ac.tuwien.dochelper.backend.entity.LabValue;
 import at.ac.tuwien.dochelper.backend.repository.LabValueRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Profile("generateDataLabVal")
+@Profile("generateData1")
 @Component
 public class LabValueDataGenerator {
 
     private final LabValueRepository labValueRepository;
 
+    @Autowired
     public LabValueDataGenerator(LabValueRepository labValueRepository) {
         this.labValueRepository = labValueRepository;
     }
 
+
+    @Autowired
     @PostConstruct
     public void generateLabValEntries() {
 

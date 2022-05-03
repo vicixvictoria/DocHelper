@@ -28,7 +28,15 @@ public class TestValue_threshold {
     @Column(name = "weightValue")
     private float weightValue;
 
-    @ManyToOne
+    @NotNull
+    @Column(name = "diseaseName")
+    private String diseaseName;
+
+    @NotNull
+    @Column(name = "labValName")
+    private String labValName;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     //Many to Many?
    // @Column(name = "labVal", length = 64)
     private LabValue labVal;
@@ -38,12 +46,14 @@ public class TestValue_threshold {
 
     }
 
-    public TestValue_threshold(Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue) {
+    public TestValue_threshold(Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue, String diseaseName, String labValName) {
         this.thresholdId = thresholdId;
         this.type = type;
         this.refVal_overwrite = refVal_overwrite;
         this.labVal = labVal;
         this.weightValue = weightValue;
+        this.diseaseName = diseaseName;
+        this.labValName = labValName;
     }
 
     public Long getThresholdId() {
@@ -86,6 +96,22 @@ public class TestValue_threshold {
         this.weightValue = weightValue;
     }
 
+    public String getDiseaseName() {
+        return diseaseName;
+    }
+
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName;
+    }
+
+    public String getLabValName() {
+        return labValName;
+    }
+
+    public void setLabValName(String labValName) {
+        this.labValName = labValName;
+    }
+
     @Override
     public String toString() {
         return "TestValue_threshold{" +
@@ -93,6 +119,8 @@ public class TestValue_threshold {
                 ", type=" + type +
                 ", refVal_overwrite=" + refVal_overwrite +
                 ", weightValue=" + weightValue +
+                ", diseaseName='" + diseaseName + '\'' +
+                ", labValName='" + labValName + '\'' +
                 ", labVal=" + labVal +
                 '}';
     }

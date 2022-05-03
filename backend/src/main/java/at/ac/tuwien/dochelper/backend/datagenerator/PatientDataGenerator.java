@@ -20,6 +20,7 @@ public class PatientDataGenerator {
         this.patientRepository = patientRepository;
     }
 
+
     @PostConstruct
     public void generatePatientEntries() {
 

@@ -31,4 +31,8 @@ public class LabValueService {
         labValueValidator.validateNewLabVal(labValue);
         return labValueRepository.save(labValue);
     }
+
+    public LabValue getByName(String name){
+        return labValueRepository.findLabValueByLabValName(name);
+    }
 }

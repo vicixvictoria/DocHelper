@@ -43,7 +43,7 @@ public class Disease {
     @Column(name = "threshold")
     private float threshold;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @Column(name = "lab_DiseaseValue")
     private List<TestValue_threshold> lab_DiseaseValue;
 

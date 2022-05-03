@@ -22,6 +22,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EditPatientComponent } from './patient/edit-patient/edit-patient.component';
+import { TestresultOverviewComponent } from './testresult-overview/testresult-overview.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { TestresultDetailComponent } from './testresult-detail/testresult-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,12 @@ import { EditPatientComponent } from './patient/edit-patient/edit-patient.compon
     HeaderComponent,
     PatientComponent,
     AddPatientComponent,
-    EditPatientComponent
+    EditPatientComponent,
+    TestresultOverviewComponent,
+    TestresultDetailComponent
   ],
   imports: [
+    MatDividerModule,
     MatNativeDateModule,
     MatDatepickerModule,
     ReactiveFormsModule,

@@ -52,9 +52,9 @@ public class DiseaseDataGenerator {
         /*generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Morbus Meulengracht");
         threshold_meulengracht.add(testValue_thresholdRepository.findTestValue_thresholdByDiseaseNameAndLabValName("Morbus Meulengracht", "Bilirubin gesamt"));*/
 
-        threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"),"Morbus Meulengracht"));
-        threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"),"Morbus Meulengracht"));
-        threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"),"Morbus Meulengracht"));
+        threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"),"Morbus Meulengracht", 2, Type.ELEVATED, 45));
+        threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"),"Morbus Meulengracht", 3, Type.ELEVATED, 45));
+        threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"),"Morbus Meulengracht", 4, Type.ELEVATED, 10));
         disease_meulengracht.setLab_DiseaseValue(threshold_meulengracht);
         saveDisease(disease_meulengracht);
 
@@ -66,14 +66,14 @@ public class DiseaseDataGenerator {
 
 
     //@PostConstruct
-    private TestValue_threshold generateThresholdEntries(LabValue labValue, String diseaseName) {
+    private TestValue_threshold generateThresholdEntries(LabValue labValue, String diseaseName, float refValOverwrite, Type type, float weightValue) {
         testValue_thresholdRepository.deleteAll();
         TestValue_threshold threshold1 = new TestValue_threshold();
       // if(labValue != null) {
-            threshold1.setType(Type.ELEVATED);
-            threshold1.setRefVal_overwrite(2);
+            threshold1.setType(type);
+            threshold1.setRefVal_overwrite(refValOverwrite);
             threshold1.setLabVal(labValue);
-            threshold1.setWeightValue(45);
+            threshold1.setWeightValue(weightValue);
             threshold1.setDiseaseName(diseaseName);
             threshold1.setLabValName(labValue.getLabValName());
             saveThreshold(threshold1);

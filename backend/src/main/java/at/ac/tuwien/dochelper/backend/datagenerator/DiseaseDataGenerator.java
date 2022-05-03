@@ -49,14 +49,30 @@ public class DiseaseDataGenerator {
         disease_meulengracht.setIcdCode('E'); //icd code auf string geben
         disease_meulengracht.setPregnant(false);
         disease_meulengracht.setThreshold(89);
-        /*generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Morbus Meulengracht");
-        threshold_meulengracht.add(testValue_thresholdRepository.findTestValue_thresholdByDiseaseNameAndLabValName("Morbus Meulengracht", "Bilirubin gesamt"));*/
-
         threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"),"Morbus Meulengracht", 2, Type.ELEVATED, 45));
         threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"),"Morbus Meulengracht", 3, Type.ELEVATED, 45));
         threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"),"Morbus Meulengracht", 4, Type.ELEVATED, 10));
         disease_meulengracht.setLab_DiseaseValue(threshold_meulengracht);
         saveDisease(disease_meulengracht);
+
+        Disease disease_pbc2 = new Disease();
+        List<TestValue_threshold> threshold_pbc2 = new ArrayList<>();
+        disease_pbc2.setDiseaseName("Primär biliäre Cholangitis (PBC) 2");
+        disease_pbc2.setDescription("Zerstörung Lebergewebe");
+        disease_pbc2.setIcdCode('E');
+        disease_pbc2.setPregnant(false);
+        disease_pbc2.setThreshold(91);
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"),"Primär biliäre Cholangitis (PBC) 2", 35, Type.ELEVATED, 14));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"),"Primär biliäre Cholangitis (PBC) 2", 35, Type.ELEVATED, 15));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"),"Primär biliäre Cholangitis (PBC) 2", 35, Type.ELEVATED, 15));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"),"Primär biliäre Cholangitis (PBC) 2", 2, Type.ELEVATED, 15));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"),"Primär biliäre Cholangitis (PBC) 2", 120, Type.ELEVATED, 15));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("ANA (Antinukleare AK)"),"Primär biliäre Cholangitis (PBC) 2", 120, Type.POSITIVE, 15));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Albumin abs."),"Primär biliäre Cholangitis (PBC) 2", 52, Type.ELEVATED, 6));
+        threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"),"Primär biliäre Cholangitis (PBC) 2", 0, Type.ELEVATED, 15));
+
+        disease_pbc2.setLab_DiseaseValue(threshold_pbc2);
+        saveDisease(disease_pbc2);
 
     }
 
@@ -69,7 +85,6 @@ public class DiseaseDataGenerator {
     private TestValue_threshold generateThresholdEntries(LabValue labValue, String diseaseName, float refValOverwrite, Type type, float weightValue) {
        // testValue_thresholdRepository.deleteAll();
         TestValue_threshold threshold1 = new TestValue_threshold();
-      // if(labValue != null) {
             threshold1.setType(type);
             threshold1.setRefVal_overwrite(refValOverwrite);
             threshold1.setLabVal(labValue);
@@ -77,7 +92,7 @@ public class DiseaseDataGenerator {
             threshold1.setDiseaseName(diseaseName);
             threshold1.setLabValName(labValue.getLabValName());
             saveThreshold(threshold1);
-       // }
+
         return threshold1;
 
     }

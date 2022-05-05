@@ -101,6 +101,91 @@ public class LabValueDataGenerator {
         labVal15.setUnit("g/l");
         save(labVal15);
 
+        LabValue labVal16 = new LabValue();
+        labVal16.setLabValName("Kalium");
+        labVal16.setUnit("mg/l");
+        save(labVal16);
+
+        LabValue labVal17 = new LabValue();
+        labVal17.setLabValName("Hämoglobin (Hb)");
+        labVal17.setUnit("g/dl");
+        save(labVal17);
+
+        LabValue labVal18 = new LabValue();
+        labVal18.setLabValName("HBs-Ag");
+        labVal18.setUnit("keine Einheit");
+        save(labVal18);
+
+        LabValue labVal19 = new LabValue();
+        labVal19.setLabValName("Anti-HBc-IgM");
+        labVal19.setUnit("keine Einheit");
+        save(labVal19);
+
+        LabValue labVal20 = new LabValue();
+        labVal20.setLabValName("Anti-HBc");
+        labVal20.setUnit("keine Einheit");
+        save(labVal20);
+
+        LabValue labVal21 = new LabValue();
+        labVal21.setLabValName("HBe-Ag");
+        labVal21.setUnit("keine Einheit");
+        save(labVal21);
+
+        LabValue labVal22 = new LabValue();
+        labVal22.setLabValName("Anti-HBs");
+        labVal22.setUnit("keine Einheit");
+        save(labVal22);
+
+        LabValue labVal23 = new LabValue();
+        labVal23.setLabValName("Anti-HBe");
+        labVal23.setUnit("keine Einheit");
+        save(labVal23);
+
+        LabValue labVal24 = new LabValue();
+        labVal24.setLabValName("Lymphozyten (abs.)");
+        labVal24.setUnit("G/l");
+        save(labVal24);
+
+        LabValue labVal25 = new LabValue();
+        labVal25.setLabValName("Lipoprotein X");
+        labVal25.setUnit("mg/dl");
+        save(labVal25);
+
+        LabValue labVal26 = new LabValue();
+        labVal26.setLabValName("LAP");
+        labVal26.setUnit("U/l");
+        save(labVal26);
+
+        LabValue labVal27 = new LabValue();
+        labVal27.setLabValName("Gallensäure");
+        labVal27.setUnit("µmol/l");
+        save(labVal27);
+
+        LabValue labVal28 = new LabValue();
+        labVal28.setLabValName("CRP");
+        labVal28.setUnit("mg/dl");
+        save(labVal28);
+
+        LabValue labVal29 = new LabValue();
+        labVal29.setLabValName("Cholesterin");
+        labVal29.setUnit("mg/dl");
+        save(labVal29);
+
+        LabValue labVal30 = new LabValue();
+        labVal30.setLabValName("BSG 1h");
+        labVal30.setUnit("mm");
+        save(labVal30);
+
+        LabValue labVal31 = new LabValue();
+        labVal31.setLabValName("BSG 2h");
+        labVal31.setUnit("mm");
+        save(labVal31);
+
+        LabValue labVal32 = new LabValue();
+        labVal32.setLabValName("Leukozyten");
+        labVal32.setUnit("G/l");
+        save(labVal32);
+
     }
 
     public void save(LabValue labValue) {

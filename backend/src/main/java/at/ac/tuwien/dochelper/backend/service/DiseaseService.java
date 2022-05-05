@@ -26,6 +26,8 @@ public class DiseaseService {
         return diseaseRepository.findAll();
     }
 
+    public Disease getDiseaseByName(String name){return diseaseRepository.findDiseaseByDiseaseName(name);}
+
     @Transactional
     public Disease createDisease(Disease disease)
     {

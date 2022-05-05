@@ -16,7 +16,7 @@ public class DiseaseDto {
     private String diseaseName;
 
     @NotNull
-    private char icdCode;
+    private String icdCode;
 
     @NotNull
     private String description;
@@ -24,10 +24,10 @@ public class DiseaseDto {
     @NotNull
     private boolean pregnant;
 
-    @NotNull
+    //@NotNull
     private int minAge;
 
-    @NotNull
+   // @NotNull
     private int maxAge;
 
     @NotNull
@@ -36,7 +36,7 @@ public class DiseaseDto {
     private List<LabValueDto> lab_DiseaseValue;
 
 
-    public DiseaseDto(@Nullable Long diseaseId, String diseaseName, char icdCode, String description,  boolean pregnant,
+    public DiseaseDto(@Nullable Long diseaseId, String diseaseName, String icdCode, String description,  boolean pregnant,
                       int minAge, int maxAge, float threshold, List<LabValueDto> lab_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
@@ -66,11 +66,11 @@ public class DiseaseDto {
         this.diseaseName = name;
     }
 
-    public char getIcdCode() {
+    public String getIcdCode() {
         return icdCode;
     }
 
-    public void setIcdCode(char icdCode) {
+    public void setIcdCode(String icdCode) {
         this.icdCode = icdCode;
     }
 

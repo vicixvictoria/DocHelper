@@ -30,6 +30,13 @@ public class DiseaseEndpoint {
     }
 
 
+    /*
+    @GetMapping
+    public DiseaseDto getDiseaseByName(String name) {
+        return diseaseMapper.diseaseToDiseaseDto(diseaseService.getDiseaseByName(name));
+    }*/
+
+
     //für nice to have
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

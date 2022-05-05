@@ -23,7 +23,7 @@ public class Disease {
 
     @NotNull
     @Column(name = "icdCode")
-    private char icdCode;
+    private String icdCode;
 
     @NotNull
     @Column(name = "description")
@@ -53,7 +53,7 @@ public class Disease {
 
     }
 
-    public Disease(Long diseaseId, String diseaseName, char icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValue_threshold> lab_DiseaseValue) {
+    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValue_threshold> lab_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -81,11 +81,11 @@ public class Disease {
         this.diseaseName = diseaseName;
     }
 
-    public char getIcdCode() {
+    public String getIcdCode() {
         return icdCode;
     }
 
-    public void setIcdCode(char icdCode) {
+    public void setIcdCode(String icdCode) {
         this.icdCode = icdCode;
     }
 

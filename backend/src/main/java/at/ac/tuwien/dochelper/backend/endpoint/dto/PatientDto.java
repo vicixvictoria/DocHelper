@@ -109,4 +109,17 @@ public class PatientDto {
     public void setPregnant(boolean pregnant) {
         this.pregnant = pregnant;
     }
+
+    @Override
+    public String toString() {
+        return "PatientDto{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", svnr='" + svnr + '\'' +
+                ", birthDate=" + birthDate +
+                ", sex=" + sex +
+                ", pregnant=" + pregnant +
+                '}';
+    }
 }

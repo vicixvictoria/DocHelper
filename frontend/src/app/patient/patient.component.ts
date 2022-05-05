@@ -4,6 +4,7 @@ import {PatientService} from "../../services/patient.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPatientComponent} from "./add-patient/add-patient.component";
 import {EditPatientComponent} from "./edit-patient/edit-patient.component";
+import {TestresultOverviewComponent} from "../testresult-overview/testresult-overview.component";
 
 @Component({
   selector: 'app-patient',
@@ -42,6 +43,14 @@ export class PatientComponent implements OnInit {
 
   editPatient(patient: Patient){
     this.dialog.open(EditPatientComponent, {
+      data: {
+        patient: patient
+      },
+      width: '500px'});
+  }
+
+  viewTestResult(patient: Patient){
+    this.dialog.open(TestresultOverviewComponent, {
       data: {
         patient: patient
       },

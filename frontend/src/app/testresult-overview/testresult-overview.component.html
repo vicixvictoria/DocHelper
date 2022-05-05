@@ -1,0 +1,6 @@
+<ng-container *ngFor="let testResult of testResults">
+  Patient: {{testResult.patient.firstName}} {{testResult.patient.lastName}}
+  Date: {{testResult.date}}
+  <button mat-button color="primary" (click)="viewTestResult(testResult.id)"></button>
+  <mat-divider></mat-divider>
+</ng-container>

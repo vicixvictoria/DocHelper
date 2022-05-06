@@ -56,9 +56,16 @@ public class TestResultEndpoint {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{resultId}")
+    @DeleteMapping
     public void deleteTestResult(@PathVariable Long resultId) {
         LOGGER.info("DELETE /api/v1/results/{} ", resultId);
         testResultService.deleteTestResult(resultId);
+    }
+
+
+    @GetMapping("/{patientId}")
+    public List<TestResultDto> getByPatientId(@PathVariable Long patientId){
+      LOGGER.info("GET /api/v1/results/patient {}", patientId);
+      return testResultsMapper.testResultsToTestResultsDto(testResultService.getByPatientId(patientId));
     }
 }

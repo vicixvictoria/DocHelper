@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class TestResultDto {
 
     @Nullable
-    private long id;
+    private Long id;
 
     @NotNull
     private Patient patient;
@@ -25,11 +25,12 @@ public class TestResultDto {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate date;
 
-    public TestResultDto(Long id, Patient patient, LocalDate date){
+    public TestResultDto(long id, Patient patient, LocalDate date){
         this.id = id;
         this.patient = patient;
         this.date = date;
     }
+
 
     public long getId(){
         return id;

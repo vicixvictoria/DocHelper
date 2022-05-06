@@ -46,6 +46,4 @@ public class PatientEndpoint {
         return patientMapper.patientToPatientDto(patient);
     }
 
-
-
 }

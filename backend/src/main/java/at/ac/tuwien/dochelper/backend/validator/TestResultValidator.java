@@ -37,8 +37,8 @@ public class TestResultValidator {
             throw new ValidationException("Date is in the future.");
             //exception
         }
-        if(testResult.getPatient() == null) {
-            throw new ValidationException("Patient must not be null.");
+        if(testResult.getPatientId() == null) {
+            throw new ValidationException("Patient id must not be null.");
             //exception
         }
 

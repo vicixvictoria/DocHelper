@@ -18,10 +18,8 @@ public class TestResult {
     private Long id;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "patient")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Patient patient;
+    @Column(name = "patient_id")
+    private Long patientId;
 
     @NotNull
     @Column(name = "date")
@@ -35,9 +33,9 @@ public class TestResult {
     public TestResult(){
     }
 
-    public TestResult(Long id, Patient patient, LocalDate date, List<LabMeasure> labMeasures) {
+    public TestResult(Long id, Long patientId, LocalDate date, List<LabMeasure> labMeasures) {
         this.id = id;
-        this.patient = patient;
+        this.patientId = patientId;
         this.date = date;
         this.labMeasures = labMeasures;
     }
@@ -46,20 +44,20 @@ public class TestResult {
         return id;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     public void setDate(LocalDate date) {
@@ -78,7 +76,7 @@ public class TestResult {
     public String toString() {
         return "TestResult{" +
                 "id=" + id +
-                ", patient=" + patient +
+                ", patientId='" + patientId + '\'' +
                 ", date=" + date +
                 ", labMeasures=" + labMeasures +
                 '}';

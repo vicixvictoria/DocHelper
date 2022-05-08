@@ -19,7 +19,7 @@ public class TestResultDto {
     private Long id;
 
     @NotNull
-    private Patient patient;
+    private Long patientId;
 
     @NotNull
     @PastOrPresent
@@ -30,28 +30,28 @@ public class TestResultDto {
     @NotNull
     private List<LabMeasure> labMeasures;
 
-    public TestResultDto(long id, Patient patient, LocalDate date, List<LabMeasure> labMeasures){
+    public TestResultDto(@Nullable Long id, Long patientId, LocalDate date, List<LabMeasure> labMeasures) {
         this.id = id;
-        this.patient = patient;
+        this.patientId = patientId;
         this.date = date;
         this.labMeasures = labMeasures;
     }
 
-
-    public long getId(){
+    @Nullable
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@Nullable Long id) {
         this.id = id;
     }
 
-    public Patient getPatient(){
-        return patient;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     public LocalDate getDate() {
@@ -62,15 +62,19 @@ public class TestResultDto {
         this.date = date;
     }
 
-    public void setId(@Nullable Long id) {
-        this.id = id;
+    public List<LabMeasure> getLabMeasures() {
+        return labMeasures;
+    }
+
+    public void setLabMeasures(List<LabMeasure> labMeasures) {
+        this.labMeasures = labMeasures;
     }
 
     @Override
     public String toString() {
         return "TestResultDto{" +
                 "id=" + id +
-                ", patient=" + patient +
+                ", patientId='" + patientId + '\'' +
                 ", date=" + date +
                 ", labMeasures=" + labMeasures +
                 '}';

@@ -2,6 +2,7 @@ package at.ac.tuwien.dochelper.backend.endpoint;
 
 import at.ac.tuwien.dochelper.backend.endpoint.dto.LabValueDto;
 import at.ac.tuwien.dochelper.backend.endpoint.mapper.LabValueMapper;
+import at.ac.tuwien.dochelper.backend.entity.LabValue;
 import at.ac.tuwien.dochelper.backend.service.LabValueService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,15 @@ public class LabValueEndpoint {
         this.labValueMapper = labValueMapper;
     }
 
-    @GetMapping
+   /* @GetMapping
     public List<LabValueDto> getAllLabVals() {
         LOGGER.info("GET api/v1/labValues ");
         return labValueMapper.labValueToLabValueDto(labValueService.getAllLabVals());
+    }*/
+
+    @GetMapping
+    public LabValueDto getByName(String name){
+        return labValueMapper.labValueToLabValueDto(labValueService.getByName(name));
     }
 
 

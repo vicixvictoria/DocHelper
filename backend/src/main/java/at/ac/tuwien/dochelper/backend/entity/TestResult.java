@@ -37,7 +37,7 @@ public class TestResult {
         this.date = date;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

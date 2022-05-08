@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "Disease")
@@ -22,7 +23,7 @@ public class Disease {
 
     @NotNull
     @Column(name = "icdCode")
-    private char icdCode;
+    private String icdCode;
 
     @NotNull
     @Column(name = "description")
@@ -32,11 +33,9 @@ public class Disease {
     @Column(name = "pregnant")
     private boolean pregnant;
 
-    @NotNull
     @Column(name = "minAge")
     private int minAge;
 
-    @NotNull
     @Column(name = "maxAge")
     private int maxAge;
 
@@ -44,16 +43,17 @@ public class Disease {
     @Column(name = "threshold")
     private float threshold;
 
-     /*
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @Column(name = "lab_DiseaseValue")
     private List<TestValue_threshold> lab_DiseaseValue;
-    */
+
 
 
     public Disease(){
 
     }
 
-    public Disease(Long diseaseId, String diseaseName, char icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold) {
+    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValue_threshold> lab_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -62,6 +62,7 @@ public class Disease {
         this.minAge = minAge;
         this.maxAge = maxAge;
         this.threshold = threshold;
+        this.lab_DiseaseValue = lab_DiseaseValue;
     }
 
     public Long getDiseaseId() {
@@ -80,11 +81,11 @@ public class Disease {
         this.diseaseName = diseaseName;
     }
 
-    public char getIcdCode() {
+    public String getIcdCode() {
         return icdCode;
     }
 
-    public void setIcdCode(char icdCode) {
+    public void setIcdCode(String icdCode) {
         this.icdCode = icdCode;
     }
 
@@ -128,6 +129,13 @@ public class Disease {
         this.threshold = threshold;
     }
 
+    public List<TestValue_threshold> getLab_DiseaseValue() {
+        return lab_DiseaseValue;
+    }
+
+    public void setLab_DiseaseValue(List<TestValue_threshold> lab_DiseaseValue) {
+        this.lab_DiseaseValue = lab_DiseaseValue;
+    }
 
     @Override
     public String toString() {
@@ -140,6 +148,7 @@ public class Disease {
                 ", minAge=" + minAge +
                 ", maxAge=" + maxAge +
                 ", threshold=" + threshold +
+                ", lab_DiseaseValue=" + lab_DiseaseValue +
                 '}';
     }
 }

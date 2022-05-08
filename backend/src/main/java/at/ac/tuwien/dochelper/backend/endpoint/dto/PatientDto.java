@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 public class PatientDto {
 
@@ -43,7 +44,10 @@ public class PatientDto {
     @NotNull
     private boolean pregnant;
 
-    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant) {
+    @Nullable
+    private List<TestResultDto> testResultDtoList;
+
+    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant, List<TestResultDto> testResultDtoList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,6 +55,7 @@ public class PatientDto {
         this.birthDate = birthDate;
         this.sex = sex;
         this.pregnant = pregnant;
+        this.testResultDtoList = testResultDtoList;
     }
 
     @Nullable
@@ -110,6 +115,15 @@ public class PatientDto {
         this.pregnant = pregnant;
     }
 
+    @Nullable
+    public List<TestResultDto> getTestResultDtoList() {
+        return testResultDtoList;
+    }
+
+    public void setTestResultDtoList(@Nullable List<TestResultDto> testResultDtoList) {
+        this.testResultDtoList = testResultDtoList;
+    }
+
     @Override
     public String toString() {
         return "PatientDto{" +
@@ -120,6 +134,7 @@ public class PatientDto {
                 ", birthDate=" + birthDate +
                 ", sex=" + sex +
                 ", pregnant=" + pregnant +
+                ", testResultDtoList=" + testResultDtoList +
                 '}';
     }
 }

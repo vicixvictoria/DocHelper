@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "TestResults")
@@ -17,56 +18,67 @@ public class TestResult {
     private Long id;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "Patient")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Patient patient;
+    @Column(name = "patient_id")
+    private Long patientId;
 
     @NotNull
     @Column(name = "date")
     private LocalDate date;
 
-    //private List<LabMeasure> labMeasures;
+    @OneToMany
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "lab_measures")
+    private List<LabMeasure> labMeasures;
 
     public TestResult(){
     }
 
-    public TestResult(Long id, Patient patient, LocalDate date) {
+    public TestResult(Long id, Long patientId, LocalDate date, List<LabMeasure> labMeasures) {
         this.id = id;
-        this.patient = patient;
+        this.patientId = patientId;
         this.date = date;
+        this.labMeasures = labMeasures;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public LocalDate getDate() {
-        return date;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    public List<LabMeasure> getLabMeasures() {
+        return labMeasures;
+    }
+
+    public void setLabMeasures(List<LabMeasure> labMeasures) {
+        this.labMeasures = labMeasures;
+    }
+
     @Override
     public String toString() {
-        return "TestResults{" +
+        return "TestResult{" +
                 "id=" + id +
-                ", patient=" + patient +
+                ", patientId='" + patientId + '\'' +
                 ", date=" + date +
+                ", labMeasures=" + labMeasures +
                 '}';
     }
 }

@@ -1,45 +1,64 @@
 package at.ac.tuwien.dochelper.backend.datagenerator;
 
+import at.ac.tuwien.dochelper.backend.entity.LabMeasure;
 import at.ac.tuwien.dochelper.backend.entity.Patient;
+import at.ac.tuwien.dochelper.backend.entity.TestResult;
 import at.ac.tuwien.dochelper.backend.repository.PatientRepository;
+import at.ac.tuwien.dochelper.backend.repository.TestResultRepository;
 import at.ac.tuwien.dochelper.backend.util.Sex;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 @Profile("generateData1")
 @Component
 public class PatientDataGenerator {
 
+    @Autowired
+    private TestResultDataGenerator testResultDataGenerator;
+
+    private final TestResultRepository testResultRepository;
     private final PatientRepository patientRepository;
 
-    public PatientDataGenerator(PatientRepository patientRepository) {
+    public PatientDataGenerator(TestResultRepository testResultRepository, PatientRepository patientRepository) {
+        this.testResultRepository = testResultRepository;
         this.patientRepository = patientRepository;
     }
-
 
     @PostConstruct
     public void generatePatientEntries() {
 
         Patient patient1 = new Patient();
+        patient1.setId(1L);
         patient1.setFirstName("Anna");
         patient1.setLastName("Beiser");
         patient1.setSvnr("8353130879");
         patient1.setBirthDate(LocalDate.parse("1979-08-13"));
         patient1.setSex(Sex.FEMALE);
         patient1.setPregnant(false);
+        List<TestResult> testResultList1 = new ArrayList<>(Collections.emptyList());
+        testResultList1.add(testResultRepository.getById(1L));
+        patient1.setTestResults(testResultList1);
         save(patient1);
 
         Patient patient2 = new Patient();
+        patient2.setId(2L);
         patient2.setFirstName("Christian");
         patient2.setLastName("Dorfer");
         patient2.setSvnr("9262010366");
         patient2.setBirthDate(LocalDate.parse("1966-03-01"));
         patient2.setSex(Sex.MALE);
         patient2.setPregnant(false);
+        List<TestResult> testResultList2 = new ArrayList<>(Collections.emptyList());
+        testResultList2.add(testResultRepository.getById(2L));
+        patient2.setTestResults(testResultList2);
         save(patient2);
 
         Patient patient3 = new Patient();

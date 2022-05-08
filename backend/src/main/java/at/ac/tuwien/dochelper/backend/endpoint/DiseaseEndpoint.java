@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/diseases")
 public class DiseaseEndpoint {
-
+    
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private final DiseaseService diseaseService;
     private final DiseaseMapper diseaseMapper;
@@ -33,6 +33,13 @@ public class DiseaseEndpoint {
         LOGGER.info("GET api/v1/diseases");
         return diseaseMapper.diseaseToDiseaseDto(diseaseService.getAllDiseases());
     }
+
+
+    /*
+    @GetMapping
+    public DiseaseDto getDiseaseByName(String name) {
+        return diseaseMapper.diseaseToDiseaseDto(diseaseService.getDiseaseByName(name));
+    }*/
 
 
     //für nice to have

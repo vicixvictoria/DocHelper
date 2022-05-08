@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface DiseaseRepository extends JpaRepository<Disease, Long> {
-    List<Disease> findAllByIcdCode(char icdCode);
+    List<Disease> findAllByIcdCode(String icdCode);
+    Disease findDiseaseByDiseaseName(String name);
+
 }

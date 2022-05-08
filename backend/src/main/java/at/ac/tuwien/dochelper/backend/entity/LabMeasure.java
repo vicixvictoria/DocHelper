@@ -23,19 +23,32 @@ public class LabMeasure {
     private LabValue labValue;
 
     @Column(name = "measured_value")
-    private Float measuredValue;
+    private float measuredValue;
 
-    @Column(name = "reference_value")
-    private Float referenceValue;
+    @Column(name = "ref_value_bigger")
+    private Float refValueBigger;
+
+    @Column(name = "ref_value_lower")
+    private Float refValueLower;
+
+    @Column(name = "ref_value_from")
+    private Float refValueFrom;
+
+    @Column(name = "ref_value_to")
+    private Float refValueTo;
+
 
     public LabMeasure() {
     }
 
-    public LabMeasure(Long id, LabValue labValue, Float measuredValue, Float referenceValue) {
+    public LabMeasure(Long id, LabValue labValue, float measuredValue, Float refValueBigger, Float refValueLower, Float refValueFrom, Float refValueTo) {
         this.id = id;
         this.labValue = labValue;
         this.measuredValue = measuredValue;
-        this.referenceValue = referenceValue;
+        this.refValueBigger = refValueBigger;
+        this.refValueLower = refValueLower;
+        this.refValueFrom = refValueFrom;
+        this.refValueTo = refValueTo;
     }
 
     public Long getId() {
@@ -54,20 +67,44 @@ public class LabMeasure {
         this.labValue = labValue;
     }
 
-    public Float getMeasuredValue() {
+    public float getMeasuredValue() {
         return measuredValue;
     }
 
-    public void setMeasuredValue(Float measuredValue) {
+    public void setMeasuredValue(float measuredValue) {
         this.measuredValue = measuredValue;
     }
 
-    public Float getReferenceValue() {
-        return referenceValue;
+    public Float getRefValueBigger() {
+        return refValueBigger;
     }
 
-    public void setReferenceValue(Float referenceValue) {
-        this.referenceValue = referenceValue;
+    public void setRefValueBigger(Float refValueBigger) {
+        this.refValueBigger = refValueBigger;
+    }
+
+    public Float getRefValueLower() {
+        return refValueLower;
+    }
+
+    public void setRefValueLower(Float refValueLower) {
+        this.refValueLower = refValueLower;
+    }
+
+    public Float getRefValueFrom() {
+        return refValueFrom;
+    }
+
+    public void setRefValueFrom(Float refValueFrom) {
+        this.refValueFrom = refValueFrom;
+    }
+
+    public Float getRefValueTo() {
+        return refValueTo;
+    }
+
+    public void setRefValueTo(Float refValueTo) {
+        this.refValueTo = refValueTo;
     }
 
     @Override
@@ -76,7 +113,10 @@ public class LabMeasure {
                 "id=" + id +
                 ", labValue=" + labValue +
                 ", measuredValue=" + measuredValue +
-                ", referenceValue=" + referenceValue +
+                ", refValueBigger=" + refValueBigger +
+                ", refValueLower=" + refValueLower +
+                ", refValueFrom=" + refValueFrom +
+                ", refValueTo=" + refValueTo +
                 '}';
     }
 }

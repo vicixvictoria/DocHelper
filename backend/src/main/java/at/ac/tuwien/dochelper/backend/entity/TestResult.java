@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "TestResults")
@@ -18,7 +19,7 @@ public class TestResult {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "Patient")
+    @JoinColumn(name = "patient")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Patient patient;
 
@@ -26,15 +27,19 @@ public class TestResult {
     @Column(name = "date")
     private LocalDate date;
 
-    //private List<LabMeasure> labMeasures;
+    @OneToMany
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "lab_measures")
+    private List<LabMeasure> labMeasures;
 
     public TestResult(){
     }
 
-    public TestResult(Long id, Patient patient, LocalDate date) {
+    public TestResult(Long id, Patient patient, LocalDate date, List<LabMeasure> labMeasures) {
         this.id = id;
         this.patient = patient;
         this.date = date;
+        this.labMeasures = labMeasures;
     }
 
     public Long getId() {
@@ -61,12 +66,21 @@ public class TestResult {
         this.date = date;
     }
 
+    public List<LabMeasure> getLabMeasures() {
+        return labMeasures;
+    }
+
+    public void setLabMeasures(List<LabMeasure> labMeasures) {
+        this.labMeasures = labMeasures;
+    }
+
     @Override
     public String toString() {
-        return "TestResults{" +
+        return "TestResult{" +
                 "id=" + id +
                 ", patient=" + patient +
                 ", date=" + date +
+                ", labMeasures=" + labMeasures +
                 '}';
     }
 }

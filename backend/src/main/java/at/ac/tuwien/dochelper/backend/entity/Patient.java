@@ -2,16 +2,21 @@ package at.ac.tuwien.dochelper.backend.entity;
 
 import at.ac.tuwien.dochelper.backend.util.Sex;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "Patient")
@@ -50,14 +55,16 @@ public class Patient {
     @Column(name = "pregnant")
     private boolean pregnant;
 
-    /*
-    private List<TestResult> testResult;
-    */
+    @OneToMany
+    @JoinColumn(name = "test_results")
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    private List<TestResult> testResults;
+
 
     public Patient() {
     }
 
-    public Patient(Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant) {
+    public Patient(Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant, List<TestResult> testResults) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,6 +72,7 @@ public class Patient {
         this.birthDate = birthDate;
         this.sex = sex;
         this.pregnant = pregnant;
+        this.testResults = testResults;
     }
 
     public Long getId() {
@@ -123,6 +131,14 @@ public class Patient {
         this.pregnant = pregnant;
     }
 
+    public List<TestResult> getTestResults() {
+        return testResults;
+    }
+
+    public void setTestResults(List<TestResult> testResults) {
+        this.testResults = testResults;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
@@ -133,6 +149,7 @@ public class Patient {
                 ", birthDate=" + birthDate +
                 ", sex=" + sex +
                 ", pregnant=" + pregnant +
+                ", test results=" + testResults +
                 '}';
     }
 }

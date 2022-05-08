@@ -1,0 +1,51 @@
+<div style="margin:auto; width:fit-content;">
+  <h1 class="header">Patient erstellen</h1>
+
+  <form (ngSubmit)="addPatient()" [formGroup]="patientForm">
+    <div style="width: max-content">
+    <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
+      <mat-label>Vorname</mat-label>
+      <input formControlName="firstname" matInput required>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Nachname</mat-label>
+      <input formControlName="lastname" matInput required>
+    </mat-form-field>
+    </div>
+
+    <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline" >
+      <mat-label>SV-Nummer</mat-label>
+      <input #svnumber formControlName="svnr" matInput required>
+      <mat-error *ngIf="svnr.errors?.['minlength']">
+        10 Ziffern erforderlich
+      </mat-error>
+      <mat-hint align="end">{{svnumber.value.length}} / 10</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Geburtstag</mat-label>
+      <input formControlName="birthday" matInput [matDatepicker]="picker" required>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
+      <mat-label>Geschlecht</mat-label>
+      <select #genderselection formControlName="gender" matNativeControl required>
+        <option value="FEMALE">Weiblich</option>
+        <option value="MALE">Männlich</option>
+      </select>
+    </mat-form-field>
+
+    <ng-container *ngIf="genderselection.value === 'FEMALE'" style="margin-left: 10px; display: inline-block">
+    Schwanger
+    <mat-checkbox style="margin-left: 10px" color="primary" formControlName="pregnant" class="example-margin"></mat-checkbox>
+    </ng-container>
+
+    <p></p>
+
+    <button color="primary" mat-raised-button type=submit>Submit</button>
+  </form>
+</div>

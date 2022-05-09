@@ -22,4 +22,15 @@ export class TestResultService {
     console.log('Load all TestResults');
     return this.httpClient.get<TestResult[]>(baseUri);
   }
+
+  /**
+   * Loads all Testresults of a Patien
+   *
+   *
+   * @param id of Patient
+   */
+  getTestResultsByPatientId(id: number): Observable<TestResult[]> {
+    console.log('Load TestResults of patien with id ' + id);
+    return this.httpClient.get<TestResult[]>(baseUri + '/' + id);
+  }
 }

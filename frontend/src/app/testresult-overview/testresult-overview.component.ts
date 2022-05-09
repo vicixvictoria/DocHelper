@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {TestResultService} from "../../services/test-result.service";
 import {TestResult} from "../../dtos/testResult";
 import {Router} from "@angular/router";
+import {FormBuilder} from "@angular/forms";
+import {PatientService} from "../../services/patient.service";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Patient} from "../../dtos/patient";
 
 @Component({
   selector: 'app-testresult-overview',
@@ -14,14 +18,18 @@ export class TestresultOverviewComponent implements OnInit {
   errorMessage = '';
   // @ts-ignore
   testResults: TestResult[];
+  patient: Patient | undefined;
 
   constructor(
     private testResultService: TestResultService,
-    private router: Router
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA)
+    private data: any
   ) { }
 
   ngOnInit(): void {
-    this.loadAllPatients();
+    this.patient = this.data.patient;
+    this.loadTestResultsOfPatient();
   }
 
   public viewTestResult(id: number) {
@@ -31,8 +39,9 @@ export class TestresultOverviewComponent implements OnInit {
   /**
    * Fetches all patients from the backend.
    */
-  public loadAllPatients() {
-    this.testResultService.getAllTestResults().subscribe({
+  public loadTestResultsOfPatient() {
+    // @ts-ignore
+    this.testResultService.getTestResultsByPatientId(this.patient.id).subscribe({
       next: data => {
         console.log('received patients', data);
         this.testResults = data;

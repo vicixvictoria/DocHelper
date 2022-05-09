@@ -3,6 +3,7 @@ import {Patient} from "../../dtos/patient";
 import {TestResult} from "../../dtos/testResult";
 import {PatientService} from "../../services/patient.service";
 import {TestResultService} from "../../services/test-result.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-testresult-detail',
@@ -21,7 +22,8 @@ export class TestresultDetailComponent implements OnInit {
 
   constructor(
     private patientService: PatientService,
-    private testResultService: TestResultService
+    private testResultService: TestResultService,
+    private router: Router
   )
   {
 
@@ -59,6 +61,26 @@ export class TestresultDetailComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
+  }
+
+  /**
+   * Deletes testresult from the backend.
+   *
+   * @param testresult to be deleted.
+   */
+  deletePatient(testResult: TestResult) {
+    if (confirm('Befund vom ' + this.testResult.date + ' von Patient "' + this.patient?.firstName + ' ' + this.patient?.lastName + '" wirklich löschen?')) {
+      this.patientService.deletePatient(this.testResult.id).subscribe({
+        next: () => {
+          console.log("Deleting testresult " + this.testResult)
+          this.router.navigate(['home']);
+        }
+        ,
+        error: error => {
+          this.defaultServiceErrorHandling(error);
+        }
+      });
+    }
   }
 
   private defaultServiceErrorHandling(error: any) {

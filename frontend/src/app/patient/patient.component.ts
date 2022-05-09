@@ -93,7 +93,6 @@ export class PatientComponent implements OnInit {
           this.defaultServiceErrorHandling(error);
         }
       });
-
     }
   }
 

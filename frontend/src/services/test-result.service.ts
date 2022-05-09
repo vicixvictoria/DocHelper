@@ -42,4 +42,13 @@ export class TestResultService {
     console.log('Load TestResults of patien with id ' + id);
     return this.httpClient.get<TestResult[]>(baseUri + '/' + id);
   }
+
+  /**
+   * Deletes the testresult with the id from the backend
+   *
+   * @param id of the testresult to be deleted
+   */
+  deleteTestResult(id: number): Observable<TestResult> {
+    return this.httpClient.delete<TestResult>(baseUri + '/' + id);
+  }
 }

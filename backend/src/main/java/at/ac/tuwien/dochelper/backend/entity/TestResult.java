@@ -25,7 +25,7 @@ public class TestResult {
     @Column(name = "date")
     private LocalDate date;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "lab_measures")
     private List<LabMeasure> labMeasures;

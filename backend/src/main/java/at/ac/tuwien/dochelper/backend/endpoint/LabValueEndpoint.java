@@ -26,16 +26,17 @@ public class LabValueEndpoint {
         this.labValueMapper = labValueMapper;
     }
 
-   /* @GetMapping
+    @GetMapping
     public List<LabValueDto> getAllLabVals() {
         LOGGER.info("GET api/v1/labValues ");
         return labValueMapper.labValueToLabValueDto(labValueService.getAllLabVals());
-    }*/
+    }
 
+    /*
     @GetMapping
     public LabValueDto getByName(String name){
         return labValueMapper.labValueToLabValueDto(labValueService.getByName(name));
-    }
+    }*/
 
 
 }

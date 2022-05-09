@@ -1,13 +1,6 @@
 package at.ac.tuwien.dochelper.backend.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "LabMeasure")
@@ -19,7 +12,7 @@ public class LabMeasure {
     private Long id;
 
     @JoinColumn(name = "lab_value")
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private LabValue labValue;
 
     @Column(name = "measured_value")

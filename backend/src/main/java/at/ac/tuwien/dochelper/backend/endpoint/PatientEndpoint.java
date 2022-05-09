@@ -51,12 +51,12 @@ public class PatientEndpoint {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping()
-    public PatientDto updatePatient(@Valid @RequestBody PatientDto patientDto, @PathVariable Long patientId) {
+    @PutMapping
+    public PatientDto updatePatient(@Valid @RequestBody PatientDto patientDto) {
         LOGGER.info("PUT /api/v1/patients: {} ", patientDto.toString());
-        if(!patientId.equals(patientDto.getId())) {
+        /*if(!patientId.equals(patientDto.getId())) {
             //throw exception
-        }
+        }*/
         Patient patient = patientMapper.patientDtoToPatient(patientDto);
         patient = patientService.updatePatient(patient);
         return patientMapper.patientToPatientDto(patient);

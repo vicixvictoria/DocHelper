@@ -26,6 +26,8 @@ import { TestresultOverviewComponent } from './testresult-overview/testresult-ov
 import {MatDividerModule} from '@angular/material/divider';
 import { TestresultDetailComponent } from './testresult-detail/testresult-detail.component';
 import {MatListModule} from "@angular/material/list";
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import {MatListModule} from "@angular/material/list";
     TestresultDetailComponent
   ],
   imports: [
+    MatGridListModule,
+    MatCardModule,
     MatDividerModule,
     MatNativeDateModule,
     MatDatepickerModule,

@@ -35,7 +35,7 @@ export class TestresultOverviewComponent implements OnInit {
   }
 
   public viewTestResult(id: number) {
-   // this.router.navigate(['/testresults/' + id + 'view']);
+    this.router.navigate(['/testresults/' + id + '/view']);
   }
 
   /**

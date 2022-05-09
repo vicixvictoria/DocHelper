@@ -20,8 +20,9 @@ export class EditPatientComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private patientService: PatientService,
+    private dialogRef: MatDialogRef<EditPatientComponent>,
     @Inject(MAT_DIALOG_DATA)
-    private data: any
+    private data: any,
 
   ) {
 
@@ -37,7 +38,7 @@ export class EditPatientComponent implements OnInit {
       pregnant: new FormControl(this.patient.pregnant, []),
       birthday: new FormControl(this.patient.birthDate, [
         Validators.required]),
-      gender: new FormControl(this.patient.sex, [
+      sex: new FormControl(this.patient.sex, [
         Validators.required])
     });
   }
@@ -60,12 +61,12 @@ export class EditPatientComponent implements OnInit {
       // @ts-ignore
       this.patient?.birthDate = this.patientForm.get('birthday')?.value;
       // @ts-ignore
-      this.patient?.gender = this.patientForm.get('gender')?.value;
+      this.patient?.sex = this.patientForm.get('sex')?.value;
       console.log(this.patient);
       if (this.patient) {
         this.patientService.editPatient(this.patient).subscribe({
           next: result => {
-
+            this.dialogRef.close();
 
           },
           error: error => {

@@ -24,7 +24,16 @@ export class TestResultService {
   }
 
   /**
-   * Loads all Testresults of a Patien
+   * Loads Testresult by Id
+   *
+   */
+  getTestResultById(id: number): Observable<TestResult> {
+    console.log('Load all TestResults');
+    return this.httpClient.get<TestResult>(baseUri);
+  }
+
+  /**
+   * Loads all Testresults of a Patient
    *
    *
    * @param id of Patient

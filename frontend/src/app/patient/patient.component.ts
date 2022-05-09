@@ -42,11 +42,14 @@ export class PatientComponent implements OnInit {
   }
 
   editPatient(patient: Patient){
-    this.dialog.open(EditPatientComponent, {
+    const dialog = this.dialog.open(EditPatientComponent, {
       data: {
         patient: patient
       },
       width: '500px'});
+    dialog.afterClosed().subscribe(() => {
+      this.loadAllPatients()
+    })
   }
 
   viewTestResult(patient: Patient){

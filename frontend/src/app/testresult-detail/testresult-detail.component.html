@@ -1,1 +1,27 @@
-<h1>Test Result of </h1>
+<mat-card class="test-result-card" [class.mat-elevation-z8]="true">
+  <mat-card-title style="text-align: center">Labor Blutbefund</mat-card-title>
+  <mat-card-subtitle style="text-align: center">{{testResult?.date}} </mat-card-subtitle>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-grid-list style="margin: 20px 30%;" cols="2" rowHeight="2rem" >
+      <mat-grid-tile>Vorname:   Max</mat-grid-tile>
+      <mat-grid-tile>Nachname: Muster</mat-grid-tile>
+      <mat-grid-tile>SV-Nr: 333333333</mat-grid-tile>
+      <mat-grid-tile>Geburtstag:  06.03.3333</mat-grid-tile>
+      <mat-grid-tile>Geschlecht:  weiblich</mat-grid-tile>
+      <mat-grid-tile>Schwanger:  ja</mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-divider></mat-divider>
+    <mat-grid-list style="margin-left: 30%; margin-right: 30%; margin-bottom: 0" cols="2" rowHeight="2rem" >
+      <mat-grid-tile *ngFor="let labMeasure of testResult?.labMeasures">{{labMeasure.labValue.labValName}}: {{labMeasure.measuredValue}} {{labMeasure.labValue.unit}}</mat-grid-tile>
+    </mat-grid-list>
+
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions align="end">
+    <button mat-button>Analysieren</button>
+    <button mat-button color="warn">Löschen</button>
+  </mat-card-actions>
+
+</mat-card>

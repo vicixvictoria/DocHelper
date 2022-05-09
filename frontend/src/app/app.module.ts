@@ -25,6 +25,7 @@ import { EditPatientComponent } from './patient/edit-patient/edit-patient.compon
 import { TestresultOverviewComponent } from './testresult-overview/testresult-overview.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { TestresultDetailComponent } from './testresult-detail/testresult-detail.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { TestresultDetailComponent } from './testresult-detail/testresult-detail
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

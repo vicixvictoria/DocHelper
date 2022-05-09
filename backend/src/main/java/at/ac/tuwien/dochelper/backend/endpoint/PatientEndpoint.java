@@ -51,7 +51,7 @@ public class PatientEndpoint {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/{patientId}")
+    @PutMapping()
     public PatientDto updatePatient(@Valid @RequestBody PatientDto patientDto, @PathVariable Long patientId) {
         LOGGER.info("PUT /api/v1/patients: {} ", patientDto.toString());
         if(!patientId.equals(patientDto.getId())) {

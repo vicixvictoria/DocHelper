@@ -18,22 +18,24 @@ export class TestresultOverviewComponent implements OnInit {
   errorMessage = '';
   // @ts-ignore
   testResults: TestResult[];
-  patient: Patient | undefined;
+  patient: Patient;
 
   constructor(
     private testResultService: TestResultService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA)
     private data: any
-  ) { }
+  ) {
+    this.patient = this.data.patient;
+  }
 
   ngOnInit(): void {
-    this.patient = this.data.patient;
+
     this.loadTestResultsOfPatient();
   }
 
   public viewTestResult(id: number) {
-    this.router.navigate(['/testresults/' + id + 'view']);
+   // this.router.navigate(['/testresults/' + id + 'view']);
   }
 
   /**

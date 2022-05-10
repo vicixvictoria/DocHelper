@@ -5,7 +5,7 @@ import at.ac.tuwien.dochelper.backend.util.Type;
 import com.sun.istack.NotNull;
 import org.springframework.lang.Nullable;
 
-public class TestValue_tresholdDto {
+public class TestValueThresholdDto {
 
     @Nullable
     private Long thresholdId;
@@ -27,11 +27,11 @@ public class TestValue_tresholdDto {
     private LabValue labVal;
 
 
-    public TestValue_tresholdDto(){
+    public TestValueThresholdDto(){
 
     }
 
-    public TestValue_tresholdDto(@Nullable Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue, String diseaseName, String labValName) {
+    public TestValueThresholdDto(@Nullable Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue, String diseaseName, String labValName) {
         this.thresholdId = thresholdId;
         this.type = type;
         this.refVal_overwrite = refVal_overwrite;

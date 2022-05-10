@@ -28,6 +28,7 @@ import { TestresultDetailComponent } from './testresult-detail/testresult-detail
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { DiseaseComponent } from './disease/disease.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AddPatientComponent,
     EditPatientComponent,
     TestresultOverviewComponent,
-    TestresultDetailComponent
+    TestresultDetailComponent,
+    DiseaseComponent
   ],
   imports: [
     MatGridListModule,

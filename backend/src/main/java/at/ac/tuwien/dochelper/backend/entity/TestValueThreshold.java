@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TestValue_Threshold")
-public class TestValue_threshold {
+public class TestValueThreshold {
 
     @Id
     @GeneratedValue(
@@ -36,17 +36,17 @@ public class TestValue_threshold {
     @Column(name = "labValName")
     private String labValName;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     //Many to Many?
    // @Column(name = "labVal", length = 64)
     private LabValue labVal;
 
 
-    public TestValue_threshold(){
+    public TestValueThreshold(){
 
     }
 
-    public TestValue_threshold(Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue, String diseaseName, String labValName) {
+    public TestValueThreshold(Long thresholdId, Type type, float refVal_overwrite, LabValue labVal, float weightValue, String diseaseName, String labValName) {
         this.thresholdId = thresholdId;
         this.type = type;
         this.refVal_overwrite = refVal_overwrite;

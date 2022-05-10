@@ -1,22 +1,21 @@
 package at.ac.tuwien.dochelper.backend.validator;
 
-import at.ac.tuwien.dochelper.backend.entity.Disease;
-import at.ac.tuwien.dochelper.backend.entity.TestValue_threshold;
-import at.ac.tuwien.dochelper.backend.repository.TestValue_thresholdRepository;
+import at.ac.tuwien.dochelper.backend.entity.TestValueThreshold;
+import at.ac.tuwien.dochelper.backend.repository.TestValueThresholdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TestValue_tresholdValidator {
 
-    private final TestValue_thresholdRepository testValue_thresholdRepository;
+    private final TestValueThresholdRepository testValue_thresholdRepository;
 
     @Autowired
-    public TestValue_tresholdValidator(TestValue_thresholdRepository testValue_thresholdRepository) {
+    public TestValue_tresholdValidator(TestValueThresholdRepository testValue_thresholdRepository) {
         this.testValue_thresholdRepository = testValue_thresholdRepository;
     }
 
-    public void validateNewThreshold(TestValue_threshold testValue_threshold) {
+    public void validateNewThreshold(TestValueThreshold testValue_threshold) {
         if (testValue_threshold == null) {
             //throw exception
         }

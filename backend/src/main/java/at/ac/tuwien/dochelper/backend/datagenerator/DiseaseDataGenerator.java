@@ -3,10 +3,10 @@ package at.ac.tuwien.dochelper.backend.datagenerator;
 
 import at.ac.tuwien.dochelper.backend.entity.Disease;
 import at.ac.tuwien.dochelper.backend.entity.LabValue;
-import at.ac.tuwien.dochelper.backend.entity.TestValue_threshold;
+import at.ac.tuwien.dochelper.backend.entity.TestValueThreshold;
 import at.ac.tuwien.dochelper.backend.repository.DiseaseRepository;
 import at.ac.tuwien.dochelper.backend.repository.LabValueRepository;
-import at.ac.tuwien.dochelper.backend.repository.TestValue_thresholdRepository;
+import at.ac.tuwien.dochelper.backend.repository.TestValueThresholdRepository;
 import at.ac.tuwien.dochelper.backend.util.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -26,11 +26,11 @@ public class DiseaseDataGenerator {
     private final LabValueRepository labValueRepository;
 
     private final DiseaseRepository diseaseRepository;
-    private final TestValue_thresholdRepository testValue_thresholdRepository;
+    private final TestValueThresholdRepository testValue_thresholdRepository;
     //private final ThresholdDataGenerator thresholdDataGenerator;
 
 
-    public DiseaseDataGenerator(DiseaseRepository diseaseRepository, TestValue_thresholdRepository testValue_thresholdRepository, LabValueRepository labValueRepository, LabValueDataGenerator labValueDataGenerator) {
+    public DiseaseDataGenerator(DiseaseRepository diseaseRepository, TestValueThresholdRepository testValue_thresholdRepository, LabValueRepository labValueRepository, LabValueDataGenerator labValueDataGenerator) {
         this.diseaseRepository = diseaseRepository;
         this.testValue_thresholdRepository = testValue_thresholdRepository;
         this.labValueRepository = labValueRepository;
@@ -44,7 +44,7 @@ public class DiseaseDataGenerator {
         //diseaseRepository.deleteAll();
         //Morbus Meulengracht
         Disease disease_meulengracht = new Disease();
-        List<TestValue_threshold> threshold_meulengracht = new ArrayList<>();
+        List<TestValueThreshold> threshold_meulengracht = new ArrayList<>();
         disease_meulengracht.setDiseaseName("Morbus Meulengracht");
         disease_meulengracht.setDescription("Hyperbilirubinämie wobei direktes Bilirubin 2-5 mg/dl ist");
         disease_meulengracht.setIcdCode("E80.4"); //icd code auf string geben
@@ -58,7 +58,7 @@ public class DiseaseDataGenerator {
 
         //PBC 2
         Disease disease_pbc2 = new Disease();
-        List<TestValue_threshold> threshold_pbc2 = new ArrayList<>();
+        List<TestValueThreshold> threshold_pbc2 = new ArrayList<>();
         disease_pbc2.setDiseaseName("Primär biliäre Cholangitis (PBC) 2");
         disease_pbc2.setDescription("Zerstörung Lebergewebe");
         disease_pbc2.setIcdCode("K74.3");
@@ -77,7 +77,7 @@ public class DiseaseDataGenerator {
 
         //akutes Leberversagen
         Disease disease_leberversagen = new Disease();
-        List<TestValue_threshold> threshold_leberversagen = new ArrayList<>();
+        List<TestValueThreshold> threshold_leberversagen = new ArrayList<>();
         disease_leberversagen.setDiseaseName("akutes Leberversagen");
         disease_leberversagen.setDescription("Zerstörung Lebergewebe mit Leberversagen");
         disease_leberversagen.setIcdCode("K72.0");
@@ -101,7 +101,7 @@ public class DiseaseDataGenerator {
 
         //akute Virushepatitis B
         Disease disease_hepB = new Disease();
-        List<TestValue_threshold> threshold_hepB = new ArrayList<>();
+        List<TestValueThreshold> threshold_hepB = new ArrayList<>();
         disease_hepB.setDiseaseName("akute Virushepatitis B");
         disease_hepB.setDescription("Die Virushepatitis ist als systemische, akute oder chronische Virusinfektion mit überwiegender Entzündung des Leberparenchyms definiert.");
         disease_hepB.setIcdCode("B18.1");
@@ -127,7 +127,7 @@ public class DiseaseDataGenerator {
 
         //Cholestase
         Disease disease_chol = new Disease();
-        List<TestValue_threshold> threshold_chol = new ArrayList<>();
+        List<TestValueThreshold> threshold_chol = new ArrayList<>();
         disease_chol.setDiseaseName("Cholestase (Gallenstau)");
         disease_chol.setDescription("Die Cholestase ist der Stau von Gallenflüssigkeit innerhalb der Gallengänge.");
         disease_chol.setIcdCode("K71/K80");
@@ -191,9 +191,9 @@ public class DiseaseDataGenerator {
 
 
     //@PostConstruct
-    private TestValue_threshold generateThresholdEntries(LabValue labValue, String diseaseName, float refValOverwrite, Type type, float weightValue) {
+    private TestValueThreshold generateThresholdEntries(LabValue labValue, String diseaseName, float refValOverwrite, Type type, float weightValue) {
        // testValue_thresholdRepository.deleteAll();
-        TestValue_threshold threshold1 = new TestValue_threshold();
+        TestValueThreshold threshold1 = new TestValueThreshold();
             threshold1.setType(type);
             if(refValOverwrite > 0) {
                 threshold1.setRefVal_overwrite(refValOverwrite);
@@ -208,7 +208,7 @@ public class DiseaseDataGenerator {
 
     }
 
-    public void saveThreshold(TestValue_threshold testValue_threshold) {
+    public void saveThreshold(TestValueThreshold testValue_threshold) {
         testValue_thresholdRepository.save(testValue_threshold);
     }
 

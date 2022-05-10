@@ -4,11 +4,13 @@ import {HomeComponent} from "./home/home.component";
 import {PatientComponent} from "./patient/patient.component";
 import {TestResult} from "../dtos/testResult";
 import {TestresultDetailComponent} from "./testresult-detail/testresult-detail.component";
+import {DiseaseComponent} from "./disease/disease.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'patients', component: PatientComponent},
-  {path: 'testresults/:id/view', component: TestresultDetailComponent}
+  {path: 'testresults/:id/view', component: TestresultDetailComponent},
+  {path: 'diseases', component: DiseaseComponent},
 ];
 
 @NgModule({

@@ -3,7 +3,6 @@ package at.ac.tuwien.dochelper.backend.entity;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -43,9 +42,9 @@ public class Disease {
     @Column(name = "threshold")
     private float threshold;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @Column(name = "lab_DiseaseValue")
-    private List<TestValue_threshold> lab_DiseaseValue;
+    private List<TestValueThreshold> lab_DiseaseValue;
 
 
 
@@ -53,7 +52,7 @@ public class Disease {
 
     }
 
-    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValue_threshold> lab_DiseaseValue) {
+    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValueThreshold> lab_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -129,11 +128,11 @@ public class Disease {
         this.threshold = threshold;
     }
 
-    public List<TestValue_threshold> getLab_DiseaseValue() {
+    public List<TestValueThreshold> getLab_DiseaseValue() {
         return lab_DiseaseValue;
     }
 
-    public void setLab_DiseaseValue(List<TestValue_threshold> lab_DiseaseValue) {
+    public void setLab_DiseaseValue(List<TestValueThreshold> lab_DiseaseValue) {
         this.lab_DiseaseValue = lab_DiseaseValue;
     }
 

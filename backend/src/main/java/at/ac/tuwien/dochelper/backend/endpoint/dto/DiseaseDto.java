@@ -33,11 +33,11 @@ public class DiseaseDto {
     @NotNull
     private float threshold;
 
-    private List<LabValueDto> lab_DiseaseValue;
+    private List<TestValueThresholdDto> threshold_DiseaseValue;
 
 
     public DiseaseDto(@Nullable Long diseaseId, String diseaseName, String icdCode, String description,  boolean pregnant,
-                      int minAge, int maxAge, float threshold, List<LabValueDto> lab_DiseaseValue) {
+                      int minAge, int maxAge, float threshold, List<TestValueThresholdDto> threshold_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -46,7 +46,7 @@ public class DiseaseDto {
         this.pregnant = pregnant;
         this.maxAge = maxAge;
         this.threshold = threshold;
-        this.lab_DiseaseValue = lab_DiseaseValue;
+        this.threshold_DiseaseValue = threshold_DiseaseValue;
     }
 
     @Nullable

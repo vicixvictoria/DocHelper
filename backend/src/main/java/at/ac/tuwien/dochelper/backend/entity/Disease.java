@@ -43,8 +43,8 @@ public class Disease {
     private float threshold;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @Column(name = "lab_DiseaseValue")
-    private List<TestValueThreshold> lab_DiseaseValue;
+    @Column(name = "threshold_DiseaseValue")
+    private List<TestValueThreshold> threshold_DiseaseValue;
 
 
 
@@ -52,7 +52,7 @@ public class Disease {
 
     }
 
-    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValueThreshold> lab_DiseaseValue) {
+    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValueThreshold> threshold_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -61,7 +61,7 @@ public class Disease {
         this.minAge = minAge;
         this.maxAge = maxAge;
         this.threshold = threshold;
-        this.lab_DiseaseValue = lab_DiseaseValue;
+        this.threshold_DiseaseValue = threshold_DiseaseValue;
     }
 
     public Long getDiseaseId() {
@@ -129,11 +129,11 @@ public class Disease {
     }
 
     public List<TestValueThreshold> getLab_DiseaseValue() {
-        return lab_DiseaseValue;
+        return threshold_DiseaseValue;
     }
 
     public void setLab_DiseaseValue(List<TestValueThreshold> lab_DiseaseValue) {
-        this.lab_DiseaseValue = lab_DiseaseValue;
+        this.threshold_DiseaseValue = lab_DiseaseValue;
     }
 
     @Override
@@ -147,7 +147,7 @@ public class Disease {
                 ", minAge=" + minAge +
                 ", maxAge=" + maxAge +
                 ", threshold=" + threshold +
-                ", lab_DiseaseValue=" + lab_DiseaseValue +
+                ", lab_DiseaseValue=" + threshold_DiseaseValue +
                 '}';
     }
 }

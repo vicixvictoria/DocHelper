@@ -1,3 +1,5 @@
+import {TestValueThreshold} from "./testValueThreshold";
+
 export class Disease {
   constructor(
     public diseaseId: number,
@@ -8,6 +10,7 @@ export class Disease {
     public minAge: number,
     public maxAge: number,
     public threshold: number,
+    public threshold_DiseaseValue: TestValueThreshold[]
   )
   {
   }

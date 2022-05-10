@@ -36,7 +36,7 @@ public class DiseaseDto {
     private List<TestValueThresholdDto> threshold_DiseaseValue;
 
 
-    public DiseaseDto(@Nullable Long diseaseId, String diseaseName, String icdCode, String description,  boolean pregnant,
+    public DiseaseDto(@Nullable Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant,
                       int minAge, int maxAge, float threshold, List<TestValueThresholdDto> threshold_DiseaseValue) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;

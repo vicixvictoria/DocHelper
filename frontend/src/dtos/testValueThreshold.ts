@@ -1,7 +1,7 @@
 import {Type} from "../global/type";
 import {LabValue} from "./labValue";
 
-export class TestValueThresholdDto {
+export class TestValueThreshold {
   constructor(
     public thresholdId: number,
     public type: Type,

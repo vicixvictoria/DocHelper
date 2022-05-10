@@ -167,7 +167,7 @@ public class DiseaseDataGenerator {
         saveDisease(disease_anemia);
 
 
-        //Ikterus
+        //Ikterus - Gelbsucht 
         Disease disease_ikterus = new Disease();
         List<TestValue_threshold> threshold_ikterus = new ArrayList<>();
         disease_ikterus.setDiseaseName("Ikterus");

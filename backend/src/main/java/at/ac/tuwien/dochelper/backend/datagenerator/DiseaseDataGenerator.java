@@ -154,7 +154,7 @@ public class DiseaseDataGenerator {
 
         //Anämie
         Disease disease_anemia = new Disease();
-        List<TestValue_threshold> threshold_anemia = new ArrayList<>();
+        List<TestValueThreshold> threshold_anemia = new ArrayList<>();
         disease_anemia.setDiseaseName("Anämie");
         disease_anemia.setDescription("Die Anämie ist eine Blutarmut bei der entweder das Hämoglobin, die Erythrozyten oder das Hämatokrit verringert ist.");
         disease_anemia.setIcdCode("D64.9");
@@ -169,7 +169,7 @@ public class DiseaseDataGenerator {
 
         //Ikterus - Gelbsucht 
         Disease disease_ikterus = new Disease();
-        List<TestValue_threshold> threshold_ikterus = new ArrayList<>();
+        List<TestValueThreshold> threshold_ikterus = new ArrayList<>();
         disease_ikterus.setDiseaseName("Ikterus");
         disease_ikterus.setDescription("Der Ikterus (Gelbsucht) beschreibt eine durch Bilirubinablagerungen verursachte Gelbfärbung der Haut/ Schleimhäute und/ oder Skleren.");
         disease_ikterus.setIcdCode("R79.8");

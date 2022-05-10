@@ -186,6 +186,16 @@ public class LabValueDataGenerator {
         labVal32.setUnit("G/l");
         save(labVal32);
 
+        LabValue labVal33 = new LabValue();
+        labVal33.setLabValName("Hämatokrit");
+        labVal33.setUnit("%");
+        save(labVal33);
+
+        LabValue labVal34 = new LabValue();
+        labVal34.setLabValName("Erythrozyten");
+        labVal34.setUnit("T/l");
+        save(labVal34);
+
     }
 
     public void save(LabValue labValue) {

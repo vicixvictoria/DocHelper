@@ -151,6 +151,38 @@ public class DiseaseDataGenerator {
         disease_chol.setLab_DiseaseValue(threshold_chol);
         saveDisease(disease_chol);
 
+
+        //Anämie
+        Disease disease_anemia = new Disease();
+        List<TestValue_threshold> threshold_anemia = new ArrayList<>();
+        disease_anemia.setDiseaseName("Anämie");
+        disease_anemia.setDescription("Die Anämie ist eine Blutarmut bei der entweder das Hämoglobin, die Erythrozyten oder das Hämatokrit verringert ist.");
+        disease_anemia.setIcdCode("D64.9");
+        disease_anemia.setPregnant(false);
+        disease_anemia.setThreshold(33);
+        threshold_anemia.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämoglobin (Hb)"), "Anämie",0,Type.DECREASED,34));
+        threshold_anemia.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämatokrit"), "Anämie",0,Type.DECREASED,33));
+        threshold_anemia.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Erythrozyten"), "Anämie",0,Type.DECREASED,33));
+        disease_anemia.setLab_DiseaseValue(threshold_anemia);
+        saveDisease(disease_anemia);
+
+
+        //Ikterus
+        Disease disease_ikterus = new Disease();
+        List<TestValue_threshold> threshold_ikterus = new ArrayList<>();
+        disease_ikterus.setDiseaseName("Ikterus");
+        disease_ikterus.setDescription("Der Ikterus (Gelbsucht) beschreibt eine durch Bilirubinablagerungen verursachte Gelbfärbung der Haut/ Schleimhäute und/ oder Skleren.");
+        disease_ikterus.setIcdCode("R79.8");
+        disease_ikterus.setPregnant(false);
+        disease_ikterus.setThreshold(60);
+        threshold_ikterus.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Ikterus",2,Type.ELEVATED,60));
+        threshold_ikterus.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Ikterus",0,Type.ELEVATED,20));
+        threshold_ikterus.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"), "Ikterus",0,Type.ELEVATED,20));
+        disease_ikterus.setLab_DiseaseValue(threshold_ikterus);
+        saveDisease(disease_ikterus);
+
+
+
     }
 
     public void saveDisease(Disease disease) {

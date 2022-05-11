@@ -27,7 +27,6 @@ public class DiseaseDataGenerator {
 
     private final DiseaseRepository diseaseRepository;
     private final TestValueThresholdRepository testValue_thresholdRepository;
-    //private final ThresholdDataGenerator thresholdDataGenerator;
 
 
     public DiseaseDataGenerator(DiseaseRepository diseaseRepository, TestValueThresholdRepository testValue_thresholdRepository, LabValueRepository labValueRepository, LabValueDataGenerator labValueDataGenerator) {
@@ -35,13 +34,13 @@ public class DiseaseDataGenerator {
         this.testValue_thresholdRepository = testValue_thresholdRepository;
         this.labValueRepository = labValueRepository;
         this.labValueDataGenerator = labValueDataGenerator;
-       // this.thresholdDataGenerator = thresholdDataGenerator;
     }
 
 
     @PostConstruct
     public void generateDiseaseEntries() {
-        //diseaseRepository.deleteAll();
+        testValue_thresholdRepository.deleteAll();
+        diseaseRepository.deleteAll();
         //Morbus Meulengracht
         Disease disease_meulengracht = new Disease();
         List<TestValueThreshold> threshold_meulengracht = new ArrayList<>();
@@ -53,7 +52,7 @@ public class DiseaseDataGenerator {
         threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"),"Morbus Meulengracht", 2, Type.ELEVATED, 45));
         threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"),"Morbus Meulengracht", 0, Type.ELEVATED, 45));
         threshold_meulengracht.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"),"Morbus Meulengracht", 0, Type.ELEVATED, 10));
-        disease_meulengracht.setLab_DiseaseValue(threshold_meulengracht);
+        disease_meulengracht.setThreshold_DiseaseValues(threshold_meulengracht);
         saveDisease(disease_meulengracht);
 
         //PBC 2
@@ -72,7 +71,7 @@ public class DiseaseDataGenerator {
         threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("ANA (Antinukleare AK)"),"Primär biliäre Cholangitis (PBC) 2", 120, Type.POSITIVE, 15));
         threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Albumin abs."),"Primär biliäre Cholangitis (PBC) 2", 52, Type.ELEVATED, 6));
         threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"),"Primär biliäre Cholangitis (PBC) 2", 0, Type.ELEVATED, 15));
-        disease_pbc2.setLab_DiseaseValue(threshold_pbc2);
+        disease_pbc2.setThreshold_DiseaseValues(threshold_pbc2);
         saveDisease(disease_pbc2);
 
         //akutes Leberversagen
@@ -95,7 +94,7 @@ public class DiseaseDataGenerator {
         threshold_leberversagen.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "akutes Leberversagen",0,Type.DECREASED,1));
         threshold_leberversagen.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Kreatinin"), "akutes Leberversagen",0,Type.ELEVATED,1));
         threshold_leberversagen.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "akutes Leberversagen",0,Type.ELEVATED,12));
-        disease_leberversagen.setLab_DiseaseValue(threshold_leberversagen);
+        disease_leberversagen.setThreshold_DiseaseValues(threshold_leberversagen);
         saveDisease(disease_leberversagen);
 
 
@@ -121,7 +120,7 @@ public class DiseaseDataGenerator {
         threshold_hepB.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("HBe-Ag"), "akute Virushepatitis B",0,Type.POSITIVE,1));
         threshold_hepB.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Anti-HBs"), "akute Virushepatitis B",0,Type.POSITIVE,1));
         threshold_hepB.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Anti-HBe"), "akute Virushepatitis B",0,Type.POSITIVE,1));
-        disease_leberversagen.setLab_DiseaseValue(threshold_hepB);
+        disease_leberversagen.setThreshold_DiseaseValues(threshold_hepB);
         saveDisease(disease_hepB);
 
 
@@ -148,7 +147,7 @@ public class DiseaseDataGenerator {
         threshold_chol.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("BSG 1h"), "Cholestase (Gallenstau)",0,Type.ELEVATED,1));
         threshold_chol.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("BSG 2h"), "Cholestase (Gallenstau)",0,Type.ELEVATED,1));
         threshold_chol.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Leukozyten"), "Cholestase (Gallenstau)",0,Type.ELEVATED,1));
-        disease_chol.setLab_DiseaseValue(threshold_chol);
+        disease_chol.setThreshold_DiseaseValues(threshold_chol);
         saveDisease(disease_chol);
 
 
@@ -163,7 +162,7 @@ public class DiseaseDataGenerator {
         threshold_anemia.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämoglobin (Hb)"), "Anämie",0,Type.DECREASED,34));
         threshold_anemia.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämatokrit"), "Anämie",0,Type.DECREASED,33));
         threshold_anemia.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Erythrozyten"), "Anämie",0,Type.DECREASED,33));
-        disease_anemia.setLab_DiseaseValue(threshold_anemia);
+        disease_anemia.setThreshold_DiseaseValues(threshold_anemia);
         saveDisease(disease_anemia);
 
 
@@ -178,7 +177,7 @@ public class DiseaseDataGenerator {
         threshold_ikterus.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Ikterus",2,Type.ELEVATED,60));
         threshold_ikterus.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Ikterus",0,Type.ELEVATED,20));
         threshold_ikterus.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"), "Ikterus",0,Type.ELEVATED,20));
-        disease_ikterus.setLab_DiseaseValue(threshold_ikterus);
+        disease_ikterus.setThreshold_DiseaseValues(threshold_ikterus);
         saveDisease(disease_ikterus);
 
 
@@ -199,7 +198,7 @@ public class DiseaseDataGenerator {
         threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Thrombozyten"), "HELLP-Syndrom",0,Type.DECREASED,11));
         threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Haptoglobin"), "HELLP-Syndrom",0,Type.DECREASED,12));
         threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("CRP"), "HELLP-Syndrom",0,Type.ELEVATED,11));
-        disease_hellp.setLab_DiseaseValue(threshold_hellp);
+        disease_hellp.setThreshold_DiseaseValues(threshold_hellp);
         saveDisease(disease_hellp);
 
         //Primär sklerosierende Cholangitis (PSC)
@@ -220,19 +219,20 @@ public class DiseaseDataGenerator {
         threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("p-ANCA (Myeloperoxidase-AK)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.POSITIVE,19));
         threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("IgM"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,9));
         threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Gesamt Kupfer (CU)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,5));
-        disease_psc.setLab_DiseaseValue(threshold_psc);
+        disease_psc.setThreshold_DiseaseValues(threshold_psc);
         saveDisease(disease_psc);
 
     }
 
     public void saveDisease(Disease disease) {
-        diseaseRepository.save(disease);
+        if (diseaseRepository.findDiseaseByDiseaseName(disease.getDiseaseName()) == null) {
+            diseaseRepository.save(disease);
+        }
+
     }
 
 
-    //@PostConstruct
     private TestValueThreshold generateThresholdEntries(LabValue labValue, String diseaseName, float refValOverwrite, Type type, float weightValue) {
-       // testValue_thresholdRepository.deleteAll();
         TestValueThreshold threshold1 = new TestValueThreshold();
             threshold1.setType(type);
             if(refValOverwrite > 0) {

@@ -1,5 +1,6 @@
 package at.ac.tuwien.dochelper.backend.endpoint.dto;
 
+import at.ac.tuwien.dochelper.backend.entity.TestValueThreshold;
 import com.sun.istack.NotNull;
 import org.springframework.lang.Nullable;
 
@@ -33,11 +34,12 @@ public class DiseaseDto {
     @NotNull
     private float threshold;
 
-    private List<TestValueThresholdDto> threshold_DiseaseValue;
+    @Nullable
+    private List<TestValueThreshold> threshold_DiseaseValues;
 
 
     public DiseaseDto(@Nullable Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant,
-                      int minAge, int maxAge, float threshold, List<TestValueThresholdDto> threshold_DiseaseValue) {
+                      int minAge, int maxAge, float threshold, List<TestValueThreshold> threshold_DiseaseValues) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -46,7 +48,7 @@ public class DiseaseDto {
         this.pregnant = pregnant;
         this.maxAge = maxAge;
         this.threshold = threshold;
-        this.threshold_DiseaseValue = threshold_DiseaseValue;
+        this.threshold_DiseaseValues = threshold_DiseaseValues;
     }
 
     @Nullable
@@ -114,17 +116,44 @@ public class DiseaseDto {
         this.threshold = threshold;
     }
 
+    @Nullable
+    public Long getDiseaseId() {
+        return diseaseId;
+    }
+
+    public void setDiseaseId(@Nullable Long diseaseId) {
+        this.diseaseId = diseaseId;
+    }
+
+    public String getDiseaseName() {
+        return diseaseName;
+    }
+
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName;
+    }
+
+    @Nullable
+    public List<TestValueThreshold> getThreshold_DiseaseValues() {
+        return threshold_DiseaseValues;
+    }
+
+    public void setThreshold_DiseaseValues(@Nullable List<TestValueThreshold> threshold_DiseaseValues) {
+        this.threshold_DiseaseValues = threshold_DiseaseValues;
+    }
+
     @Override
     public String toString() {
         return "DiseaseDto{" +
                 "diseaseId=" + diseaseId +
                 ", diseaseName='" + diseaseName + '\'' +
-                ", icdCode=" + icdCode +
+                ", icdCode='" + icdCode + '\'' +
                 ", description='" + description + '\'' +
                 ", pregnant=" + pregnant +
                 ", minAge=" + minAge +
                 ", maxAge=" + maxAge +
                 ", threshold=" + threshold +
+                ", threshold_DiseaseValues=" + threshold_DiseaseValues +
                 '}';
     }
 }

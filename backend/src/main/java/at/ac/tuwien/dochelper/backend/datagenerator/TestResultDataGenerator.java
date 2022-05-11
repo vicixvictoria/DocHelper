@@ -37,7 +37,7 @@ public class TestResultDataGenerator {
         testResult1.setPatientId(2L);
         testResult1.setDate(LocalDate.parse("2020-04-14"));
         List<LabMeasure> measureList1 = new ArrayList<>(Collections.emptyList());
-        for(long i=1; i<22; i++) {
+        for(Long i=1L; i<22L; i++) {
             measureList1.add(labMeasureRepository.getById(i));
         }
         testResult1.setLabMeasures(measureList1);
@@ -59,7 +59,7 @@ public class TestResultDataGenerator {
         testResult3.setDate(LocalDate.parse("2020-06-10"));
         List<LabMeasure> measureList3 = new ArrayList<>(Collections.emptyList());
         measureList3.add(labMeasureRepository.getById(1L));
-        testResult3.setLabMeasures(measureList1);
+        testResult3.setLabMeasures(measureList3);
         tryToSave(testResult3);
 
     }

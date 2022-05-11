@@ -34,16 +34,18 @@ public class TestResultDataGenerator {
 
         TestResult testResult1 = new TestResult();
         testResult1.setId(1L);
-        testResult1.setPatientId(1L);
+        testResult1.setPatientId(2L);
         testResult1.setDate(LocalDate.parse("2020-04-14"));
         List<LabMeasure> measureList1 = new ArrayList<>(Collections.emptyList());
-        measureList1.add(labMeasureRepository.getById(1L));
+        for(long i=1; i<22; i++) {
+            measureList1.add(labMeasureRepository.getById(i));
+        }
         testResult1.setLabMeasures(measureList1);
         tryToSave(testResult1);
 
         TestResult testResult2 = new TestResult();
         testResult2.setId(2L);
-        testResult2.setPatientId(2L);
+        testResult2.setPatientId(4L);
         testResult2.setDate(LocalDate.parse("2020-06-18"));
         List<LabMeasure> measureList2 = new ArrayList<>(Collections.emptyList());
         measureList2.add(labMeasureRepository.getById(2L));

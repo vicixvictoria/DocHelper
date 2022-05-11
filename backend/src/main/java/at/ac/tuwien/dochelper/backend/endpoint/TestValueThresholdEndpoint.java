@@ -29,6 +29,11 @@ public class TestValueThresholdEndpoint {
         return testValue_thresholdMapper.testvalue_thresholdTotestvalue_thresholdDto(testValue_thresholdService.getAllThresholds());
     }
 
+   /* @GetMapping
+    public List<TestValueThresholdDto> getThresholdsByDiseaseId(long id) {
+        return testValue_thresholdMapper.testvalue_thresholdTotestvalue_thresholdDto(testValue_thresholdService.getAllThresholds());
+    }*/
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public TestValueThresholdDto createThreshold(@Valid @RequestBody TestValueThresholdDto testValue_thresholdDto) {

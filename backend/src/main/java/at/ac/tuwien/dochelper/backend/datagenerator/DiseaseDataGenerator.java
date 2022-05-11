@@ -182,6 +182,46 @@ public class DiseaseDataGenerator {
         saveDisease(disease_ikterus);
 
 
+        //HELLP-Syndrom
+        Disease disease_hellp = new Disease();
+        List<TestValueThreshold> threshold_hellp = new ArrayList<>();
+        disease_hellp.setDiseaseName("HELLP-Syndrom");
+        disease_hellp.setDescription("Das HELLP-Syndrom ist eine schwerwiegende Variante der Präeklampsie, eine Schwangerschaftsbedingte Erkrankung. 3 Hauptfaktoren: H=Hämolyse, EL= Erhöhung der Leberenzyme, LP= Thrombozytopenie");
+        disease_hellp.setIcdCode("O14.2");
+        disease_hellp.setPregnant(true);
+        disease_hellp.setThreshold(80);
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("LDH"), "HELLP-Syndrom",0,Type.ELEVATED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "HELLP-Syndrom",0,Type.ELEVATED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"), "HELLP-Syndrom",0,Type.ELEVATED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "HELLP-Syndrom",0,Type.ELEVATED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Fibrinogen"), "HELLP-Syndrom",0,Type.DECREASED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("D-Dimer"), "HELLP-Syndrom",0,Type.ELEVATED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Thrombozyten"), "HELLP-Syndrom",0,Type.DECREASED,11));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Haptoglobin"), "HELLP-Syndrom",0,Type.DECREASED,12));
+        threshold_hellp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("CRP"), "HELLP-Syndrom",0,Type.ELEVATED,11));
+        disease_hellp.setLab_DiseaseValue(threshold_hellp);
+        saveDisease(disease_hellp);
+
+        //Primär sklerosierende Cholangitis (PSC)
+        Disease disease_psc = new Disease();
+        List<TestValueThreshold> threshold_psc = new ArrayList<>();
+        disease_psc.setDiseaseName("Primär sklerosierende Cholangitis (PSC)");
+        disease_psc.setDescription("Die primär sklerosierende Cholangitis ist eine seltene, chronisch verlaufende Entzündung der intra- und extrahepatischen Gallengänge, die zur progressiv chronischen Cholestase mit anschließender biliärer Zirrhose führt.");
+        disease_psc.setIcdCode("K83.0");
+        disease_psc.setPregnant(false);
+        disease_psc.setThreshold(86);
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,10));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,10));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,9));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,9));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,10));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,10));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("ANA (Antinukleare AK)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.POSITIVE,9));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("p-ANCA (Myeloperoxidase-AK)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.POSITIVE,19));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("IgM"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,9));
+        threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Gesamt Kupfer (CU)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,5));
+        disease_psc.setLab_DiseaseValue(threshold_psc);
+        saveDisease(disease_psc);
 
     }
 

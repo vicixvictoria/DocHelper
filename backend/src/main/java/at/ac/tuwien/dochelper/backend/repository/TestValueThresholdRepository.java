@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TestValueThresholdRepository extends JpaRepository<TestValueThreshold, Long> {
     TestValueThreshold findTestValue_thresholdByDiseaseNameAndLabValName(String diseaseName, String labValName);
+   // TestValueThreshold findTestValueThresholdBy
 }

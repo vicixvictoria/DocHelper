@@ -196,6 +196,76 @@ public class LabValueDataGenerator {
         labVal34.setUnit("T/l");
         save(labVal34);
 
+        LabValue labVal35 = new LabValue();
+        labVal35.setLabValName("Fibrinogen");
+        labVal35.setUnit("mg/dl");
+        save(labVal35);
+
+        LabValue labVal36 = new LabValue();
+        labVal36.setLabValName("D-Dimer");
+        labVal36.setUnit("mg/l");
+        save(labVal36);
+
+        LabValue labVal37 = new LabValue();
+        labVal37.setLabValName("Haptoglobin");
+        labVal37.setUnit("mg/dl");
+        save(labVal37);
+
+        LabValue labVal38 = new LabValue();
+        labVal38.setLabValName("p-ANCA (Myeloperoxidase-AK)");
+        labVal38.setUnit("keine Einheit");
+        save(labVal38);
+
+        LabValue labVal39 = new LabValue();
+        labVal39.setLabValName("IgM");
+        labVal39.setUnit("g/l");
+        save(labVal39);
+
+        LabValue labVal40 = new LabValue();
+        labVal40.setLabValName("Gesamt Kupfer (CU)");
+        labVal40.setUnit("µg/dl");
+        save(labVal40);
+
+        LabValue labVal41 = new LabValue();
+        labVal41.setLabValName("Erythrozytenverteilungsbreite");
+        labVal41.setUnit("%");
+        save(labVal41);
+
+        LabValue labVal42 = new LabValue();
+        labVal42.setLabValName("MCH");
+        labVal42.setUnit("pg");
+        save(labVal42);
+
+        LabValue labVal43 = new LabValue();
+        labVal43.setLabValName("MCHC");
+        labVal43.setUnit("g/dl");
+        save(labVal43);
+
+        LabValue labVal44 = new LabValue();
+        labVal44.setLabValName("MCV");
+        labVal44.setUnit("fl");
+        save(labVal44);
+
+        LabValue labVal45 = new LabValue();
+        labVal45.setLabValName("Antithrombin (AT III)");
+        labVal45.setUnit("%");
+        save(labVal45);
+
+        LabValue labVal46 = new LabValue();
+        labVal46.setLabValName("INR (International Normalized Ratio)");
+        labVal46.setUnit("keine Einheit");
+        save(labVal46);
+
+        LabValue labVal47 = new LabValue();
+        labVal47.setLabValName("PTT");
+        labVal47.setUnit("keine Einheit");
+        save(labVal47);
+
+        LabValue labVal48 = new LabValue();
+        labVal48.setLabValName("berechnete GFR (MDRD Formel)");
+        labVal48.setUnit("keine Einheit");
+        save(labVal48);
+
     }
 
     public void save(LabValue labValue) {

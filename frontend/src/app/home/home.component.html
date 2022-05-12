@@ -33,9 +33,10 @@
 
 
   </mat-step>
-  <mat-step [stepControl]="testResultControl" errorMessage="Address is required.">
+  <mat-step [stepControl]="testResultControl" errorMessage="Befund wird benötigt">
     <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Befund auswählen</h1>
     <form style="display: flex; justify-content: center" [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Befund auswählen</ng-template>
       <div style="margin: 0 30% 0 30%">
       <p></p>
       <h3 style="font-weight: normal;margin-top: 15px; margin-bottom: 0">

@@ -29,6 +29,10 @@ import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DiseaseComponent } from './disease/disease.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { DiseaseComponent } from './disease/disease.component';
     DiseaseComponent
   ],
   imports: [
+    MatSelectModule,
+    MatStepperModule,
     MatGridListModule,
     MatCardModule,
     MatDividerModule,
@@ -63,7 +69,9 @@ import { DiseaseComponent } from './disease/disease.component';
     MatInputModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

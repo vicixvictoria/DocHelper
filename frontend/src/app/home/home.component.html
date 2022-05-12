@@ -1,1 +1,77 @@
-<p>home works!</p>
+<div style="margin: 10%">
+<mat-stepper linear  #stepper style="height: 300px">
+  <mat-step [stepControl]="patientControl" errorMessage="Name is required.">
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">PatientIn auswählen</h1>
+    <form style="display: flex; justify-content: center" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>PatientIn auswählen</ng-template>
+      <br>
+      <mat-form-field  style="margin: 20px; width: 300px" appearance="fill">
+        <mat-label>Name</mat-label>
+        <mat-select [formControl]="patientControl" required>
+          <mat-option *ngFor="let patient of patients" [value]="patient" >
+            {{patient.firstName}} {{patient.lastName}}
+          </mat-option>
+        </mat-select>
+        <!--<input
+                matInput
+               (click)="onFocus()"
+               placeholder="Last name, First name"
+               [formControl]="myControl"
+               [matAutocomplete]="auto"
+               required>
+        <mat-autocomplete #auto="matAutocomplete" >
+          <mat-option *ngFor="let patient of filteredOptions | async" [value]="patient">
+            {{patient}}
+          </mat-option>
+        </mat-autocomplete>-->
+      </mat-form-field>
+
+    </form>
+    <div style="display: flex; justify-content: center;">
+      <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" color="primary" mat-button matStepperNext (click)="selectPatient()">Weiter</button>
+    </div>
+
+
+  </mat-step>
+  <mat-step [stepControl]="testResultControl" errorMessage="Address is required.">
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Befund auswählen</h1>
+    <form style="display: flex; justify-content: center" [formGroup]="secondFormGroup">
+      <div style="margin: 0 30% 0 30%">
+      <p></p>
+      <h3 style="font-weight: normal;margin-top: 15px; margin-bottom: 0">
+        <strong style="font-weight: bold">{{testResults?.length}} </strong>Befunde von {{selectedPatient?.firstName}} {{selectedPatient?.lastName}} gefunden:
+      </h3>
+        <mat-radio-group
+          [formControl]="testResultControl"
+          formControlName="testResultControl"
+          required
+        >
+      <ng-container style="margin: 20px" *ngFor="let testResult of testResults">
+        <mat-divider></mat-divider>
+        <strong style="font-weight: bold; margin: 5px">Datum:</strong>   <a style="margin-right: 170px">{{testResult.date}}</a>
+
+        <mat-radio-button style="margin-top: 12px; margin-bottom: 12px" color="primary" class="mat-radio-button"  [value]="testResult">
+          <a style="color: #673ab7" >Befund auswählen</a>
+        </mat-radio-button>
+
+      </ng-container>
+        </mat-radio-group>
+      <div style="display: flex; justify-content: center; margin-top: 20px">
+        <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter"  mat-button matStepperPrevious>Zurück</button>
+        <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" color="primary" mat-button matStepperNext (click)="selectTestResult()">Weiter</button>
+      </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Analyse</ng-template>
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse Ergebnis für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
+    <div>
+      <div style="display: flex; justify-content: center;">
+      <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" mat-button matStepperPrevious>Zurück</button>
+      <button style=" height: 50px;font-size: x-large; font-weight: lighter" color="warn" mat-button (click)="stepper.reset()">Neustart</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>
+</div>

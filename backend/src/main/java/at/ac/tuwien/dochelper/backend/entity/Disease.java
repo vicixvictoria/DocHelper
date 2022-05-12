@@ -46,8 +46,6 @@ public class Disease {
     @Column(name = "threshold_DiseaseValue")
     private List<TestValueThreshold> threshold_DiseaseValue;
 
-
-
     public Disease(){
 
     }

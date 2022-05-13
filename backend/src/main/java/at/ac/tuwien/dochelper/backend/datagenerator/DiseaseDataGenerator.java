@@ -181,7 +181,7 @@ public class DiseaseDataGenerator {
         saveDisease(disease_ikterus);
 
 
-        //HELLP-Syndrom
+        //HELLP-Syndrom in der Schwangerschaft
         Disease disease_hellp = new Disease();
         List<TestValueThreshold> threshold_hellp = new ArrayList<>();
         disease_hellp.setDiseaseName("HELLP-Syndrom");

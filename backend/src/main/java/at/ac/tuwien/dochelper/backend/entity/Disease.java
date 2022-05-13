@@ -1,6 +1,8 @@
 package at.ac.tuwien.dochelper.backend.entity;
 
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -43,14 +45,15 @@ public class Disease {
     private float threshold;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @Column(name = "threshold_DiseaseValue")
-    private List<TestValueThreshold> threshold_DiseaseValue;
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "threshold_DiseaseValues")
+    private List<TestValueThreshold> threshold_DiseaseValues;
 
     public Disease(){
 
     }
 
-    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValueThreshold> threshold_DiseaseValue) {
+    public Disease(Long diseaseId, String diseaseName, String icdCode, String description, boolean pregnant, int minAge, int maxAge, float threshold, List<TestValueThreshold> threshold_DiseaseValues) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
         this.icdCode = icdCode;
@@ -59,7 +62,7 @@ public class Disease {
         this.minAge = minAge;
         this.maxAge = maxAge;
         this.threshold = threshold;
-        this.threshold_DiseaseValue = threshold_DiseaseValue;
+        this.threshold_DiseaseValues = threshold_DiseaseValues;
     }
 
     public Long getDiseaseId() {
@@ -126,12 +129,12 @@ public class Disease {
         this.threshold = threshold;
     }
 
-    public List<TestValueThreshold> getLab_DiseaseValue() {
-        return threshold_DiseaseValue;
+    public List<TestValueThreshold> getThreshold_DiseaseValues() {
+        return threshold_DiseaseValues;
     }
 
-    public void setLab_DiseaseValue(List<TestValueThreshold> lab_DiseaseValue) {
-        this.threshold_DiseaseValue = lab_DiseaseValue;
+    public void setThreshold_DiseaseValues(List<TestValueThreshold> threshold_DiseaseValues) {
+        this.threshold_DiseaseValues = threshold_DiseaseValues;
     }
 
     @Override
@@ -139,13 +142,13 @@ public class Disease {
         return "Disease{" +
                 "diseaseId=" + diseaseId +
                 ", diseaseName='" + diseaseName + '\'' +
-                ", icdCode=" + icdCode +
+                ", icdCode='" + icdCode + '\'' +
                 ", description='" + description + '\'' +
                 ", pregnant=" + pregnant +
                 ", minAge=" + minAge +
                 ", maxAge=" + maxAge +
                 ", threshold=" + threshold +
-                ", lab_DiseaseValue=" + threshold_DiseaseValue +
+                ", threshold_DiseaseValues=" + threshold_DiseaseValues +
                 '}';
     }
 }

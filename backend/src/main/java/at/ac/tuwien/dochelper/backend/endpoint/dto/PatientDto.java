@@ -1,5 +1,6 @@
 package at.ac.tuwien.dochelper.backend.endpoint.dto;
 
+import at.ac.tuwien.dochelper.backend.entity.TestResult;
 import at.ac.tuwien.dochelper.backend.util.Sex;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -45,9 +46,9 @@ public class PatientDto {
     private boolean pregnant;
 
     @Nullable
-    private List<TestResultDto> testResultDtoList;
+    private List<TestResult> testResults;
 
-    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant, List<TestResultDto> testResultDtoList) {
+    public PatientDto(@Nullable Long id, String firstName, String lastName, String svnr, LocalDate birthDate, Sex sex, boolean pregnant, List<TestResult> testResults) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -55,7 +56,7 @@ public class PatientDto {
         this.birthDate = birthDate;
         this.sex = sex;
         this.pregnant = pregnant;
-        this.testResultDtoList = testResultDtoList;
+        this.testResults = testResults;
     }
 
     @Nullable
@@ -116,12 +117,12 @@ public class PatientDto {
     }
 
     @Nullable
-    public List<TestResultDto> getTestResultDtoList() {
-        return testResultDtoList;
+    public List<TestResult> getTestResults() {
+        return testResults;
     }
 
-    public void setTestResultDtoList(@Nullable List<TestResultDto> testResultDtoList) {
-        this.testResultDtoList = testResultDtoList;
+    public void setTestResults(@Nullable List<TestResult> testResults) {
+        this.testResults = testResults;
     }
 
     @Override
@@ -134,7 +135,7 @@ public class PatientDto {
                 ", birthDate=" + birthDate +
                 ", sex=" + sex +
                 ", pregnant=" + pregnant +
-                ", testResultDtoList=" + testResultDtoList +
+                ", testResultDtoList=" + testResults +
                 '}';
     }
 }

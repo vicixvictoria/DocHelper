@@ -61,7 +61,7 @@ public class TestResultDataGenerator {
         testResult3.setDate(LocalDate.parse("2020-06-10"));
         List<LabMeasure> measureList3 = new ArrayList<>(Collections.emptyList());
         measureList3.add(labMeasureRepository.getById(1L));
-        testResult3.setLabMeasures(measureList1);
+        testResult3.setLabMeasures(measureList3);
         tryToSave(testResult3);
 
 

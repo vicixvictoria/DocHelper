@@ -41,6 +41,7 @@ public class DiseaseDataGenerator {
     public void generateDiseaseEntries() {
         testValue_thresholdRepository.deleteAll();
         diseaseRepository.deleteAll();
+
         //Morbus Meulengracht
         Disease disease_meulengracht = new Disease();
         List<TestValueThreshold> threshold_meulengracht = new ArrayList<>();

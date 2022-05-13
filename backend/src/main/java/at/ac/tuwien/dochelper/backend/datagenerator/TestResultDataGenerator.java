@@ -32,16 +32,18 @@ public class TestResultDataGenerator {
     @PostConstruct
     public void generateTestResults() {
 
+        //Blutbild für Patient id2
         TestResult testResult1 = new TestResult();
         testResult1.setId(1L);
         testResult1.setPatientId(2L);
         testResult1.setDate(LocalDate.parse("2020-04-14"));
         List<LabMeasure> measureList1 = new ArrayList<>(Collections.emptyList());
-        for(long i=1; i<22; i++) {
+        for(long i=1L; i<31L; i++) {
             measureList1.add(labMeasureRepository.getById(i));
         }
         testResult1.setLabMeasures(measureList1);
         tryToSave(testResult1);
+
 
         TestResult testResult2 = new TestResult();
         testResult2.setId(2L);
@@ -62,7 +64,21 @@ public class TestResultDataGenerator {
         testResult3.setLabMeasures(measureList1);
         tryToSave(testResult3);
 
+
+        //Blutbild für Patient Mona Niederhuber id=7
+        TestResult testResult4 = new TestResult();
+        testResult4.setId(4L);
+        testResult4.setPatientId(7L);
+        testResult4.setDate(LocalDate.parse("2020-04-14"));
+        List<LabMeasure> measureList4 = new ArrayList<>(Collections.emptyList());
+        for(long i=31L; i<82L; i++) {
+            measureList4.add(labMeasureRepository.getById(i));
+        }
+        testResult4.setLabMeasures(measureList4);
+        tryToSave(testResult4);
+
     }
+
 
     public void tryToSave(TestResult testResult) {
         if (testResultRepository.findById(testResult.getId()).isEmpty()) {

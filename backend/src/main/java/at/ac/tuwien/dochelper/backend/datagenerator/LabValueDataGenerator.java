@@ -266,6 +266,186 @@ public class LabValueDataGenerator {
         labVal48.setUnit("keine Einheit");
         save(labVal48);
 
+        LabValue labVal49 = new LabValue();
+        labVal49.setLabValName("Gesamteiweiß");
+        labVal49.setUnit("g/l");
+        save(labVal49);
+
+        LabValue labVal50 = new LabValue();
+        labVal50.setLabValName("Harnstoff");
+        labVal50.setUnit("mg/dl");
+        save(labVal50);
+
+        LabValue labVal51 = new LabValue();
+        labVal51.setLabValName("Mittleres Plättchenvolumen");
+        labVal51.setUnit("fl");
+        save(labVal51);
+
+        LabValue labVal52 = new LabValue();
+        labVal52.setLabValName("Phosphat");
+        labVal52.setUnit("mg/dl");
+        save(labVal52);
+
+        LabValue labVal53 = new LabValue();
+        labVal53.setLabValName("Cholinesterase (ChE)");
+        labVal53.setUnit("mg/dl");
+        save(labVal53);
+
+        LabValue labVal54 = new LabValue();
+        labVal54.setLabValName("Lipase");
+        labVal54.setUnit("U/l");
+        save(labVal54);
+
+        LabValue labVal55 = new LabValue();
+        labVal55.setLabValName("Kalzium, gesamt");
+        labVal55.setUnit("mg/dl");
+        save(labVal55);
+
+        LabValue labVal56 = new LabValue();
+        labVal56.setLabValName("Alpha-Amylase");
+        labVal56.setUnit("U/l");
+        save(labVal56);
+
+        LabValue labVal57 = new LabValue();
+        labVal57.setLabValName("Procalcitonin");
+        labVal57.setUnit("ng/ml");
+        save(labVal57);
+
+        LabValue labVal58 = new LabValue();
+        labVal58.setLabValName("Hb1Ac");
+        labVal58.setUnit("%");
+        save(labVal58);
+
+        LabValue labVal59 = new LabValue();
+        labVal59.setLabValName("HbA1c (Berechnung nach IFCC)");
+        labVal59.setUnit("mmol/mol");
+        save(labVal59);
+
+        LabValue labVal60 = new LabValue();
+        labVal60.setLabValName("Basophile abs.");
+        labVal60.setUnit("G/l");
+        save(labVal60);
+
+        LabValue labVal61 = new LabValue();
+        labVal61.setLabValName("Basophile rel.");
+        labVal61.setUnit("G/l");
+        save(labVal61);
+
+        LabValue labVal62 = new LabValue();
+        labVal62.setLabValName("Eosinophile abs.");
+        labVal62.setUnit("/mm³");
+        save(labVal62);
+
+        LabValue labVal63 = new LabValue();
+        labVal63.setLabValName("Lymphozyten abs.");
+        labVal63.setUnit("/mm³");
+        save(labVal63);
+
+        LabValue labVal64 = new LabValue();
+        labVal64.setLabValName("Eosinophile rel.");
+        labVal64.setUnit("%");
+        save(labVal64);
+
+        LabValue labVal65 = new LabValue();
+        labVal65.setLabValName("Monozyten abs.");
+        labVal65.setUnit("/mm³");
+        save(labVal65);
+
+        LabValue labVal66 = new LabValue();
+        labVal66.setLabValName("Monozyten rel.");
+        labVal66.setUnit("%");
+        save(labVal66);
+
+        LabValue labVal67 = new LabValue();
+        labVal67.setLabValName("Neutrophile abs.");
+        labVal67.setUnit("G/l");
+        save(labVal67);
+
+        LabValue labVal68 = new LabValue();
+        labVal68.setLabValName("Neutrophile rel.");
+        labVal68.setUnit("%");
+        save(labVal68);
+
+        LabValue labVal69 = new LabValue();
+        labVal69.setLabValName("Vitamin D (25-OH) total");
+        labVal69.setUnit("µg/l");
+        save(labVal69);
+
+        LabValue labVal70 = new LabValue();
+        labVal70.setLabValName("Vitamin D (25-OH) total IFCC");
+        labVal70.setUnit("nmol/l");
+        save(labVal70);
+
+        LabValue labVal71 = new LabValue();
+        labVal71.setLabValName("Thyreoidea-stimulierendes Hormon (TSH) basal");
+        labVal71.setUnit("µU/ml");
+        save(labVal71);
+
+        LabValue labVal72 = new LabValue();
+        labVal72.setLabValName("BUN (Harnstoff)");
+        labVal72.setUnit("mg/dl");
+        save(labVal72);
+
+        LabValue labVal73 = new LabValue();
+        labVal73.setLabValName("Cholesterinquotient (Chol/HDL)");
+        labVal73.setUnit("mg/dl");
+        save(labVal73);
+
+        LabValue labVal74 = new LabValue();
+        labVal74.setLabValName("CK-MB (Herzmuskel)");
+        labVal74.setUnit("U/l");
+        save(labVal74);
+
+        LabValue labVal75 = new LabValue();
+        labVal75.setLabValName("Eisen");
+        labVal75.setUnit("µg/dl");
+        save(labVal75);
+
+        LabValue labVal76 = new LabValue();
+        labVal76.setLabValName("Ferritin");
+        labVal76.setUnit("ng/dl");
+        save(labVal76);
+
+        LabValue labVal77 = new LabValue();
+        labVal77.setLabValName("HDL-Cholesterin");
+        labVal77.setUnit("mg/dl");
+        save(labVal77);
+
+        LabValue labVal78 = new LabValue();
+        labVal78.setLabValName("LDL-Cholesterin");
+        labVal78.setUnit("mg/dl");
+        save(labVal78);
+
+        LabValue labVal79 = new LabValue();
+        labVal79.setLabValName("Natrium");
+        labVal79.setUnit("mmol/l");
+        save(labVal79);
+
+        LabValue labVal80 = new LabValue();
+        labVal80.setLabValName("Phosphat");
+        labVal80.setUnit("mmol/l");
+        save(labVal80);
+
+        LabValue labVal81 = new LabValue();
+        labVal81.setLabValName("Transferrin");
+        labVal81.setUnit("g/l");
+        save(labVal81);
+
+        LabValue labVal82 = new LabValue();
+        labVal82.setLabValName("Transferrinsättigung");
+        labVal82.setUnit("%");
+        save(labVal82);
+
+        LabValue labVal83 = new LabValue();
+        labVal83.setLabValName("Triglyceride");
+        labVal83.setUnit("mg/dl");
+        save(labVal83);
+
+        LabValue labVal84 = new LabValue();
+        labVal84.setLabValName("C-Peptid");
+        labVal84.setUnit("ng/ml");
+        save(labVal84);
+
     }
 
     public void save(LabValue labValue) {

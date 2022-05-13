@@ -41,7 +41,7 @@ public class DiseaseDataGenerator {
 
     @PostConstruct
     public void generateDiseaseEntries() {
-        //diseaseRepository.deleteAll();
+
         //Morbus Meulengracht
         Disease disease_meulengracht = new Disease();
         List<TestValueThreshold> threshold_meulengracht = new ArrayList<>();
@@ -60,7 +60,7 @@ public class DiseaseDataGenerator {
         Disease disease_pbc2 = new Disease();
         List<TestValueThreshold> threshold_pbc2 = new ArrayList<>();
         disease_pbc2.setDiseaseName("Primär biliäre Cholangitis (PBC) 2");
-        disease_pbc2.setDescription("Zerstörung Lebergewebe");
+        disease_pbc2.setDescription("Die primär biliäre Cholangitis (PBC) ist eine mutmaßliche autoimmunde Lebererkrankung. Es kommt zu einer chronisch verlaufenden, nicht-eitrigen granulomatösen Entzündung der kleinen intrahepatischen Gallenwege.");
         disease_pbc2.setIcdCode("K74.3");
         disease_pbc2.setPregnant(false);
         disease_pbc2.setThreshold(91);
@@ -79,7 +79,7 @@ public class DiseaseDataGenerator {
         Disease disease_leberversagen = new Disease();
         List<TestValueThreshold> threshold_leberversagen = new ArrayList<>();
         disease_leberversagen.setDiseaseName("akutes Leberversagen");
-        disease_leberversagen.setDescription("Zerstörung Lebergewebe mit Leberversagen");
+        disease_leberversagen.setDescription("Die akute Leberdystrophie ist eine schwere Störung oder ein Ausfall der Leberfunktion mit hepatischer Enzephalopathie die zum Tode führen kann.");
         disease_leberversagen.setIcdCode("K72.0");
         disease_leberversagen.setPregnant(false);
         disease_leberversagen.setThreshold(90);
@@ -167,7 +167,7 @@ public class DiseaseDataGenerator {
         saveDisease(disease_anemia);
 
 
-        //Ikterus - Gelbsucht 
+        //Ikterus - Gelbsucht
         Disease disease_ikterus = new Disease();
         List<TestValueThreshold> threshold_ikterus = new ArrayList<>();
         disease_ikterus.setDiseaseName("Ikterus");
@@ -222,6 +222,105 @@ public class DiseaseDataGenerator {
         threshold_psc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Gesamt Kupfer (CU)"), "Primär sklerosierende Cholangitis (PSC)",0,Type.ELEVATED,5));
         disease_psc.setLab_DiseaseValue(threshold_psc);
         saveDisease(disease_psc);
+
+        //Crigler-Najjar-Syndrom Typ 1
+        Disease disease_cns1 = new Disease();
+        List<TestValueThreshold> threshold_cns1 = new ArrayList<>();
+        disease_cns1.setDiseaseName("Crigler-Najjar-Syndrom Typ 1");
+        disease_cns1.setDescription("Das Crigler-Najjar-Syndrom (CNS) ist eine erbliche Störung des Bilirubinstoffwechsels und gekennzeichnet durch unkonjugierte Hyperbilirubinämie bei fehlender Aktivität der Bilirubin-Glucuronosyl-Transferase (GT) in der Leber. ");
+        disease_cns1.setIcdCode("E80.5");
+        disease_cns1.setPregnant(false);
+        disease_cns1.setThreshold(81);
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"), "Crigler-Najjar-Syndrom Typ 1",20,Type.ELEVATED,41));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Crigler-Najjar-Syndrom Typ 1",0,Type.ELEVATED,40));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "Crigler-Najjar-Syndrom Typ 1",0,Type.NORMAL,3));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"), "Crigler-Najjar-Syndrom Typ 1",0,Type.NORMAL,4));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"), "Crigler-Najjar-Syndrom Typ 1",0,Type.NORMAL,3));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Cholinesterase (ChE)"), "Crigler-Najjar-Syndrom Typ 1",0,Type.NORMAL,3));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"), "Crigler-Najjar-Syndrom Typ 1",0,Type.NORMAL,3));
+        threshold_cns1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Crigler-Najjar-Syndrom Typ 1",0,Type.ELEVATED,3));
+        disease_cns1.setLab_DiseaseValue(threshold_cns1);
+        saveDisease(disease_cns1);
+
+
+        //Crigler-Najjar-Syndrom Typ 1
+        Disease disease_cns2 = new Disease();
+        List<TestValueThreshold> threshold_cns2 = new ArrayList<>();
+        disease_cns2.setDiseaseName("Crigler-Najjar-Syndrom Typ 2");
+        disease_cns2.setDescription("Das Crigler-Najjar-Syndrom (CNS) ist eine erbliche Störung des Bilirubinstoffwechsels und gekennzeichnet durch unkonjugierte Hyperbilirubinämie bei fehlender Aktivität der Bilirubin-Glucuronosyl-Transferase (GT) in der Leber. ");
+        disease_cns2.setIcdCode("E80.5");
+        disease_cns2.setPregnant(false);
+        disease_cns2.setThreshold(81);
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"), "Crigler-Najjar-Syndrom Typ 2",10,Type.ELEVATED,41));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Crigler-Najjar-Syndrom Typ 2",0,Type.ELEVATED,40));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "Crigler-Najjar-Syndrom Typ 2",0,Type.NORMAL,3));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"), "Crigler-Najjar-Syndrom Typ 2",0,Type.NORMAL,4));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"), "Crigler-Najjar-Syndrom Typ 2",0,Type.NORMAL,3));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Cholinesterase (ChE)"), "Crigler-Najjar-Syndrom Typ 2",0,Type.NORMAL,3));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"), "Crigler-Najjar-Syndrom Typ 2",0,Type.NORMAL,3));
+        threshold_cns2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Crigler-Najjar-Syndrom Typ 2",0,Type.ELEVATED,3));
+        disease_cns2.setLab_DiseaseValue(threshold_cns2);
+        saveDisease(disease_cns2);
+
+
+        //akute biliäre Pankreatitis
+        Disease disease_abp = new Disease();
+        List<TestValueThreshold> threshold_abp = new ArrayList<>();
+        disease_abp.setDiseaseName("Akute biliäre Pankreatitis");
+        disease_abp.setDescription("Die akute Pankreatitis wird in den meisten Fällen durch Erkrankungen der Gallenwege oder Alkoholabusus ausgelöst und ist die Entzündung der Pankreas.");
+        disease_abp.setIcdCode("K85.1");
+        disease_abp.setPregnant(false);
+        disease_abp.setThreshold(70);
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Lipase"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,8));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("LDH"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,8));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Kalzium, gesamt"), "Akute biliäre Pankreatitis",0,Type.DECREASED,7));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,7));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,8));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("CRP"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,7));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,8));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,7));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alpha-Amylase"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,8));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,13));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Leukozyten"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,7));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Procalcitonin"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,2));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Kreatinin"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,2));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Harnstoff"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,2));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,4));
+        threshold_abp.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämatokrit"), "Akute biliäre Pankreatitis",0,Type.ELEVATED,2));
+        disease_abp.setLab_DiseaseValue(threshold_abp);
+        saveDisease(disease_abp);
+
+
+        //Diabetes mellitus Typ 1
+        Disease disease_dm1 = new Disease();
+        List<TestValueThreshold> threshold_dm1 = new ArrayList<>();
+        disease_dm1.setDiseaseName("Diabetes mellitus Typ 1");
+        disease_dm1.setDescription("Diabetes mellitus ist eine Stoffwechselerkrkankung, die auf Insulinmangel beruht und durhc einen chronsch erhöhten Blutzuckerspiegel gekennzeichnet ist.");
+        disease_dm1.setIcdCode("E10");
+        disease_dm1.setPregnant(false);
+        disease_dm1.setMinAge(0);
+        disease_dm1.setMaxAge(65);
+        disease_dm1.setThreshold(40);
+        threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Diabetes mellitus Typ 1",0,Type.ELEVATED,40));
+        threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hb1Ac"), "Diabetes mellitus Typ 1",0,Type.ELEVATED,40));
+        threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("C-Peptid"), "Diabetes mellitus Typ 1",0,Type.DECREASED,20));
+        disease_dm1.setLab_DiseaseValue(threshold_dm1);
+        saveDisease(disease_dm1);
+
+        //Diabetes mellitus Typ 2
+        Disease disease_dm2 = new Disease();
+        List<TestValueThreshold> threshold_dm2 = new ArrayList<>();
+        disease_dm2.setDiseaseName("Diabetes mellitus Typ 2");
+        disease_dm2.setDescription("Diabetes mellitus ist eine Stoffwechselerkrkankung, die auf Insulinmangel beruht und durhc einen chronsch erhöhten Blutzuckerspiegel gekennzeichnet ist.");
+        disease_dm2.setIcdCode("E10");
+        disease_dm2.setPregnant(false);
+        disease_dm2.setMinAge(18);
+        disease_dm2.setMaxAge(200);
+        disease_dm2.setThreshold(50);
+        threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
+        threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hb1Ac"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
+        disease_dm2.setLab_DiseaseValue(threshold_dm1);
+        saveDisease(disease_dm2);
 
     }
 

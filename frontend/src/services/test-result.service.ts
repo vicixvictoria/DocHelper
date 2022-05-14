@@ -28,8 +28,8 @@ export class TestResultService {
    *
    */
   getTestResultById(id: number): Observable<TestResult> {
-    console.log('Load all TestResults');
-    return this.httpClient.get<TestResult>(baseUri);
+    console.log('Load TestResult by Id');
+    return this.httpClient.get<TestResult>(baseUri + '/' + id);
   }
 
   /**
@@ -40,7 +40,7 @@ export class TestResultService {
    */
   getTestResultsByPatientId(id: number): Observable<TestResult[]> {
     console.log('Load TestResults of patien with id ' + id);
-    return this.httpClient.get<TestResult[]>(baseUri + '/' + id);
+    return this.httpClient.get<TestResult[]>(baseUri + '/patients/' + id);
   }
 
   /**

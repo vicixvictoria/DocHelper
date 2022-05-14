@@ -1,6 +1,7 @@
 package at.ac.tuwien.dochelper.backend.service;
 
 import at.ac.tuwien.dochelper.backend.entity.Patient;
+import at.ac.tuwien.dochelper.backend.exception.NotFoundException;
 import at.ac.tuwien.dochelper.backend.repository.PatientRepository;
 import at.ac.tuwien.dochelper.backend.validator.PatientValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -25,6 +27,15 @@ public class PatientService {
 
     public List<Patient> getPatients() {
         return patientRepository.findAll();
+    }
+
+    public Patient getPatientById(Long patientId) {
+        Optional<Patient> optional = patientRepository.findById(patientId);
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            throw new NotFoundException("Patient was not found");
+        }
     }
 
     @Transactional

@@ -41,6 +41,13 @@ public class PatientEndpoint {
         return patientMapper.patientToPatientDto(patientService.getPatients());
     }
 
+    @GetMapping("/{patientId}")
+    public PatientDto getPatientById(@PathVariable Long patientId) {
+        LOGGER.info("GET /api/v1/patients/{} ", patientId);
+
+        return patientMapper.patientToPatientDto(patientService.getPatientById(patientId));
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public PatientDto createPatient(@Valid @RequestBody PatientDto patientDto) {

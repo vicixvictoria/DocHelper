@@ -1,6 +1,7 @@
 package at.ac.tuwien.dochelper.backend.service;
 
 import at.ac.tuwien.dochelper.backend.entity.TestResult;
+import at.ac.tuwien.dochelper.backend.exception.NotFoundException;
 import at.ac.tuwien.dochelper.backend.repository.LabValueRepository;
 import at.ac.tuwien.dochelper.backend.repository.TestResultRepository;
 import at.ac.tuwien.dochelper.backend.validator.TestResultValidator;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TestResultService {
@@ -28,6 +30,15 @@ public class TestResultService {
 
     public List<TestResult> getAllTestResults (){
         return testResultRepository.findAll();
+    }
+
+    public TestResult getTestResultById(Long resultId) {
+        Optional<TestResult> optional = testResultRepository.findById(resultId);
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            throw new NotFoundException("TestResult was not found");
+        }
     }
 
     @Transactional
@@ -51,4 +62,5 @@ public class TestResultService {
         Hibernate.initialize(labValueService.getAllLabVals());
         return testResultRepository.findAllById(patientId);
     }
+
 }

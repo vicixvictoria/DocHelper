@@ -3,7 +3,7 @@ import {Patient} from "../../dtos/patient";
 import {TestResult} from "../../dtos/testResult";
 import {PatientService} from "../../services/patient.service";
 import {TestResultService} from "../../services/test-result.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-testresult-detail',
@@ -16,6 +16,8 @@ export class TestresultDetailComponent implements OnInit {
   patient: Patient;
   // @ts-ignore
   testResult: TestResult;
+  // @ts-ignore
+  testResultId: number;
 
   error = false;
   errorMessage = '';
@@ -23,14 +25,18 @@ export class TestresultDetailComponent implements OnInit {
   constructor(
     private patientService: PatientService,
     private testResultService: TestResultService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   )
   {
 
   }
 
   ngOnInit(): void {
-    this.loadTestResultsOfPatient(2);
+    const routeParams = this.route.snapshot.paramMap;
+    this.testResultId = Number(routeParams.get('id'));
+    this.loadTestResultsById(this.testResultId);
+
   }
 
 
@@ -48,12 +54,12 @@ export class TestresultDetailComponent implements OnInit {
     });
   }
 
-  public loadTestResultsOfPatient(id: number) {
+  public loadTestResultsById(id: number) {
     // @ts-ignore
-    this.testResultService.getTestResultsByPatientId(id).subscribe({
+    this.testResultService.getTestResultById(id).subscribe({
       next: data => {
         console.log('received testResult:', data);
-        this.testResult = data[0];
+        this.testResult = data;
         console.log(this.testResult);
         this.loadPatientById(this.testResult.patientId);
       },

@@ -74,9 +74,9 @@ export class TestresultDetailComponent implements OnInit {
    *
    * @param testresult to be deleted.
    */
-  deletePatient(testResult: TestResult) {
+  deleteTestResult(testResult: TestResult) {
     if (confirm('Befund vom ' + this.testResult.date + ' von Patient "' + this.patient?.firstName + ' ' + this.patient?.lastName + '" wirklich löschen?')) {
-      this.patientService.deletePatient(this.testResult.id).subscribe({
+      this.testResultService.deleteTestResult(this.testResult.id).subscribe({
         next: () => {
           console.log("Deleting testresult " + this.testResult)
           this.router.navigate(['home']);

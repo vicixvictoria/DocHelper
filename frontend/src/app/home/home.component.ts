@@ -7,6 +7,8 @@ import {map, Observable, startWith} from "rxjs";
 import {MatAutocompleteTrigger} from "@angular/material/autocomplete";
 import {TestResult} from "../../dtos/testResult";
 import {TestResultService} from "../../services/test-result.service";
+import {AddPatientComponent} from "../patient/add-patient/add-patient.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-home',
@@ -43,8 +45,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               private patientService: PatientService,
-              private testResultService: TestResultService) {
-
+              private testResultService: TestResultService,
+              private readonly dialog: MatDialog)
+  {
   }
 
   ngOnInit(): void {
@@ -62,6 +65,13 @@ export class HomeComponent implements OnInit {
       startWith(''),
       map(value => value.length >= 0?  this._filter(value): []),
     )
+  }
+
+  addPatient(){
+    const dialog = this.dialog.open(AddPatientComponent, {width: '500px'});
+    dialog.afterClosed().subscribe(() => {
+      this.loadAllPatients();
+    })
   }
 
   public onFocus() {

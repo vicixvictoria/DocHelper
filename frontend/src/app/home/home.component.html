@@ -8,6 +8,7 @@
       <mat-form-field  style="margin: 20px; width: 300px" appearance="fill">
         <mat-label>Name</mat-label>
         <mat-select [formControl]="patientControl" required>
+          <mat-option (click)="addPatient()" style="font-size: medium"><mat-icon color="primary">add</mat-icon>PatientIn anlegen</mat-option>
           <mat-option *ngFor="let patient of patients" [value]="patient" >
             {{patient.firstName}} {{patient.lastName}}
           </mat-option>

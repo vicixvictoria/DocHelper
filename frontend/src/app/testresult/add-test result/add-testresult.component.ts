@@ -2,8 +2,10 @@ import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TestResult} from "../../../dtos/testResult";
 import {TestResultService} from "../../../services/test-result.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {LabMeasure} from "../../../dtos/labMeasure";
+import {AddLabMeasureComponent} from "../add-labmeasure/add-labmeasure.component";
 
 @Component({
   selector: 'app-add-testresult',
@@ -21,7 +23,8 @@ export class AddTestResultComponent implements OnInit {
     private formBuilder: FormBuilder,
     private testResultService: TestResultService,
     private router: Router,
-    private dialogRef: MatDialogRef<AddTestResultComponent>
+    private dialogRef: MatDialogRef<AddTestResultComponent>,
+    private readonly dialog: MatDialog
   ) {
 
     // @ts-ignore
@@ -38,6 +41,13 @@ export class AddTestResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  addLabMeasures(){
+    const dialog = this.dialog.open(AddLabMeasureComponent, {width: '1200'});
+    dialog.afterClosed().subscribe( () => {
+      this.addTestResult();
+    })
   }
 
   addTestResult(): void {

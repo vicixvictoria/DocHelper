@@ -34,6 +34,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from "@angular/material/radio";
 import {AddTestResultComponent} from "./testresult/add-test result/add-testresult.component";
+import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {AddTestResultComponent} from "./testresult/add-test result/add-testresul
     TestresultOverviewComponent,
     TestresultDetailComponent,
     DiseaseComponent,
-    AddTestResultComponent
+    AddTestResultComponent,
+    AddLabMeasureComponent
   ],
   imports: [
     MatSelectModule,

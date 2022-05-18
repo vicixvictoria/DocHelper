@@ -55,12 +55,15 @@ public class TestResultDataGenerator {
         testResult2.setLabMeasures(measureList2);
         tryToSave(testResult2);
 
+        //Anna Beiser
         TestResult testResult3 = new TestResult();
         testResult3.setId(3L);
         testResult3.setPatientId(1L);
         testResult3.setDate(LocalDate.parse("2020-06-10"));
         List<LabMeasure> measureList3 = new ArrayList<>(Collections.emptyList());
-        measureList3.add(labMeasureRepository.getById(1L));
+        for(long i=82L; i<85L; i++){
+            measureList3.add(labMeasureRepository.getById(i));
+        }
         testResult3.setLabMeasures(measureList3);
         tryToSave(testResult3);
 

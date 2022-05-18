@@ -32,14 +32,14 @@ public class LabMeasureDataGenerator {
         labMeasure1.setId(1L);
         labMeasure1.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"));
         labMeasure1.setMeasuredValue(8.6f);
-        labMeasure1.setRefValueBigger(1.2f);
+        labMeasure1.setRefValueLower(1.2f);
         tryToSave(labMeasure1);
 
         LabMeasure labMeasure2 = new LabMeasure();
         labMeasure2.setId(2L);
         labMeasure2.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin direkt"));
         labMeasure2.setMeasuredValue(2.33f);
-        labMeasure2.setRefValueBigger(0.3f);
+        labMeasure2.setRefValueLower(0.3f);
         tryToSave(labMeasure2);
 
         LabMeasure labMeasure3 = new LabMeasure();
@@ -653,6 +653,28 @@ public class LabMeasureDataGenerator {
         labMeasure81.setRefValueFrom(70f);
         labMeasure81.setRefValueTo(150f);
         tryToSave(labMeasure81);
+
+        //Patient Anna Beiser id 82-84
+        LabMeasure labMeasure82 = new LabMeasure();
+        labMeasure82.setId(82L);
+        labMeasure82.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"));
+        labMeasure82.setMeasuredValue(3.4f);
+        labMeasure82.setRefValueLower(1.2f);
+        tryToSave(labMeasure82);
+
+        LabMeasure labMeasure83 = new LabMeasure();
+        labMeasure83.setId(83L);
+        labMeasure83.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin direkt"));
+        labMeasure83.setMeasuredValue(0.2f);
+        labMeasure83.setRefValueLower(0.2f);
+        tryToSave(labMeasure83);
+
+        LabMeasure labMeasure84 = new LabMeasure();
+        labMeasure84.setId(84L);
+        labMeasure84.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"));
+        labMeasure84.setMeasuredValue(3.2f);
+        labMeasure84.setRefValueLower(1f);
+        tryToSave(labMeasure84);
 
     }
 

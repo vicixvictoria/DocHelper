@@ -32,7 +32,22 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="age" >
     <th mat-header-cell *matHeaderCellDef> Alter </th>
-    <td mat-cell *matCellDef="let element"> {{element.maxAge}} </td>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.maxAge === 0 && element.minAge !== 0">
+        ab {{element.minAge}}
+      </ng-container>
+      <ng-container *ngIf="element.maxAge !== 0 && element.minAge === 0">
+        bis {{element.maxAge}}
+      </ng-container>
+      <ng-container *ngIf="element.maxAge !== 0 && element.minAge !== 0">
+        von {{element.minAge}} bis {{element.maxAge}}
+      </ng-container>
+      <ng-container *ngIf="element.maxAge === 0 && element.minAge === 0">
+        keine Altersgruppe
+      </ng-container>
+    </td>
+
+
   </ng-container>
 
   <!-- Symbol Column -->

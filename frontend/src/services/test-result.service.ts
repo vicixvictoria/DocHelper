@@ -43,6 +43,10 @@ export class TestResultService {
     return this.httpClient.get<TestResult[]>(baseUri + '/patients/' + id);
   }
 
+  createTestResult(testResult: TestResult): Observable<TestResult> {
+    return this.httpClient.post<TestResult>(baseUri + '/', testResult);
+  }
+
   /**
    * Deletes the testresult with the id from the backend
    *

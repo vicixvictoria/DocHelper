@@ -1,0 +1,17 @@
+<div style="margin:auto; width:fit-content;">
+  <h1 class="header">Befund erstellen</h1>
+
+  <form (ngSubmit)="addTestResult()" [formGroup]="testResultForm">
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Datum</mat-label>
+      <input formControlName="date" matInput [matDatepicker]="picker" required>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button color="primary" mat-raised-button type=submit>Submit</button>
+  </form>
+</div>
+

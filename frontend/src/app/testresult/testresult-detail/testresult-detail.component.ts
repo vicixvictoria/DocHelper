@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Patient} from "../../dtos/patient";
-import {TestResult} from "../../dtos/testResult";
-import {PatientService} from "../../services/patient.service";
-import {TestResultService} from "../../services/test-result.service";
+import {Patient} from "../../../dtos/patient";
+import {TestResult} from "../../../dtos/testResult";
+import {PatientService} from "../../../services/patient.service";
+import {TestResultService} from "../../../services/test-result.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

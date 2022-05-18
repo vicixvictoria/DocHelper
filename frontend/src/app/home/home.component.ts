@@ -9,6 +9,7 @@ import {TestResult} from "../../dtos/testResult";
 import {TestResultService} from "../../services/test-result.service";
 import {AddPatientComponent} from "../patient/add-patient/add-patient.component";
 import {MatDialog} from "@angular/material/dialog";
+import {AddTestResultComponent} from "../testresult/add-test result/add-testresult.component";
 
 @Component({
   selector: 'app-home',
@@ -71,6 +72,13 @@ export class HomeComponent implements OnInit {
     const dialog = this.dialog.open(AddPatientComponent, {width: '500px'});
     dialog.afterClosed().subscribe(() => {
       this.loadAllPatients();
+    })
+  }
+
+  addTestResult(){
+    const dialog = this.dialog.open(AddTestResultComponent, {width: '1200'});
+    dialog.afterClosed().subscribe( () => {
+      this.loadTestResultsOfPatient();
     })
   }
 

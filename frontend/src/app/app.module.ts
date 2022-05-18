@@ -22,9 +22,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EditPatientComponent } from './patient/edit-patient/edit-patient.component';
-import { TestresultOverviewComponent } from './testresult-overview/testresult-overview.component';
+import { TestresultOverviewComponent } from './testresult/testresult-overview/testresult-overview.component';
 import {MatDividerModule} from '@angular/material/divider';
-import { TestresultDetailComponent } from './testresult-detail/testresult-detail.component';
+import { TestresultDetailComponent } from './testresult/testresult-detail/testresult-detail.component';
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -33,6 +33,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from "@angular/material/radio";
+import {AddTestResultComponent} from "./testresult/add-test result/add-testresult.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatRadioModule} from "@angular/material/radio";
     EditPatientComponent,
     TestresultOverviewComponent,
     TestresultDetailComponent,
-    DiseaseComponent
+    DiseaseComponent,
+    AddTestResultComponent
   ],
   imports: [
     MatSelectModule,

@@ -4,6 +4,7 @@ import {TestResult} from "../../dtos/testResult";
 import {PatientService} from "../../services/patient.service";
 import {TestResultService} from "../../services/test-result.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {LabMeasure} from "../../dtos/labMeasure";
 
 @Component({
   selector: 'app-testresult-detail',
@@ -18,6 +19,10 @@ export class TestresultDetailComponent implements OnInit {
   testResult: TestResult;
   // @ts-ignore
   testResultId: number;
+  // @ts-ignore
+  labMeasures: LabMeasure[];
+
+  displayedColumns: string[] = ['name', 'value', 'refValue'];
 
   error = false;
   errorMessage = '';
@@ -61,6 +66,7 @@ export class TestresultDetailComponent implements OnInit {
         console.log('received testResult:', data);
         this.testResult = data;
         console.log(this.testResult);
+        this.labMeasures = this.testResult.labMeasures;
         this.loadPatientById(this.testResult.patientId);
       },
       error: error => {

@@ -6,6 +6,7 @@ import {FormBuilder} from "@angular/forms";
 import {PatientService} from "../../services/patient.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {Patient} from "../../dtos/patient";
+import {LabMeasure} from "../../dtos/labMeasure";
 
 @Component({
   selector: 'app-testresult-overview',
@@ -19,6 +20,7 @@ export class TestresultOverviewComponent implements OnInit {
   // @ts-ignore
   testResults: TestResult[];
   patient: Patient;
+
 
   constructor(
     private testResultService: TestResultService,

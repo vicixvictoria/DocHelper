@@ -2,6 +2,7 @@
   <h1 class="header">Befund erstellen</h1>
 
   <form (ngSubmit)="addTestResult()" [formGroup]="testResultForm">
+    <div style="width: max-content">
     <mat-form-field class="input-field" appearance="outline">
       <mat-label>Datum</mat-label>
       <input formControlName="date" matInput [matDatepicker]="picker" required>
@@ -11,12 +12,13 @@
     </mat-form-field>
 
 
+
     <mat-form-field class="mat-button" appearance="outline">
       <mat-label>Blutwerte</mat-label>
       <input formControlName="labMeasures" matInput required>
       <mat-radio-button (click)="addLabMeasures()" style="font-size: medium"><mat-icon color="primary">add</mat-icon>Blutwerte eingeben</mat-radio-button>
     </mat-form-field>
-
+    </div>
 
     <button color="primary" mat-raised-button type=submit>Submit</button>
   </form>

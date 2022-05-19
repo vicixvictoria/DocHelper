@@ -20,7 +20,8 @@ export class AddLabMeasureComponent implements OnInit {
 
   labMeasureForm: FormGroup;
   labMeasure: LabMeasure | undefined;
-  labVals: LabValue[] | undefined;
+  // @ts-ignore
+  labVals: LabValue[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,15 +38,16 @@ export class AddLabMeasureComponent implements OnInit {
       {
         labValue: new FormControl(this.labMeasure.labValue, [Validators.required]),
         measuredValue: new FormControl(this.labMeasure.measuredValue, [Validators.required]),
-        refValueBigger: new FormControl(this.labMeasure.refValueBigger, [Validators.required]),
-        refValueLower: new FormControl(this.labMeasure.refValueLower, [Validators.required]),
-        refValueFrom: new FormControl(this.labMeasure.refValueFrom, [Validators.required]),
-        refValueTo: new FormControl(this.labMeasure.refValueTo, [Validators.required])
+        refValueBigger: new FormControl(this.labMeasure.refValueBigger),
+        refValueLower: new FormControl(this.labMeasure.refValueLower),
+        refValueFrom: new FormControl(this.labMeasure.refValueFrom),
+        refValueTo: new FormControl(this.labMeasure.refValueTo)
       }
     )
   }
 
   ngOnInit(): void {
+    this.getAllLabVals();
   }
 
 
@@ -84,10 +86,13 @@ export class AddLabMeasureComponent implements OnInit {
       next: data => {
         console.log('received LabVals', data);
         this.labVals = data;
-        this.labVals = this.labVals.sort((a, b) => a.labValName.localeCompare(b.labValName));
+        //this.labVals = this.labValssort((a, b) => a.labValName.localeCompare(b.labValName));
         console.log(this.labVals);
+      },
+      error: error => {
+        this.defaultServiceErrorHandling(error);
       }
-    })
+    });
     }
 
 

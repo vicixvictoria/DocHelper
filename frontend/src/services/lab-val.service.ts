@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {TestResult} from "../dtos/testResult";
 import {LabValue} from "../dtos/labValue";
 
-const baseUri = environment.backendUrl + '/results';
+const baseUri = environment.backendUrl + '/labValues';
 
 @Injectable({
   providedIn: 'root'

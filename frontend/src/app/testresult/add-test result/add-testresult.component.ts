@@ -51,10 +51,10 @@ export class AddTestResultComponent implements OnInit {
       {
         labValue: new FormControl(this.labMeasure.labValue, [Validators.required]),
         measuredValue: new FormControl(this.labMeasure.measuredValue, [Validators.required]),
-        refValueBigger: new FormControl(this.labMeasure.refValueBigger),
-        refValueLower: new FormControl(this.labMeasure.refValueLower),
-        refValueFrom: new FormControl(this.labMeasure.refValueFrom),
-        refValueTo: new FormControl(this.labMeasure.refValueTo)
+        refValueBigger: new FormControl(this.labMeasure.refValueBigger, [Validators.required]),
+        refValueLower: new FormControl(this.labMeasure.refValueLower, [Validators.required]),
+        refValueFrom: new FormControl(this.labMeasure.refValueFrom, [Validators.required]),
+        refValueTo: new FormControl(this.labMeasure.refValueTo, [Validators.required])
       }
     )
 
@@ -72,13 +72,16 @@ export class AddTestResultComponent implements OnInit {
   }
 
   addLabMeasure(){
+
+    // @ts-ignore
+
     console.log("add labMeasure")
     if (this.labMeasureForm.valid) {
       // @ts-ignore
 
       //for --> lop to go through all labVal fields
 
-      this.labMeasure?.labValue = this.labMeasureForm.get('labvalue')?.value;
+      this.labMeasure?.labValue = this.labMeasureForm.get('labValue')?.value;
       // @ts-ignore
       this.labMeasure?.measuredValue = this.labMeasureForm.get('measuredValue')?.value;
       if( this.labMeasureForm.get('refValueBigger')?.value != null) {
@@ -97,10 +100,14 @@ export class AddTestResultComponent implements OnInit {
         this.labMeasure?.refValueTo = this.labMeasureForm.get('refValueTo')?.value;
       }
 
+      console.log("Test")
+
+      console.log(this.labMeasure);
       if (this.labMeasure instanceof LabMeasure) {
         this.labMeasures?.push(this.labMeasure);
       }
     }
+     console.log(this.labMeasures)
   }
 
 

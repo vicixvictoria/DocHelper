@@ -38,10 +38,10 @@ export class AddLabMeasureComponent implements OnInit {
       {
         labValue: new FormControl(this.labMeasure.labValue, [Validators.required]),
         measuredValue: new FormControl(this.labMeasure.measuredValue, [Validators.required]),
-        refValueBigger: new FormControl(this.labMeasure.refValueBigger),
-        refValueLower: new FormControl(this.labMeasure.refValueLower),
-        refValueFrom: new FormControl(this.labMeasure.refValueFrom),
-        refValueTo: new FormControl(this.labMeasure.refValueTo)
+        refValueBigger: new FormControl(this.labMeasure.refValueBigger, [Validators.required]),
+        refValueLower: new FormControl(this.labMeasure.refValueLower, [Validators.required]),
+        refValueFrom: new FormControl(this.labMeasure.refValueFrom, [Validators.required]),
+        refValueTo: new FormControl(this.labMeasure.refValueTo, [Validators.required])
       }
     )
   }

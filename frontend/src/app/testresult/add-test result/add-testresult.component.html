@@ -40,12 +40,17 @@
 
     <button color="primary" mat-raised-button type=submit>Submit</button>
 
+  </form>
+
     <br>
 
     <h1 class="header"> Blutwerte eingeben: </h1>
 
+  <form [formGroup]="labMeasureForm" (submit)="addLabMeasure()">
+
+
     <mat-form-field class="input-field" appearance="outline">
-    <mat-select>
+    <mat-select formControlName="labValue">
       <mat-option *ngFor="let labValue of labValues" [value]="labValue.labValName">
         {{labValue.labValName}}
       </mat-option>
@@ -53,7 +58,7 @@
     </mat-form-field>
 
     <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
-      <mat-label>gemessener Wert</mat-label>
+      <mat-label>Gemessener Wert</mat-label>
       <input formControlName="measuredValue" matInput required>
     </mat-form-field>
 
@@ -76,11 +81,9 @@
       <mat-label>Referenzwert bis</mat-label>
       <input formControlName="refValueTo" matInput required>
     </mat-form-field>
-
     <br>
 
     <button color="primary" mat-raised-button type=submit>Add measure</button>
-    <!--<button color="primary" mat-raised-button onClick="addLabMeasure()">Add measure</button>-->
 
     <br>
 

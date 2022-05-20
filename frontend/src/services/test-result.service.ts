@@ -44,6 +44,7 @@ export class TestResultService {
   }
 
   createTestResult(testResult: TestResult): Observable<TestResult> {
+    console.log('Create Test Result');
     return this.httpClient.post<TestResult>(baseUri + '/', testResult);
   }
 

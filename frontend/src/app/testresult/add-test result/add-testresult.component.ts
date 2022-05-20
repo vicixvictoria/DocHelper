@@ -22,8 +22,8 @@ export class AddTestResultComponent implements OnInit {
   labMeasureForm: FormGroup;
   labMeasure: LabMeasure | undefined;
   testResult: TestResult | undefined;
-  labMeasures: Array<LabMeasure> | undefined;
-  labValues: Array<LabValue> | undefined;
+  labMeasures: LabMeasure[] = [];
+  labValues: LabValue[] = [];
 
   constructor(
     private formBuilderResults: FormBuilder,
@@ -40,7 +40,8 @@ export class AddTestResultComponent implements OnInit {
 
     this.testResultForm = this.formBuilderResults.group(
       {
-        date: new FormControl(this.testResult.date, [Validators.required])
+        date: new FormControl(this.testResult.date, [Validators.required]),
+        patientId: new FormControl(this.testResult.patientId, [Validators.required])
       }
     )
 
@@ -62,6 +63,9 @@ export class AddTestResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllLabValues();
+  }
+
+  removeMeasureFromLabMeasures(measure: LabMeasure): void {
   }
 
   addLabMeasures(){
@@ -100,14 +104,10 @@ export class AddTestResultComponent implements OnInit {
         this.labMeasure?.refValueTo = this.labMeasureForm.get('refValueTo')?.value;
       }
 
-      console.log("Test")
-
-      console.log(this.labMeasure);
       if (this.labMeasure instanceof LabMeasure) {
         this.labMeasures?.push(this.labMeasure);
       }
     }
-     console.log(this.labMeasures)
   }
 
 
@@ -119,7 +119,7 @@ export class AddTestResultComponent implements OnInit {
       // @ts-ignore
       this.testResult?.labMeasures = this.labMeasures;
       // @ts-ignore
-      this.testResult?.patientId = 3;
+      this.testResult?.patientId = this.testResultForm.get('patientId')?.value;
       console.log(this.testResult);
       if (this.testResult) {
         this.testResultService.createTestResult(this.testResult).subscribe(

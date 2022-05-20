@@ -7,6 +7,7 @@ import {TestresultDetailComponent} from "./testresult/testresult-detail/testresu
 import {DiseaseComponent} from "./disease/disease.component";
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'patients', component: PatientComponent},
   {path: 'testresults/:id/view', component: TestresultDetailComponent},

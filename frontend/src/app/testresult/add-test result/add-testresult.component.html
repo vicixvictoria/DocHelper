@@ -10,19 +10,26 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+
+      <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
+        <mat-label>Patienten Id</mat-label>
+        <input formControlName="patientId" matInput required>
+      </mat-form-field>
+
     </div>
     <br>
 
     <h1 class="header"> Blutwerte: </h1>
 
-    <table>
+    <table style="width:95%">
       <thead>
-        <th> Lab Value:</th>
-        <th> Gemessener Wert:</th>
-        <th> Referenzwert höher:</th>
-        <th> Referenzwert niedriger:</th>
-        <th> Referenzwert von:</th>
-        <th> Referenzwert bis:</th>
+        <th style="width:40%"> Lab Value:</th>
+        <th style="width:10%"> Gemessener Wert:</th>
+        <th style="width:10%"> Referenzwert höher:</th>
+        <th style="width:10%"> Referenzwert niedriger:</th>
+        <th style="width:10%"> Referenzwert von:</th>
+        <th style="width:10%"> Referenzwert bis:</th>
+        <th style="width:10%"> </th>
       </thead>
       <tbody>
       <tr *ngFor="let measure of this.labMeasures">
@@ -32,6 +39,7 @@
         <td> {{measure.refValueLower}}</td>
         <td> {{measure.refValueFrom}}</td>
         <td> {{measure.refValueTo}}</td>
+        <td> <button type="button" onclick="removeMeasureFromLabMeasures(measure)"> - </button> </td>
       </tr>
       </tbody>
     </table>

@@ -26,6 +26,7 @@ public class LabMeasureDataGenerator {
 
     @PostConstruct
     public void generateLabMeasureEntries() {
+        labMeasureRepository.deleteAll();
 
         //LabMeasures für Blutbild von Christian Dorfer --> 1-30
         LabMeasure labMeasure1 = new LabMeasure();
@@ -555,7 +556,7 @@ public class LabMeasureDataGenerator {
 
         LabMeasure labMeasure69 = new LabMeasure();
         labMeasure69.setId(69L);
-        labMeasure69.setLabValue(labValueRepository.findLabValueByLabValName("Harnstpff"));
+        labMeasure69.setLabValue(labValueRepository.findLabValueByLabValName("Harnstoff"));
         labMeasure69.setMeasuredValue(41f);
         labMeasure69.setRefValueFrom(17f);
         labMeasure69.setRefValueTo(50f);
@@ -664,22 +665,24 @@ public class LabMeasureDataGenerator {
 
         LabMeasure labMeasure83 = new LabMeasure();
         labMeasure83.setId(83L);
-        labMeasure83.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin direkt"));
-        labMeasure83.setMeasuredValue(0.2f);
-        labMeasure83.setRefValueLower(0.2f);
+        labMeasure83.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin indirekt "));
+        labMeasure83.setMeasuredValue(3.2f);
+        labMeasure83.setRefValueLower(1f);
         tryToSave(labMeasure83);
 
         LabMeasure labMeasure84 = new LabMeasure();
         labMeasure84.setId(84L);
-        labMeasure84.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"));
-        labMeasure84.setMeasuredValue(3.2f);
-        labMeasure84.setRefValueLower(1f);
+        labMeasure84.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin direkt"));
+        labMeasure84.setMeasuredValue(0.2f);
+        labMeasure84.setRefValueLower(0.2f);
         tryToSave(labMeasure84);
+
+
 
     }
 
     public void tryToSave(LabMeasure labMeasure) {
-        if (labMeasureRepository.findById(labMeasure.getId()).isEmpty()) {
+        if (labMeasureRepository.findById(labMeasure.getId()).isEmpty() && labMeasure.getLabValue() != null) {
             labMeasureRepository.save(labMeasure);
         }
     }

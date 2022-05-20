@@ -34,6 +34,7 @@ public class PatientDataGenerator {
 
     @PostConstruct
     public void generatePatientEntries() {
+        patientRepository.deleteAll();
 
         Patient patient1 = new Patient();
         patient1.setId(1L);

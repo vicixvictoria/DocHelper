@@ -302,7 +302,7 @@ public class DiseaseDataGenerator {
         disease_dm1.setMaxAge(65);
         disease_dm1.setThreshold(40);
         threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Diabetes mellitus Typ 1",0,Type.ELEVATED,40));
-        threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hb1Ac"), "Diabetes mellitus Typ 1",0,Type.ELEVATED,40));
+        threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("HbA1c"), "Diabetes mellitus Typ 1",0,Type.ELEVATED,40));
         threshold_dm1.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("C-Peptid"), "Diabetes mellitus Typ 1",0,Type.DECREASED,20));
         disease_dm1.setThreshold_DiseaseValues(threshold_dm1);
         saveDisease(disease_dm1);
@@ -318,7 +318,7 @@ public class DiseaseDataGenerator {
         disease_dm2.setMaxAge(200);
         disease_dm2.setThreshold(50);
         threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
-        threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hb1Ac"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
+        threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("HbA1c"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
         disease_dm2.setThreshold_DiseaseValues(threshold_dm1);
         saveDisease(disease_dm2);
 

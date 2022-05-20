@@ -31,6 +31,7 @@ public class TestResultDataGenerator {
 
     @PostConstruct
     public void generateTestResults() {
+        testResultRepository.deleteAll();
 
         //Blutbild für Patient id2
         TestResult testResult1 = new TestResult();
@@ -61,7 +62,7 @@ public class TestResultDataGenerator {
         testResult3.setPatientId(1L);
         testResult3.setDate(LocalDate.parse("2020-06-10"));
         List<LabMeasure> measureList3 = new ArrayList<>(Collections.emptyList());
-        for(long i=82L; i<85L; i++){
+        for(long i=82L; i<83L; i++){
             measureList3.add(labMeasureRepository.getById(i));
         }
         testResult3.setLabMeasures(measureList3);

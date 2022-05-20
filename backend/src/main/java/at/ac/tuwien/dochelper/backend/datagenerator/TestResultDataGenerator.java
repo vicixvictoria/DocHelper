@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.hibernate.tool.schema.SchemaToolingLogging.LOGGER;
+
 @Profile("generateData1")
 @Component
 public class TestResultDataGenerator {
@@ -33,7 +35,7 @@ public class TestResultDataGenerator {
     public void generateTestResults() {
         testResultRepository.deleteAll();
 
-        //Blutbild für Patient id2
+        //Blutbild für Patient id2 Christian Dorfer
         TestResult testResult1 = new TestResult();
         testResult1.setId(1L);
         testResult1.setPatientId(2L);
@@ -43,18 +45,19 @@ public class TestResultDataGenerator {
             measureList1.add(labMeasureRepository.getById(i));
         }
         testResult1.setLabMeasures(measureList1);
+      //  LOGGER.info("saved result", testResult1.getLabMeasures());
         tryToSave(testResult1);
 
 
-        TestResult testResult2 = new TestResult();
+      /*  TestResult testResult2 = new TestResult();
         testResult2.setId(2L);
         testResult2.setPatientId(4L);
         testResult2.setDate(LocalDate.parse("2020-06-18"));
         List<LabMeasure> measureList2 = new ArrayList<>(Collections.emptyList());
-        measureList2.add(labMeasureRepository.getById(2L));
-        measureList2.add(labMeasureRepository.getById(3L));
+        measureList2.add(labMeasureRepository.getById(85L));
+        measureList2.add(labMeasureRepository.getById(86L));
         testResult2.setLabMeasures(measureList2);
-        tryToSave(testResult2);
+        tryToSave(testResult2);*/
 
         //Anna Beiser
         TestResult testResult3 = new TestResult();

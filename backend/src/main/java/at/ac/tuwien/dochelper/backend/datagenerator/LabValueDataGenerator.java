@@ -454,7 +454,7 @@ public class LabValueDataGenerator {
         save(labVal85);
 
         LabValue labVal86 = new LabValue();
-        labVal86.setLabValName("Hanrsäure");
+        labVal86.setLabValName("Harnsaeure");
         labVal86.setUnit("ng/ml");
         save(labVal86);
 

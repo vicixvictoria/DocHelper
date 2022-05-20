@@ -39,9 +39,10 @@ public class LabMeasureDataGenerator {
         LabMeasure labMeasure2 = new LabMeasure();
         labMeasure2.setId(2L);
         labMeasure2.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin direkt"));
-        labMeasure2.setMeasuredValue(2.33f);
-        labMeasure2.setRefValueLower(0.3f);
+        labMeasure2.setMeasuredValue(3.4f);
+        labMeasure2.setRefValueLower(0.2f);
         tryToSave(labMeasure2);
+
 
         LabMeasure labMeasure3 = new LabMeasure();
         labMeasure3.setId(3L);
@@ -548,7 +549,7 @@ public class LabMeasureDataGenerator {
 
         LabMeasure labMeasure68 = new LabMeasure();
         labMeasure68.setId(68L);
-        labMeasure68.setLabValue(labValueRepository.findLabValueByLabValName("Harnsäure"));
+        labMeasure68.setLabValue(labValueRepository.findLabValueByLabValName("Harnsaeure"));
         labMeasure68.setMeasuredValue(6f);
         labMeasure68.setRefValueFrom(2.6f);
         labMeasure68.setRefValueTo(6f);
@@ -676,6 +677,20 @@ public class LabMeasureDataGenerator {
         labMeasure84.setMeasuredValue(0.2f);
         labMeasure84.setRefValueLower(0.2f);
         tryToSave(labMeasure84);
+
+        LabMeasure labMeasure85 = new LabMeasure();
+        labMeasure85.setId(85L);
+        labMeasure85.setLabValue(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"));
+        labMeasure85.setMeasuredValue(230f);
+        labMeasure85.setRefValueLower(95f);
+        tryToSave(labMeasure85);
+
+        LabMeasure labMeasure86 = new LabMeasure();
+        labMeasure86.setId(86L);
+        labMeasure86.setLabValue(labValueRepository.findLabValueByLabValName("GGT"));
+        labMeasure86.setMeasuredValue(91f);
+        labMeasure86.setRefValueLower(40f);
+        tryToSave(labMeasure86);
 
 
 

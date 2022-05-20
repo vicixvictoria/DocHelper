@@ -6,6 +6,8 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {LabMeasure} from "../../../dtos/labMeasure";
 import {AddLabMeasureComponent} from "../add-labmeasure/add-labmeasure.component";
+import {LabValue} from "../../../dtos/labValue";
+import {LabValService} from "../../../services/lab-val.service";
 
 @Component({
   selector: 'app-add-testresult',
@@ -17,30 +19,49 @@ export class AddTestResultComponent implements OnInit {
   errorMessage ='';
 
   testResultForm: FormGroup;
+  labMeasureForm: FormGroup;
+  labMeasure: LabMeasure | undefined;
   testResult: TestResult | undefined;
+  labMeasures: Array<LabMeasure> | undefined;
+  labValues: Array<LabValue> | undefined;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilderResults: FormBuilder,
+    private formBuilderMeasures: FormBuilder,
     private testResultService: TestResultService,
     private router: Router,
     private dialogRef: MatDialogRef<AddTestResultComponent>,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    private labValueService: LabValService
   ) {
 
     // @ts-ignore
     this.testResult =  new TestResult();
 
-    this.testResultForm = this.formBuilder.group(
+    this.testResultForm = this.formBuilderResults.group(
       {
-        date: new FormControl(this.testResult.date, [Validators.required]),
-        patientId: 3,
-        labMeasures: null,
+        date: new FormControl(this.testResult.date, [Validators.required])
+      }
+    )
+
+    // @ts-ignore
+    this.labMeasure = new LabMeasure();
+
+    this.labMeasureForm = this.formBuilderMeasures.group(
+      {
+        labValue: new FormControl(this.labMeasure.labValue, [Validators.required]),
+        measuredValue: new FormControl(this.labMeasure.measuredValue, [Validators.required]),
+        refValueBigger: new FormControl(this.labMeasure.refValueBigger),
+        refValueLower: new FormControl(this.labMeasure.refValueLower),
+        refValueFrom: new FormControl(this.labMeasure.refValueFrom),
+        refValueTo: new FormControl(this.labMeasure.refValueTo)
       }
     )
 
   }
 
   ngOnInit(): void {
+    this.getAllLabValues();
   }
 
   addLabMeasures(){
@@ -50,15 +71,48 @@ export class AddTestResultComponent implements OnInit {
     })
   }
 
+  addLabMeasure(){
+    console.log("add labMeasure")
+    if (this.labMeasureForm.valid) {
+      // @ts-ignore
+
+      //for --> lop to go through all labVal fields
+
+      this.labMeasure?.labValue = this.labMeasureForm.get('labvalue')?.value;
+      // @ts-ignore
+      this.labMeasure?.measuredValue = this.labMeasureForm.get('measuredValue')?.value;
+      if( this.labMeasureForm.get('refValueBigger')?.value != null) {
+        // @ts-ignore
+        this.labMeasure?.refValueBigger = this.labMeasureForm.get('refValueBigger')?.value;
+      }
+
+      if(this.labMeasureForm.get('refValueLower')?.value != null) {
+        // @ts-ignore
+        this.labMeasure?.refValueLower = this.labMeasureForm.get('refValueLower')?.value;
+      }
+      if(this.labMeasureForm.get('refValueFrom')?.value != null) {
+        // @ts-ignore
+        this.labMeasure?.refValueFrom = this.labMeasureForm.get('refValueFrom')?.value;
+        // @ts-ignore
+        this.labMeasure?.refValueTo = this.labMeasureForm.get('refValueTo')?.value;
+      }
+
+      if (this.labMeasure instanceof LabMeasure) {
+        this.labMeasures?.push(this.labMeasure);
+      }
+    }
+  }
+
+
   addTestResult(): void {
     console.log("ad test result");
     if (this.testResultForm.valid) {
       // @ts-ignore
       this.testResult?.date = this.testResultForm.get('date')?.value;
       // @ts-ignore
-      this.testResult?.labMeasures = this.testResultForm.get('labMeasures')?.value;
+      this.testResult?.labMeasures = this.labMeasures;
       // @ts-ignore
-      this.testResult?.patientId = this.testResultForm.get('patientId')?.value;
+      this.testResult?.patientId = 3;
       console.log(this.testResult);
       if (this.testResult) {
         this.testResultService.createTestResult(this.testResult).subscribe(
@@ -72,6 +126,19 @@ export class AddTestResultComponent implements OnInit {
           })
       }
     }
+  }
+
+  private getAllLabValues(){
+    this.labValueService.getAllLabVals().subscribe({
+      next: data => {
+        console.log('received LabValues', data);
+        this.labValues = data;
+        console.log(this.labValues);
+      },
+      error: error => {
+        this.defaultServiceErrorHandling(error);
+      }
+    });
   }
 
   private defaultServiceErrorHandling(error: any) {

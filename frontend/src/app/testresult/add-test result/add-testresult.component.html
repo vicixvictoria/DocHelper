@@ -10,17 +10,92 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    </div>
+    <br>
 
+    <h1 class="header"> Blutwerte: </h1>
 
+    <table>
+      <thead>
+        <th> Lab Value:</th>
+        <th> Gemessener Wert:</th>
+        <th> Referenzwert höher:</th>
+        <th> Referenzwert niedriger:</th>
+        <th> Referenzwert von:</th>
+        <th> Referenzwert bis:</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let measure of this.labMeasures">
+        <td> {{measure.labValue}}</td>
+        <td> {{measure.measuredValue}}</td>
+        <td> {{measure.refValueBigger}}</td>
+        <td> {{measure.refValueLower}}</td>
+        <td> {{measure.refValueFrom}}</td>
+        <td> {{measure.refValueTo}}</td>
+      </tr>
+      </tbody>
+    </table>
 
+    <br>
+
+    <button color="primary" mat-raised-button type=submit>Submit</button>
+
+    <br>
+
+    <h1 class="header"> Blutwerte eingeben: </h1>
+
+    <mat-form-field class="input-field" appearance="outline">
+    <mat-select>
+      <mat-option *ngFor="let labValue of labValues" [value]="labValue.labValName">
+        {{labValue.labValName}}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
+      <mat-label>gemessener Wert</mat-label>
+      <input formControlName="measuredValue" matInput required>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Referenzwert höher</mat-label>
+      <input formControlName="refValueBigger" matInput required>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Referenzwert niedriger</mat-label>
+      <input formControlName="refValueLower" matInput required>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Referenzwert von</mat-label>
+      <input formControlName="refValueFrom" matInput required>
+    </mat-form-field>
+
+    <mat-form-field class="input-field" appearance="outline">
+      <mat-label>Referenzwert bis</mat-label>
+      <input formControlName="refValueTo" matInput required>
+    </mat-form-field>
+
+    <br>
+
+    <button color="primary" mat-raised-button type=submit>Add measure</button>
+    <!--<button color="primary" mat-raised-button onClick="addLabMeasure()">Add measure</button>-->
+
+    <br>
+
+      <!--
     <mat-form-field class="mat-button" appearance="outline">
       <mat-label>Blutwerte</mat-label>
       <input formControlName="labMeasures" matInput required>
-      <mat-radio-button (click)="addLabMeasures()" style="font-size: medium"><mat-icon color="primary">add</mat-icon>Blutwerte eingeben</mat-radio-button>
+      <mat-radio-button (click)="addLabMeasures()" style="font-size: medium">
+        <mat-icon color="primary">add</mat-icon>
+        Blutwerte eingeben</mat-radio-button>
     </mat-form-field>
     </div>
+    -->
 
-    <button color="primary" mat-raised-button type=submit>Submit</button>
+
   </form>
 </div>
 

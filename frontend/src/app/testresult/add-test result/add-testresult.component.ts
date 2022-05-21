@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TestResult} from "../../../dtos/testResult";
 import {TestResultService} from "../../../services/test-result.service";
@@ -8,6 +8,7 @@ import {LabMeasure} from "../../../dtos/labMeasure";
 import {AddLabMeasureComponent} from "../add-labmeasure/add-labmeasure.component";
 import {LabValue} from "../../../dtos/labValue";
 import {LabValService} from "../../../services/lab-val.service";
+import {LabMeasureService} from "../../../services/lab-measure.service";
 
 @Component({
   selector: 'app-add-testresult',
@@ -32,8 +33,11 @@ export class AddTestResultComponent implements OnInit {
     private router: Router,
     private dialogRef: MatDialogRef<AddTestResultComponent>,
     private readonly dialog: MatDialog,
-    private labValueService: LabValService
+    private labValueService: LabValService,
+    private labMeasureService: LabMeasureService
   ) {
+
+
 
     // @ts-ignore
     this.testResult =  new TestResult();
@@ -66,17 +70,15 @@ export class AddTestResultComponent implements OnInit {
   }
 
   removeMeasureFromLabMeasures(measure: LabMeasure): void {
-  }
-
-  addLabMeasures(){
-    const dialog = this.dialog.open(AddLabMeasureComponent, {width: '1200'});
-    dialog.afterClosed().subscribe( () => {
-      this.addTestResult();
-    })
+    this.labMeasures = this.labMeasures.filter((obj) => {
+      return obj != measure;
+    });
   }
 
   addLabMeasure(){
 
+    // @ts-ignore
+    this.labMeasure = new LabMeasure();
     // @ts-ignore
 
     console.log("add labMeasure")
@@ -85,7 +87,15 @@ export class AddTestResultComponent implements OnInit {
 
       //for --> lop to go through all labVal fields
 
-      this.labMeasure?.labValue = this.labMeasureForm.get('labValue')?.value;
+      let labValueName = this.labMeasureForm.get('labValue')?.value
+      let result = this.labValues.filter((obj) => {
+        return obj.labValName == labValueName;
+      });
+
+
+      // @ts-ignore
+      this.labMeasure?.labValue = result.pop();
+
       // @ts-ignore
       this.labMeasure?.measuredValue = this.labMeasureForm.get('measuredValue')?.value;
       if( this.labMeasureForm.get('refValueBigger')?.value != null) {
@@ -105,15 +115,18 @@ export class AddTestResultComponent implements OnInit {
       }
 
       if (this.labMeasure instanceof LabMeasure) {
+        //this.labMeasureService.createLabMeasure(this.labMeasure);
         this.labMeasures?.push(this.labMeasure);
+
       }
     }
   }
 
 
   addTestResult(): void {
-    console.log("ad test result");
+    console.log("add test result");
     if (this.testResultForm.valid) {
+
       // @ts-ignore
       this.testResult?.date = this.testResultForm.get('date')?.value;
       // @ts-ignore

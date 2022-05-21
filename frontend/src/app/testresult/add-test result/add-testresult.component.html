@@ -1,5 +1,5 @@
 <div style="margin:auto; width:fit-content;">
-  <h1 class="header">Befund erstellen</h1>
+  <h1 class="header" style="text-align: center">Befund erstellen</h1>
 
   <form (ngSubmit)="addTestResult()" [formGroup]="testResultForm">
     <div style="width: max-content">
@@ -19,7 +19,7 @@
     </div>
     <br>
 
-    <h1 class="header"> Blutwerte: </h1>
+    <h3 class="header"> Blutwerte: </h3>
 
     <table style="width:95%">
       <thead>
@@ -33,16 +33,17 @@
       </thead>
       <tbody>
       <tr *ngFor="let measure of this.labMeasures">
-        <td> {{measure.labValue}}</td>
+        <td> {{measure.labValue.labValName}}</td>
         <td> {{measure.measuredValue}}</td>
         <td> {{measure.refValueBigger}}</td>
         <td> {{measure.refValueLower}}</td>
         <td> {{measure.refValueFrom}}</td>
         <td> {{measure.refValueTo}}</td>
-        <td> <button type="button" onclick="removeMeasureFromLabMeasures(measure)"> - </button> </td>
+        <td> <button class="material-icons" type="button" (click)="removeMeasureFromLabMeasures(measure)">delete</button> </td>
       </tr>
       </tbody>
     </table>
+
 
     <br>
 
@@ -52,7 +53,7 @@
 
     <br>
 
-    <h1 class="header"> Blutwerte eingeben: </h1>
+    <h3 class="header"> Blutwerte eingeben: </h3>
 
   <form [formGroup]="labMeasureForm" (submit)="addLabMeasure()">
 

@@ -4,12 +4,12 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {LabMeasure} from "../dtos/labMeasure";
 
-const baseUri = environment.backendUrl + '/results';
+const baseUri = environment.backendUrl + '/measures';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TestResultService {
+export class LabMeasureService {
 
   constructor(private httpClient: HttpClient) {
   }
@@ -25,6 +25,8 @@ export class TestResultService {
   }
 
   createLabMeasure(labMeasure: LabMeasure): Observable<LabMeasure> {
+    console.log('Create LabMeasure');
+    console.log(baseUri + '/');
     return this.httpClient.post<LabMeasure>(baseUri + '/', labMeasure);
   }
 

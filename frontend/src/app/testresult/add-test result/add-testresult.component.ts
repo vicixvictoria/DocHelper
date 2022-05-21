@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Inject, Input, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TestResult} from "../../../dtos/testResult";
 import {TestResultService} from "../../../services/test-result.service";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {LabMeasure} from "../../../dtos/labMeasure";
 import {AddLabMeasureComponent} from "../add-labmeasure/add-labmeasure.component";
@@ -32,9 +32,10 @@ export class AddTestResultComponent implements OnInit {
     private testResultService: TestResultService,
     private router: Router,
     private dialogRef: MatDialogRef<AddTestResultComponent>,
+    @Inject(MAT_DIALOG_DATA)
+    private data: any,
     private readonly dialog: MatDialog,
     private labValueService: LabValService,
-    private labMeasureService: LabMeasureService
   ) {
 
 
@@ -45,7 +46,6 @@ export class AddTestResultComponent implements OnInit {
     this.testResultForm = this.formBuilderResults.group(
       {
         date: new FormControl(this.testResult.date, [Validators.required]),
-        patientId: new FormControl(this.testResult.patientId, [Validators.required])
       }
     )
 
@@ -132,7 +132,7 @@ export class AddTestResultComponent implements OnInit {
       // @ts-ignore
       this.testResult?.labMeasures = this.labMeasures;
       // @ts-ignore
-      this.testResult?.patientId = this.testResultForm.get('patientId')?.value;
+      this.testResult?.patientId = this.data.patientId;
       console.log(this.testResult);
       if (this.testResult) {
         this.testResultService.createTestResult(this.testResult).subscribe(

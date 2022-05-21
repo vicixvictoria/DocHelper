@@ -76,7 +76,12 @@ export class HomeComponent implements OnInit {
   }
 
   addTestResult(){
-    const dialog = this.dialog.open(AddTestResultComponent, {width: '1200'});
+    const dialog = this.dialog.open(AddTestResultComponent, {
+      data: {
+        patientId: this.selectedPatient.id
+      },
+      width: '1500px'
+      });
     dialog.afterClosed().subscribe( () => {
       this.loadTestResultsOfPatient();
     })

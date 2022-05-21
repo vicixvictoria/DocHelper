@@ -22,9 +22,9 @@
 
     <mat-divider></mat-divider>
     <mat-grid-list style="margin-left: 20%; margin-right: 20%; margin-bottom: 0; text-align: left; justify-content: left" cols="2" rowHeight="2rem" *ngFor="let labMeasure of testResult?.labMeasures" >
-      <mat-grid-tile colspan="1" style="text-align: left; justify-content: left" >{{labMeasure.labValue.labValName}}: </mat-grid-tile>
+      <mat-grid-tile colspan="1" style="text-align: left; justify-content: left" >{{labMeasure.labValue?.labValName}}: </mat-grid-tile>
       <mat-grid-tile colspan="1" style="text-align: left; justify-content: left" >{{labMeasure.measuredValue}}
-        <ng-container *ngIf="labMeasure.labValue.unit!=='keine Einheit'">{{labMeasure.labValue.unit}} </ng-container>
+        <ng-container *ngIf="labMeasure.labValue?.unit!=='keine Einheit'">{{labMeasure.labValue?.unit}} </ng-container>
       </mat-grid-tile>
     </mat-grid-list>
 
@@ -32,6 +32,7 @@
   <mat-divider></mat-divider>
   <mat-card-actions align="end">
     <button mat-button>Analysieren</button>
+    <button mat-button color="primary" (click)="editTestResult(testResult)">Editieren</button>
     <button mat-button color="warn" (click)="deleteTestResult(testResult)">Löschen</button>
   </mat-card-actions>
 

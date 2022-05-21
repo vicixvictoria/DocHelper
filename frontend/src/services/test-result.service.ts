@@ -39,13 +39,18 @@ export class TestResultService {
    * @param id of Patient
    */
   getTestResultsByPatientId(id: number): Observable<TestResult[]> {
-    console.log('Load TestResults of patien with id ' + id);
+    console.log('Load TestResults of patient with id ' + id);
     return this.httpClient.get<TestResult[]>(baseUri + '/patients/' + id);
   }
 
   createTestResult(testResult: TestResult): Observable<TestResult> {
     console.log('Create Test Result');
     return this.httpClient.post<TestResult>(baseUri + '/', testResult);
+  }
+
+  updateTestResult(testResult: TestResult): Observable<TestResult> {
+    console.log('Update test result');
+    return this.httpClient.put<TestResult>(baseUri + '/', testResult);
   }
 
   /**

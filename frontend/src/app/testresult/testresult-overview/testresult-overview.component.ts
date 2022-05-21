@@ -45,7 +45,7 @@ export class TestresultOverviewComponent implements OnInit {
     // @ts-ignore
     this.testResultService.getTestResultsByPatientId(this.patient.id).subscribe({
       next: data => {
-        console.log('received patients', data);
+        console.log('received results', data);
         this.testResults = data;
         console.log(this.testResults);
       },

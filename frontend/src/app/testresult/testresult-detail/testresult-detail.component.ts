@@ -4,6 +4,8 @@ import {TestResult} from "../../../dtos/testResult";
 import {PatientService} from "../../../services/patient.service";
 import {TestResultService} from "../../../services/test-result.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {EditTestResultComponent} from "../edit-test result/edit-testresult.component";
 
 @Component({
   selector: 'app-testresult-detail',
@@ -26,7 +28,8 @@ export class TestresultDetailComponent implements OnInit {
     private patientService: PatientService,
     private testResultService: TestResultService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private readonly dialog: MatDialog
   )
   {
 
@@ -41,7 +44,6 @@ export class TestresultDetailComponent implements OnInit {
 
 
   public loadPatientById(id: number) {
-    // @ts-ignore
     this.patientService.getPatientById(id).subscribe({
       next: data => {
         console.log('received patient', data);
@@ -55,7 +57,6 @@ export class TestresultDetailComponent implements OnInit {
   }
 
   public loadTestResultsById(id: number) {
-    // @ts-ignore
     this.testResultService.getTestResultById(id).subscribe({
       next: data => {
         console.log('received testResult:', data);
@@ -67,6 +68,17 @@ export class TestresultDetailComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
+  }
+
+  editTestResult(testResult: TestResult) {
+    const dialog = this.dialog.open(EditTestResultComponent, {
+      data: {
+        testResult: testResult
+      },
+      width: '1500px'});
+      dialog.afterClosed().subscribe(() => {
+        this.loadTestResultsById(this.testResultId)
+      });
   }
 
   /**

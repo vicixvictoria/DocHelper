@@ -48,7 +48,7 @@ public class TestResultEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @PutMapping
     public TestResultDto updateTestResult(@Valid @RequestBody TestResultDto testResultDto) {
-        LOGGER.info("PUT /api/v1/entries: {} ", testResultDto);
+        LOGGER.info("PUT /api/v1/results: {} ", testResultDto);
 
         TestResult testResult = testResultsMapper.testResultDtoToTestResult(testResultDto);
         testResult = testResultService.updateTestResult(testResult);

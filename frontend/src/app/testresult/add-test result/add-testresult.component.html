@@ -3,13 +3,13 @@
 
   <form (ngSubmit)="addTestResult()" [formGroup]="testResultForm">
     <div style="width: max-content">
-    <mat-form-field class="input-field" appearance="outline">
-      <mat-label>Datum</mat-label>
-      <input formControlName="date" matInput [matDatepicker]="picker" required>
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Datum</mat-label>
+        <input formControlName="date" matInput [matDatepicker]="picker" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
     </div>
     <br>
@@ -18,13 +18,13 @@
 
     <table style="width:95%">
       <thead>
-        <th style="width:40%"> Lab Value:</th>
-        <th style="width:10%"> Gemessener Wert:</th>
-        <th style="width:10%"> Referenzwert höher:</th>
-        <th style="width:10%"> Referenzwert niedriger:</th>
-        <th style="width:10%"> Referenzwert von:</th>
-        <th style="width:10%"> Referenzwert bis:</th>
-        <th style="width:10%"> </th>
+      <th style="width:40%"> Lab Value:</th>
+      <th style="width:10%"> Gemessener Wert:</th>
+      <th style="width:10%"> Referenzwert höher:</th>
+      <th style="width:10%"> Referenzwert niedriger:</th>
+      <th style="width:10%"> Referenzwert von:</th>
+      <th style="width:10%"> Referenzwert bis:</th>
+      <th style="width:10%"> </th>
       </thead>
       <tbody>
       <tr *ngFor="let measure of this.labMeasures">
@@ -46,19 +46,19 @@
 
   </form>
 
-    <br>
+  <br>
 
-    <h3 class="header"> Blutwerte eingeben: </h3>
+  <h3 class="header"> Blutwerte eingeben: </h3>
 
   <form [formGroup]="labMeasureForm" (submit)="addLabMeasure()">
 
 
     <mat-form-field class="input-field" appearance="outline">
-    <mat-select formControlName="labValue">
-      <mat-option *ngFor="let labValue of labValues" [value]="labValue.labValName">
-        {{labValue.labValName}}
-      </mat-option>
-    </mat-select>
+      <mat-select formControlName="labValue">
+        <mat-option *ngFor="let labValue of labValues" [value]="labValue.labValName">
+          {{labValue.labValName}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
@@ -94,4 +94,3 @@
 
   </form>
 </div>
-

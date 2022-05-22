@@ -10,7 +10,5 @@ export class LabMeasure {
     public refValueLower: number,
     public refValueFrom: number,
     public refValueTo: number
-  )
-  {
-  }
+  ) {}
 }

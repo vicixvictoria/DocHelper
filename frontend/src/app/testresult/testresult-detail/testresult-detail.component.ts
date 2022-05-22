@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Patient} from "../../dtos/patient";
-import {TestResult} from "../../dtos/testResult";
-import {PatientService} from "../../services/patient.service";
-import {TestResultService} from "../../services/test-result.service";
+import {Patient} from "../../../dtos/patient";
+import {TestResult} from "../../../dtos/testResult";
+import {PatientService} from "../../../services/patient.service";
+import {TestResultService} from "../../../services/test-result.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {LabMeasure} from "../../dtos/labMeasure";
+import {MatDialog} from "@angular/material/dialog";
+import {EditTestResultComponent} from "../edit-test result/edit-testresult.component";
 
 @Component({
   selector: 'app-testresult-detail',
@@ -31,7 +32,8 @@ export class TestresultDetailComponent implements OnInit {
     private patientService: PatientService,
     private testResultService: TestResultService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private readonly dialog: MatDialog
   )
   {
 
@@ -73,6 +75,17 @@ export class TestresultDetailComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
+  }
+
+  editTestResult(testResult: TestResult) {
+    const dialog = this.dialog.open(EditTestResultComponent, {
+      data: {
+        testResult: testResult
+      },
+      width: '1500px'});
+      dialog.afterClosed().subscribe(() => {
+        this.loadTestResultsById(this.testResultId)
+      });
   }
 
   /**

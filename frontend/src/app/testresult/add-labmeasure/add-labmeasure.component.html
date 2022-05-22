@@ -1,0 +1,46 @@
+<div style="margin:auto; width:fit-content;">
+  <h1 class="header">Blutwerte eingeben</h1>
+
+  <form *ngIf="labMeasure" (ngSubmit)="addLabMeasures()" [formGroup]="labMeasureForm">
+    <div style="width: max-content">
+
+
+      <mat-form-field class="mat-select" style="margin-right: 5px" appearance="outline">
+        <mat-label> Blutwerte </mat-label>
+        <mat-select>
+          <mat-option *ngFor="let labVal of labVals" [value]="labVal.labValName">
+            {{labVal.labValName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" style="margin-right: 5px" appearance="outline">
+        <mat-label>gemessener Wert</mat-label>
+        <input formControlName="measuredValue" matInput required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Refernzwert höher</mat-label>
+        <input formControlName="refValueBigger" matInput required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Refernzwert niedriger</mat-label>
+        <input formControlName="refValueLower" matInput required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Refernzwert von</mat-label>
+        <input formControlName="refValueFrom" matInput required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline">
+        <mat-label>Refernzwert bis</mat-label>
+        <input formControlName="refValueTo" matInput required>
+      </mat-form-field>
+
+    </div>
+      <button color="primary" mat-raised-button type=submit>Submit</button>
+  </form>
+
+</div>

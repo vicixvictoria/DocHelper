@@ -19,8 +19,8 @@ public interface LabValueMapper {
     List<LabValueDto> labValueToLabValueDto(List<LabValue> labValueList);
 
     @Named("labValueDto")
-    Disease labValueDtoToLabValue(LabValueDto labValueDto);
+    LabValue labValueDtoToLabValue(LabValueDto labValueDto);
 
     @IterableMapping(qualifiedByName = "labValueDto")
-    List<Disease> labValueDtoToLabValue(List<LabValueDto> labValueDtoList);
+    List<LabValue> labValueDtoToLabValue(List<LabValueDto> labValueDtoList);
 }

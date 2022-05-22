@@ -4,7 +4,7 @@ import {PatientService} from "../../services/patient.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPatientComponent} from "./add-patient/add-patient.component";
 import {EditPatientComponent} from "./edit-patient/edit-patient.component";
-import {TestresultOverviewComponent} from "../testresult-overview/testresult-overview.component";
+import {TestresultOverviewComponent} from "../testresult/testresult-overview/testresult-overview.component";
 
 @Component({
   selector: 'app-patient',

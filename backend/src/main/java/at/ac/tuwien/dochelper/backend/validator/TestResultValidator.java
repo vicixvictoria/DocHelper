@@ -21,12 +21,8 @@ public class TestResultValidator {
     }
 
     public void validateNewTestResult (TestResult testResult){
-        if(testResult==null|| testResult.getId()==0){
+        if(testResult==null){
             throw new ValidationException("TestResult must not be empty.");
-            //exception
-        }
-        if (testResult.getId()==null){
-            throw new ValidationException("ResultId must not be null.");
             //exception
         }
         if (testResult.getDate() == null){

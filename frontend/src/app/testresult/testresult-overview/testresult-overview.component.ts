@@ -1,12 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {TestResultService} from "../../services/test-result.service";
-import {TestResult} from "../../dtos/testResult";
+import {TestResultService} from "../../../services/test-result.service";
+import {TestResult} from "../../../dtos/testResult";
 import {Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
-import {PatientService} from "../../services/patient.service";
+import {PatientService} from "../../../services/patient.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {Patient} from "../../dtos/patient";
-import {LabMeasure} from "../../dtos/labMeasure";
+import {Patient} from "../../../dtos/patient";
 
 @Component({
   selector: 'app-testresult-overview',

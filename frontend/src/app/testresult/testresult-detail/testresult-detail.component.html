@@ -64,9 +64,10 @@
 
     </div>
   </mat-card-content>
-
+  <mat-divider></mat-divider>
   <mat-card-actions align="end">
     <button mat-button>Analysieren</button>
+    <button mat-button color="primary" (click)="editTestResult(testResult)">Editieren</button>
     <button mat-button color="warn" (click)="deleteTestResult(testResult)">Löschen</button>
   </mat-card-actions>
 

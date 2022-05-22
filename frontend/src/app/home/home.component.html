@@ -58,7 +58,10 @@
 
       </ng-container>
         </mat-radio-group>
-      <div style="display: flex; justify-content: center; margin-top: 20px">
+
+        <mat-option (click)="addTestResult()" style="font-size: medium"><mat-icon color="primary">add</mat-icon>Befund anlegen</mat-option>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px">
         <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter"  mat-button matStepperPrevious>Zurück</button>
         <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" color="primary" mat-button matStepperNext (click)="selectTestResult()">Weiter</button>
       </div>

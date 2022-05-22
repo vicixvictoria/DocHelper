@@ -21,7 +21,7 @@ public class LabValue {
 
     @NotNull
     @Column(name = "unit")
-    private  String unit ;
+    private String unit ;
 
 
     public LabValue(){

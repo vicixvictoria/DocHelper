@@ -5,6 +5,7 @@ import {PatientComponent} from "./patient/patient.component";
 import {TestResult} from "../dtos/testResult";
 import {TestresultDetailComponent} from "./testresult/testresult-detail/testresult-detail.component";
 import {DiseaseComponent} from "./disease/disease.component";
+import {TestresultOverviewComponent} from "./testresult/testresult-overview/testresult-overview.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'patients', component: PatientComponent},
   {path: 'testresults/:id/view', component: TestresultDetailComponent},
   {path: 'diseases', component: DiseaseComponent},
+  {path: 'testresultsoverview', component: TestresultOverviewComponent},
 ];
 
 @NgModule({

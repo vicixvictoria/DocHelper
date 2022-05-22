@@ -20,6 +20,7 @@ export class TestresultOverviewComponent implements OnInit {
   testResults: TestResult[];
   patient: Patient;
 
+
   constructor(
     private testResultService: TestResultService,
     private router: Router,
@@ -45,7 +46,7 @@ export class TestresultOverviewComponent implements OnInit {
     // @ts-ignore
     this.testResultService.getTestResultsByPatientId(this.patient.id).subscribe({
       next: data => {
-        console.log('received results', data);
+        console.log('received patients', data);
         this.testResults = data;
         console.log(this.testResults);
       },

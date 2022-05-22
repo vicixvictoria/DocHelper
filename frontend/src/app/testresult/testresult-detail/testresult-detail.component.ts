@@ -20,6 +20,10 @@ export class TestresultDetailComponent implements OnInit {
   testResult: TestResult;
   // @ts-ignore
   testResultId: number;
+  // @ts-ignore
+  labMeasures: LabMeasure[];
+
+  displayedColumns: string[] = ['name', 'value', 'refValue'];
 
   error = false;
   errorMessage = '';
@@ -44,6 +48,7 @@ export class TestresultDetailComponent implements OnInit {
 
 
   public loadPatientById(id: number) {
+    // @ts-ignore
     this.patientService.getPatientById(id).subscribe({
       next: data => {
         console.log('received patient', data);
@@ -57,11 +62,13 @@ export class TestresultDetailComponent implements OnInit {
   }
 
   public loadTestResultsById(id: number) {
+    // @ts-ignore
     this.testResultService.getTestResultById(id).subscribe({
       next: data => {
         console.log('received testResult:', data);
         this.testResult = data;
         console.log(this.testResult);
+        this.labMeasures = this.testResult.labMeasures;
         this.loadPatientById(this.testResult.patientId);
       },
       error: error => {

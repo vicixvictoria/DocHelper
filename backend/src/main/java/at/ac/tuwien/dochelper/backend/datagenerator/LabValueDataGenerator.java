@@ -24,6 +24,7 @@ public class LabValueDataGenerator {
     @Autowired
     @PostConstruct
     public void generateLabValEntries() {
+        labValueRepository.deleteAll();
        // labValueRepository.deleteAll();
 
         LabValue labVal1 = new LabValue();
@@ -312,7 +313,7 @@ public class LabValueDataGenerator {
         save(labVal57);
 
         LabValue labVal58 = new LabValue();
-        labVal58.setLabValName("Hb1Ac");
+        labVal58.setLabValName("HbA1c");
         labVal58.setUnit("%");
         save(labVal58);
 
@@ -382,7 +383,7 @@ public class LabValueDataGenerator {
         save(labVal71);
 
         LabValue labVal72 = new LabValue();
-        labVal72.setLabValName("BUN (Harnstoff)");
+        labVal72.setLabValName("BUN (Harnstoff-N)");
         labVal72.setUnit("mg/dl");
         save(labVal72);
 
@@ -421,10 +422,10 @@ public class LabValueDataGenerator {
         labVal79.setUnit("mmol/l");
         save(labVal79);
 
-        LabValue labVal80 = new LabValue();
+       /* LabValue labVal80 = new LabValue();
         labVal80.setLabValName("Phosphat");
         labVal80.setUnit("mmol/l");
-        save(labVal80);
+        save(labVal80);*/
 
         LabValue labVal81 = new LabValue();
         labVal81.setLabValName("Transferrin");
@@ -446,11 +447,28 @@ public class LabValueDataGenerator {
         labVal84.setUnit("ng/ml");
         save(labVal84);
 
+        //einheiten anpassen
+        LabValue labVal85 = new LabValue();
+        labVal85.setLabValName("Chlorid");
+        labVal85.setUnit("ng/ml");
+        save(labVal85);
+
+        LabValue labVal86 = new LabValue();
+        labVal86.setLabValName("Harnsaeure");
+        labVal86.setUnit("ng/ml");
+        save(labVal86);
+
+        LabValue labVal87 = new LabValue();
+        labVal87.setLabValName("Lymphozyten rel.");
+        labVal87.setUnit("%");
+        save(labVal87);
+        
+
     }
 
     public void save(LabValue labValue) {
-        if(labValueRepository.findLabValueByLabValName(labValue.getLabValName()) == null){
+        //if(labValueRepository.findLabValueByLabValName(labValue.getLabValName()) == null){
             labValueRepository.save(labValue);
-        }
-        }
+        //}
+    }
 }

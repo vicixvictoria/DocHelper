@@ -49,7 +49,7 @@ public class TestResultDataGenerator {
         tryToSave(testResult1);
 
 
-      /*  TestResult testResult2 = new TestResult();
+        TestResult testResult2 = new TestResult();
         testResult2.setId(2L);
         testResult2.setPatientId(4L);
         testResult2.setDate(LocalDate.parse("2020-06-18"));
@@ -57,7 +57,7 @@ public class TestResultDataGenerator {
         measureList2.add(labMeasureRepository.getById(85L));
         measureList2.add(labMeasureRepository.getById(86L));
         testResult2.setLabMeasures(measureList2);
-        tryToSave(testResult2);*/
+        tryToSave(testResult2);
 
         //Anna Beiser
         TestResult testResult3 = new TestResult();

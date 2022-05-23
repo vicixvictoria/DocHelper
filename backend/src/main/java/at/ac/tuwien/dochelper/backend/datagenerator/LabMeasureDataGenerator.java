@@ -666,10 +666,11 @@ public class LabMeasureDataGenerator {
 
         LabMeasure labMeasure83 = new LabMeasure();
         labMeasure83.setId(83L);
-        labMeasure83.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin indirekt "));
-        labMeasure83.setMeasuredValue(3.2f);
-        labMeasure83.setRefValueLower(1f);
+        labMeasure83.setLabValue(labValueRepository.findLabValueByLabValName("Bilirubin indirekt"));
+        labMeasure83.setMeasuredValue(3.4f);
+        labMeasure83.setRefValueLower(1.2f);
         tryToSave(labMeasure83);
+
 
         LabMeasure labMeasure84 = new LabMeasure();
         labMeasure84.setId(84L);

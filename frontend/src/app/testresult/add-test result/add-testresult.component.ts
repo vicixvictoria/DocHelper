@@ -129,6 +129,11 @@ export class AddTestResultComponent implements OnInit {
 
       // @ts-ignore
       this.testResult?.date = this.testResultForm.get('date')?.value;
+      const now = new Date()
+      this.testResult?.date.setHours(now.getHours())
+      this.testResult?.date.setMinutes(now.getMinutes())
+      this.testResult?.date.setSeconds(now.getSeconds())
+      this.testResult?.date.setMilliseconds(now.getMilliseconds())
       // @ts-ignore
       this.testResult?.labMeasures = this.labMeasures;
       // @ts-ignore

@@ -66,6 +66,11 @@ export class EditTestResultComponent implements OnInit {
     console.log('Edit Test Result')
     if (this.testResultForm.valid) {
       this.testResult.date = this.testResultForm.get('date')?.value;
+      const now = new Date()
+      this.testResult?.date.setHours(now.getHours())
+      this.testResult?.date.setMinutes(now.getMinutes())
+      this.testResult?.date.setSeconds(now.getSeconds())
+      this.testResult?.date.setMilliseconds(now.getMilliseconds())
       this.testResult.labMeasures = this.labMeasures;
       console.log(this.labMeasures);
       console.log(this.testResult);

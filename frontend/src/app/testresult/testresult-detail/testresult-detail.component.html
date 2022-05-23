@@ -1,4 +1,5 @@
 <mat-card class="test-result-card" [class.mat-elevation-z8]="true">
+  <button mat-raised-button class="btn btn-primary float-left" routerLink="/patients" type="button">Zurück</button>
   <mat-card-title style="text-align: center">Labor Blutbefund</mat-card-title>
   <mat-card-subtitle style="text-align: center">{{testResult?.date}} </mat-card-subtitle>
   <mat-card-content style="justify-content: center">
@@ -66,10 +67,13 @@
   </mat-card-content>
   <mat-divider></mat-divider>
   <mat-card-actions align="end">
-    <button mat-button>Analysieren</button>
-    <button mat-button color="primary" (click)="editTestResult(testResult)">Editieren</button>
+
     <button mat-button color="warn" (click)="deleteTestResult(testResult)">Löschen</button>
-    <button class="btn btn-primary float-left" routerLink="/patients" type="button">Zurück</button>
+    <button mat-button color="primary" (click)="editTestResult(testResult)">Editieren</button>
+
+    <button mat-button>Analysieren</button>
+
   </mat-card-actions>
+
 
 </mat-card>

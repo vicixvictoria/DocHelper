@@ -574,32 +574,32 @@ public class LabMeasureDataGenerator {
         labMeasure71.setId(71L);
         labMeasure71.setLabValue(labValueRepository.findLabValueByLabValName("Kalium"));
         labMeasure71.setMeasuredValue(4.5f);
-        labMeasure71.setRefValueBigger(3.5f);
-        labMeasure71.setRefValueBigger(5.1f);
+        labMeasure71.setRefValueFrom(3.5f);
+        labMeasure71.setRefValueTo(5.1f);
         tryToSave(labMeasure71);
 
         LabMeasure labMeasure72 = new LabMeasure();
         labMeasure72.setId(72L);
         labMeasure72.setLabValue(labValueRepository.findLabValueByLabValName("Kalzium, gesamt"));
         labMeasure72.setMeasuredValue(2.4f);
-        labMeasure72.setRefValueBigger(2.2f);
-        labMeasure72.setRefValueBigger(2.65f);
+        labMeasure72.setRefValueFrom(2.2f);
+        labMeasure72.setRefValueTo(2.65f);
         tryToSave(labMeasure72);
 
         LabMeasure labMeasure73 = new LabMeasure();
         labMeasure73.setId(73L);
         labMeasure73.setLabValue(labValueRepository.findLabValueByLabValName("Kreatinin"));
         labMeasure73.setMeasuredValue(0.9f);
-        labMeasure73.setRefValueBigger(0.51f);
-        labMeasure73.setRefValueBigger(0.95f);
+        labMeasure73.setRefValueFrom(0.51f);
+        labMeasure73.setRefValueTo(0.95f);
         tryToSave(labMeasure73);
 
         LabMeasure labMeasure74 = new LabMeasure();
         labMeasure74.setId(74L);
         labMeasure74.setLabValue(labValueRepository.findLabValueByLabValName("LDH"));
         labMeasure74.setMeasuredValue(161f);
-        labMeasure74.setRefValueBigger(1f);
-        labMeasure74.setRefValueBigger(223f);
+        labMeasure74.setRefValueFrom(1f);
+        labMeasure74.setRefValueTo(223f);
         tryToSave(labMeasure74);
 
         LabMeasure labMeasure75 = new LabMeasure();

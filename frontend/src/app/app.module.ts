@@ -36,6 +36,16 @@ import {MatRadioModule} from "@angular/material/radio";
 import {AddTestResultComponent} from "./testresult/add-test result/add-testresult.component";
 import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
+import {AnalysisComponent} from "./analysis/analysis.component";
+import {
+  IgxDataChartCoreModule,
+  IgxDataChartVerticalCategoryModule,
+  IgxLegendModule,
+  IgxDataChartInteractivityModule
+} from "igniteui-angular-charts";
+import {NgChartsModule} from 'ng2-charts';
+import {NgApexchartsModule} from "ng-apexcharts";
+
 
 @NgModule({
   declarations: [
@@ -50,7 +60,8 @@ import {EditTestResultComponent} from "./testresult/edit-test result/edit-testre
     DiseaseComponent,
     AddTestResultComponent,
     AddLabMeasureComponent,
-    EditTestResultComponent
+    EditTestResultComponent,
+    AnalysisComponent
   ],
   imports: [
     MatSelectModule,
@@ -77,7 +88,13 @@ import {EditTestResultComponent} from "./testresult/edit-test result/edit-testre
     MatCheckboxModule,
     MatListModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    IgxDataChartCoreModule,
+    IgxDataChartVerticalCategoryModule,
+    IgxLegendModule,
+    IgxDataChartInteractivityModule,
+    NgChartsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

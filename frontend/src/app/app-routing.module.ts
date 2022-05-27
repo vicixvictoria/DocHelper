@@ -6,6 +6,7 @@ import {TestResult} from "../dtos/testResult";
 import {TestresultDetailComponent} from "./testresult/testresult-detail/testresult-detail.component";
 import {DiseaseComponent} from "./disease/disease.component";
 import {TestresultOverviewComponent} from "./testresult/testresult-overview/testresult-overview.component";
+import {AnalysisComponent} from "./analysis/analysis.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'testresults/:id/view', component: TestresultDetailComponent},
   {path: 'diseases', component: DiseaseComponent},
   {path: 'testresultsoverview', component: TestresultOverviewComponent},
+  {path: 'analysis', component: AnalysisComponent},
 ];
 
 @NgModule({

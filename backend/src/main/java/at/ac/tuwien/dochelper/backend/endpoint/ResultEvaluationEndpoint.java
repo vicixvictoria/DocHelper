@@ -45,4 +45,5 @@ public class ResultEvaluationEndpoint {
         List<DiseaseScore> diseaseScoreList = resultEvaluationService.evaluateTestResult(testResult);
         return diseaseScoreMapper.diseaseScoreToDiseaseScoreDto(diseaseScoreList);
     }
+
 }

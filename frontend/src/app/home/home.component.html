@@ -70,9 +70,10 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Analyse</ng-template>
-    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse Ergebnis für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">mit dem Befund vom:</h1>
     <div>
-      <button mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" type="button">analsieren</button>
+      <button mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="selectedPatient" type="button">analsieren</button>
       <div style="display: flex; justify-content: center;">
       <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" mat-button matStepperPrevious>Zurück</button>
       <button style=" height: 50px;font-size: x-large; font-weight: lighter" color="warn" mat-button (click)="stepper.reset()">Neustart</button>

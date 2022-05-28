@@ -14,6 +14,8 @@ import {
 } from "ng-apexcharts";
 import {DiseaseScore} from "../../dtos/diseaseScore";
 import {Disease} from "../../dtos/disease";
+import {ActivatedRoute} from "@angular/router";
+import {Patient} from "../../dtos/patient";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries| any;
@@ -41,10 +43,11 @@ export class AnalysisComponent implements OnInit {
   analizedDiseases1: Array<DiseaseScore>[];
   // @ts-ignore
   analizedDiseases: Array<DiseaseScore>[];
-  id = 1;
   // @ts-ignore
   datas: Array[];
   //dataD: DiseaseScore[];
+  // @ts-ignore
+  patientId: number;
 
 
 
@@ -52,6 +55,7 @@ export class AnalysisComponent implements OnInit {
   constructor(
     private readonly dialog: MatDialog,
     private diseaseService: DiseaseService,
+    private route: ActivatedRoute,
   ) {
     // @ts-ignore
     let dataD= this.analizedDiseases1;
@@ -117,7 +121,13 @@ export class AnalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadAnalizedDiseases(this.id);
+    this.route.queryParams.subscribe(
+      params => {
+        this.patientId = params['id'];
+      }
+    )
+
+    this.loadAnalizedDiseases(this.patientId);
     this.analizedDiseases1=this.analizedDiseases;
   }
 

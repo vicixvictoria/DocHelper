@@ -63,7 +63,7 @@ public class DiseaseDataGenerator {
         disease_pbc2.setDescription("Die primär biliäre Cholangitis (PBC) ist eine mutmaßliche autoimmunde Lebererkrankung. Es kommt zu einer chronisch verlaufenden, nicht-eitrigen granulomatösen Entzündung der kleinen intrahepatischen Gallenwege.");
         disease_pbc2.setIcdCode("K74.3");
         disease_pbc2.setPregnant(false);
-        disease_pbc2.setThreshold(91);
+        disease_pbc2.setThreshold(88);
         threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"),"Primär biliäre Cholangitis (PBC) 2", 35, Type.ELEVATED, 14));
         threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"),"Primär biliäre Cholangitis (PBC) 2", 35, Type.ELEVATED, 15));
         threshold_pbc2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"),"Primär biliäre Cholangitis (PBC) 2", 35, Type.ELEVATED, 15));
@@ -82,7 +82,7 @@ public class DiseaseDataGenerator {
         disease_leberversagen.setDescription("Die akute Leberdystrophie ist eine schwere Störung oder ein Ausfall der Leberfunktion mit hepatischer Enzephalopathie die zum Tode führen kann.");
         disease_leberversagen.setIcdCode("K72.0");
         disease_leberversagen.setPregnant(false);
-        disease_leberversagen.setThreshold(90);
+        disease_leberversagen.setThreshold(87);
         threshold_leberversagen.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"), "akutes Leberversagen",0,Type.ELEVATED,12));
         threshold_leberversagen.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "akutes Leberversagen",0,Type.ELEVATED,12));
         threshold_leberversagen.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"), "akutes Leberversagen",0,Type.ELEVATED,12));

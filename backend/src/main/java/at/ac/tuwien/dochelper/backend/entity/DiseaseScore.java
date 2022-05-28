@@ -29,6 +29,9 @@ public class DiseaseScore {
         this.score = score;
     }
 
+    public void addScore(Double score) {
+        this.score = this.score + score;
+    }
     @Override
     public String toString() {
         return "DiseaseScore{" +

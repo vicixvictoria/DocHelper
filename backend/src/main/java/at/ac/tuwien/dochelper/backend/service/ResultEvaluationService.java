@@ -20,15 +20,11 @@ public class ResultEvaluationService {
 
     private final EvaluationAlgorithm evaluationAlgorithm;
     private final DiseaseRepository diseaseRepository;
-    private final TestValueThresholdRepository testValueThresholdRepository;
-    private final LabValueRepository labValueRepository;
 
     @Autowired
-    public ResultEvaluationService(EvaluationAlgorithm evaluationAlgorithm, DiseaseRepository diseaseRepository, TestValueThresholdRepository testValueThresholdRepository, LabValueRepository labValueRepository) {
+    public ResultEvaluationService(EvaluationAlgorithm evaluationAlgorithm, DiseaseRepository diseaseRepository) {
         this.evaluationAlgorithm = evaluationAlgorithm;
         this.diseaseRepository = diseaseRepository;
-        this.testValueThresholdRepository = testValueThresholdRepository;
-        this.labValueRepository = labValueRepository;
     }
 
 
@@ -39,10 +35,8 @@ public class ResultEvaluationService {
             throw new ValidationException("test result must contain measures to be analyzed");
         }
         List<Disease> diseaseList = diseaseRepository.findAll();
-        List<LabValue> labValueList = labValueRepository.findAll();
-        List<TestValueThreshold> testValueThresholdList = testValueThresholdRepository.findAll();
 
-        return evaluationAlgorithm.evaluateResult(testResult, labValueList, diseaseList, testValueThresholdList);
+        return evaluationAlgorithm.evaluateResult(testResult, diseaseList);
     }
 
 }

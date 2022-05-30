@@ -52,7 +52,7 @@
         <mat-divider></mat-divider>
         <strong style="font-weight: bold; margin: 5px">Datum:</strong>   <a style="margin-right: 170px">{{testResult.date}}</a>
 
-        <mat-radio-button style="margin-top: 12px; margin-bottom: 12px" color="primary" class="mat-radio-button"  [value]="testResult">
+        <mat-radio-button style="margin-top: 12px; margin-bottom: 12px" color="primary" class="mat-radio-button" [value]="testResult">
           <a style="color: #673ab7" >Befund auswählen</a>
         </mat-radio-button>
 
@@ -73,7 +73,7 @@
     <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
     <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">mit dem Befund vom:</h1>
     <div>
-      <button mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="selectedPatient" type="button">analsieren</button>
+      <button mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="analizedDiseases" type ="button">analsieren</button>
       <div style="display: flex; justify-content: center;">
       <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" mat-button matStepperPrevious>Zurück</button>
       <button style=" height: 50px;font-size: x-large; font-weight: lighter" color="warn" mat-button (click)="stepper.reset()">Neustart</button>

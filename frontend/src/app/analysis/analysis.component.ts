@@ -16,6 +16,7 @@ import {DiseaseScore} from "../../dtos/diseaseScore";
 import {Disease} from "../../dtos/disease";
 import {ActivatedRoute} from "@angular/router";
 import {Patient} from "../../dtos/patient";
+import {TestResult} from "../../dtos/testResult";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries| any;
@@ -40,14 +41,16 @@ export class AnalysisComponent implements OnInit {
   error = false;
   errorMessage = '';
   // @ts-ignore
-  analizedDiseases1: Array<DiseaseScore>[];
+  analizedDiseases1: Array<DiseaseScore>;
   // @ts-ignore
-  analizedDiseases: Array<DiseaseScore>[];
+  analizedDiseases2: Array<DiseaseScore>;
+  // @ts-ignore
+  analizedDiseases: Array<DiseaseScore>;
   // @ts-ignore
   datas: Array[];
   //dataD: DiseaseScore[];
   // @ts-ignore
-  patientId: number;
+  testResult: TestResult;
 
 
 
@@ -57,8 +60,17 @@ export class AnalysisComponent implements OnInit {
     private diseaseService: DiseaseService,
     private route: ActivatedRoute,
   ) {
+
+    this.route.queryParams.subscribe(
+      params => {
+        this.analizedDiseases1 = params['disease'];
+        this.analizedDiseases2 = params['score'];
+      }
+    )
     // @ts-ignore
     let dataD= this.analizedDiseases1;
+    // @ts-ignore
+    let dataS= this.analizedDiseases2;
     /*let dataD: number [] [] = [[40, 20],
       [30, 40],
       [10,80]
@@ -69,11 +81,11 @@ export class AnalysisComponent implements OnInit {
 
 
    for(let i=0; i< dataD.length; i++){
-     let dat1= dataD[i][0]
-     let dat2= dataD[i][1]
-     dataDname.push(dat1.disease.diseaseName);
-     dataDthreshold.push(dat1.disease.threshold)
-     dataScore.push(dat2.score);
+     let dat1= dataD[i].disease
+     let dat2= dataS[i].score
+     dataDname.push(dat1.diseaseName);
+     dataDthreshold.push(dat1.threshold)
+     dataScore.push(dat2);
    }
 
     // @ts-ignore
@@ -121,18 +133,13 @@ export class AnalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(
-      params => {
-        this.patientId = params['id'];
-      }
-    )
 
-    this.loadAnalizedDiseases(this.patientId);
-    this.analizedDiseases1=this.analizedDiseases;
+    /*this.loadAnalizedDiseases(this.testResult);
+    this.analizedDiseases1=this.analizedDiseases;*/
   }
 
-  public loadAnalizedDiseases(id: number){
-    this.diseaseService.getAnalizedDiseases(id).subscribe({
+  /*public loadAnalizedDiseases(testResult: TestResult){
+    this.diseaseService.createAnalizys(testResult).subscribe({
       next: data1 => {
         console.log('received analized Diseases', data1);
         this.analizedDiseases = data1;
@@ -142,7 +149,7 @@ export class AnalysisComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
-  }
+  }*/
 
   private defaultServiceErrorHandling(error: any){
     console.log(error);

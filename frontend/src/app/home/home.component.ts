@@ -10,6 +10,9 @@ import {TestResultService} from "../../services/test-result.service";
 import {AddPatientComponent} from "../patient/add-patient/add-patient.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AddTestResultComponent} from "../testresult/add-test result/add-testresult.component";
+import {AnalysisComponent} from "../analysis/analysis.component";
+import {DiseaseService} from "../../services/disease.service";
+import {DiseaseScore} from "../../dtos/diseaseScore";
 
 @Component({
   selector: 'app-home',
@@ -40,6 +43,8 @@ export class HomeComponent implements OnInit {
   testResults: TestResult[];
   error = false;
   errorMessage = '';
+  // @ts-ignore
+  analizedDiseases: Array<DiseaseScore>;
 
   // @ts-ignore
   @ViewChild(MatAutocompleteTrigger) trigger;
@@ -47,6 +52,7 @@ export class HomeComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private patientService: PatientService,
               private testResultService: TestResultService,
+              private diseaseService: DiseaseService,
               private readonly dialog: MatDialog)
   {
   }
@@ -108,9 +114,22 @@ export class HomeComponent implements OnInit {
   }
 
   public selectTestResult(){
-
       console.log(this.testResultControl.value)
+      this.loadAnalizedDiseases(this.testResultControl.value);
 
+  }
+
+  public loadAnalizedDiseases(testresult: TestResult){
+    console.log("analize Diseases");
+    this.diseaseService.createAnalizys(testresult).subscribe({
+      next: data1 => {
+        console.log('received analized Diseases', data1);
+        this.analizedDiseases = data1;
+      },
+      error: error => {
+        this.defaultServiceErrorHandling(error);
+      }
+    });
   }
 
   /**

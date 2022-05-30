@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment";
 import {Disease} from "../dtos/disease";
 import {DiseaseScore} from "../dtos/diseaseScore";
+import {TestResult} from "../dtos/testResult";
 
 const baseUri = environment.backendUrl + '/diseases';
 
@@ -23,6 +24,11 @@ export class DiseaseService {
     console.log('Load all Patients');
     return this.httpClient.get<Disease[]>(baseUri);
   }
+
+  createAnalizys(testresult: TestResult): Observable<Array<DiseaseScore>>{
+    return this.httpClient.post<Array<DiseaseScore>>(baseUri + '/', testresult);
+  }
+
 
   getAnalizedDiseases(id: number): Observable<Array<DiseaseScore>[]>{
     console.log('get analized diseases for Patient:'+id);

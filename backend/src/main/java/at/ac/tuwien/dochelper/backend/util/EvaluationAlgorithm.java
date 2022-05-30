@@ -230,6 +230,6 @@ public class EvaluationAlgorithm {
         }
 
         // removes Disease Score if score is under disease specific threshold
-        return result.stream().filter(r -> r.getScore() > r.getDisease().getThreshold()).toList();
+        return result.stream().filter(r -> r.getScore() >= r.getDisease().getThreshold()).toList();
     }
 }

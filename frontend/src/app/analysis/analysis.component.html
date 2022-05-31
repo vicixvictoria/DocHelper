@@ -3,6 +3,21 @@
   </h1>
 </div>
 
+<table style="width:95%">
+  <thead>
+  <th style="width:40%"> Name:</th>
+  <th style="width:10%"> Threshold:</th>
+  <th style="width:10%"> Score:</th>
+  <th style="width:10%"> </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let scores of this.analizedDiseases">
+    <td> {{scores.disease.diseaseName}}</td>
+    <td> {{scores.disease.threshold}}</td>
+    <td> {{scores.score}}</td>
+  </tr>
+  </tbody>
+</table>
 
 <div id="chart">
   <apx-chart
@@ -14,3 +29,5 @@
     [stroke]="chartOptions.stroke"
   ></apx-chart>
 </div>
+
+

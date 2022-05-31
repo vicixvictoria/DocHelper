@@ -47,8 +47,11 @@ export class HomeComponent implements OnInit {
   // @ts-ignore
   analizedDiseases: Array<DiseaseScore>;
 
+
   // @ts-ignore
   @ViewChild(MatAutocompleteTrigger) trigger;
+
+
 
   constructor(private _formBuilder: FormBuilder,
               private patientService: PatientService,
@@ -117,11 +120,11 @@ export class HomeComponent implements OnInit {
 
   public selectTestResult(){
       console.log(this.testResultControl.value)
-      this.loadAnalizedDiseases(this.testResultControl.value);
+      //this.loadAnalizedDiseases(this.testResultControl.value);
 
   }
 
-  public loadAnalizedDiseases(testresult: TestResult){
+  /*public loadAnalizedDiseases(testresult: TestResult){
     console.log("analize Diseases");
     this.analysisService.createAnalizys(testresult).subscribe({
       next: data1 => {
@@ -132,7 +135,8 @@ export class HomeComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
-  }
+    this.analysisService.diseasescore = this.analizedDiseases;
+  }*/
 
   /**
    * Fetches all patients from the backend.

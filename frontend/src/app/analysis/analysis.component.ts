@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DiseaseService} from "../../services/disease.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ViewChild } from "@angular/core";
@@ -17,6 +17,8 @@ import {Disease} from "../../dtos/disease";
 import {ActivatedRoute} from "@angular/router";
 import {Patient} from "../../dtos/patient";
 import {TestResult} from "../../dtos/testResult";
+import {AnalysisService} from "../../services/analysis.service";
+import {TestResultService} from "../../services/test-result.service";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries| any;
@@ -36,69 +38,130 @@ export type ChartOptions = {
 export class AnalysisComponent implements OnInit {
 
   @ViewChild("chart") chart: ChartComponent | undefined;
+  // @ts-ignore
   public chartOptions: Partial<ChartOptions>;
 
   error = false;
   errorMessage = '';
   // @ts-ignore
-  analizedDiseases1: Array<DiseaseScore>;
+  analizedDiseases1: Array<Disease>;
   // @ts-ignore
-  analizedDiseases2: Array<DiseaseScore>;
+  analizedDiseases2: Array<number>;
   // @ts-ignore
-  analizedDiseases: Array<DiseaseScore>;
+  analizedDiseases: DiseaseScore[];
   // @ts-ignore
   datas: Array[];
   //dataD: DiseaseScore[];
   // @ts-ignore
-  testResult: TestResult;
+  testResultId: number;
+  // @ts-ignore
+  testResult: Observable<TestResult>;
+  // @ts-ignore
+  data2: Disease[] = {};
+  // @ts-ignore
+  data3: number[] = {};
 
+  dataDname: any[] = [];
+  dataDthreshold: any[] =[];
+  dataScore: any[] = [];
 
+  displayedColumns: string[] = ['diseaseName', 'threshold'];
+  translations: string[] = ['Name', 'Threshold'];
+  private dataDisease: Disease[] = [];
+  private dataNumber: number[] = [];
 
 
   constructor(
     private readonly dialog: MatDialog,
     private diseaseService: DiseaseService,
     private route: ActivatedRoute,
+    private analysisService: AnalysisService,
+    private testResultService: TestResultService
   ) {
+
+  }
+
+  ngOnInit(): void {
 
     this.route.queryParams.subscribe(
       params => {
-        this.analizedDiseases1 = params['disease'];
-        this.analizedDiseases2 = params['score'];
+        this.testResultId = params['id'];
       }
     )
+
+    this.loadTestResultsById(this.testResultId);
+    console.log(this.testResultId);
+
+  }
+
+
+  public loadTestResultsById(id: number) {
     // @ts-ignore
-    let dataD= this.analizedDiseases1;
-    // @ts-ignore
-    let dataS= this.analizedDiseases2;
-    /*let dataD: number [] [] = [[40, 20],
-      [30, 40],
-      [10,80]
-    ];*/
-    let dataDname = [];
+    this.testResultService.getTestResultById(id).subscribe({
+      next: data => {
+        console.log('received testResult:', data);
+        this.testResult = data;
+        console.log(this.testResult);
+        this.loadAnalizedDiseases(this.testResult);
+      },
+      error: error => {
+        this.defaultServiceErrorHandling(error);
+      }
+    });
+  }
+
+  public loadAnalizedDiseases(testresult: TestResult){
+    this.analysisService.createAnalizys(testresult).subscribe({
+      next: data1 => {
+        console.log('received analized Diseases', data1);
+        this.analizedDiseases = data1;
+        console.log('analized', this.analizedDiseases);
+        for(let i=0; i<this.analizedDiseases.length; i++){
+          console.log(this.analizedDiseases[i].disease.diseaseName);
+          this.data2[i] = this.analizedDiseases[i].disease;
+          this.data3[i] = this.analizedDiseases[i].score;
+          this.dataDisease[i] = this.data2[i];
+          this.dataNumber[i] = this.data3[i];
+        }
+        this.analysis(this.dataNumber, this.dataDisease);
+      },
+      error: error => {
+        this.defaultServiceErrorHandling(error);
+      }
+    });
+  }
+
+  public analysis(data3: number[], data2: Disease[]){
+    console.log('test' + data2);
     let dataScore = [];
-    let dataDthreshold = [];
+    //console.log(dataScore);
+    //let dataDthreshold = [];
 
+    for (let i = 0; i <data2.length; i++) {
+      // @ts-ignore
+      this.dataDname[i] = data2[i].diseaseName;
+      // @ts-ignore
+      this.dataDthreshold[i] = data2[i].threshold;
+      console.log('test' + this.dataDthreshold);
+      // @ts-ignore
+      this.dataScore[i] = data3[i];
+    }
 
-   for(let i=0; i< dataD.length; i++){
-     let dat1= dataD[i].disease
-     let dat2= dataS[i].score
-     dataDname.push(dat1.diseaseName);
-     dataDthreshold.push(dat1.threshold)
-     dataScore.push(dat2);
-   }
+    console.log(this.dataDthreshold);
+    console.log(this.dataScore);
+    console.log(this.dataDname)
 
     // @ts-ignore
     this.chartOptions = {
       series: [
         {
           name: "Krankheit",
-          data: dataDthreshold,
+          data: this.dataScore,
         },
         {
           name: "Threshold",
 
-          data: dataScore,
+          data: this.dataDthreshold,
         }
       ],
       chart: {
@@ -127,29 +190,10 @@ export class AnalysisComponent implements OnInit {
         colors: ["#fff"]
       },
       xaxis: {
-        categories: dataDname
+        categories: this.dataDname
       }
     };
   }
-
-  ngOnInit(): void {
-
-    /*this.loadAnalizedDiseases(this.testResult);
-    this.analizedDiseases1=this.analizedDiseases;*/
-  }
-
-  /*public loadAnalizedDiseases(testResult: TestResult){
-    this.diseaseService.createAnalizys(testResult).subscribe({
-      next: data1 => {
-        console.log('received analized Diseases', data1);
-        this.analizedDiseases = data1;
-        console.log(this.analizedDiseases);
-      },
-      error: error => {
-        this.defaultServiceErrorHandling(error);
-      }
-    });
-  }*/
 
   private defaultServiceErrorHandling(error: any){
     console.log(error);

@@ -1,5 +1,5 @@
 import {TestResult} from "../dtos/testResult";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {DiseaseScore} from "../dtos/diseaseScore";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
@@ -12,10 +12,13 @@ const baseUri = environment.backendUrl + '/evaluation';
 })
 export class AnalysisService {
 
+  diseasescore: any;
+
   constructor(private httpClient: HttpClient) { }
 
-  createAnalizys(testresult: TestResult): Observable<Array<DiseaseScore>> {
-    return this.httpClient.post<Array<DiseaseScore>>(baseUri + '/', testresult);
+  createAnalizys(testresult: TestResult): Observable<DiseaseScore[]> {
+    return this.httpClient.post<DiseaseScore[]>(baseUri + '/', testresult);
   }
+
 
 }

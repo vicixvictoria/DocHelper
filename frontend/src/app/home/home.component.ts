@@ -13,6 +13,7 @@ import {AddTestResultComponent} from "../testresult/add-test result/add-testresu
 import {AnalysisComponent} from "../analysis/analysis.component";
 import {DiseaseService} from "../../services/disease.service";
 import {DiseaseScore} from "../../dtos/diseaseScore";
+import {AnalysisService} from "../../services/analysis.service";
 
 @Component({
   selector: 'app-home',
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit {
               private patientService: PatientService,
               private testResultService: TestResultService,
               private diseaseService: DiseaseService,
+              private analysisService: AnalysisService,
               private readonly dialog: MatDialog)
   {
   }
@@ -121,7 +123,7 @@ export class HomeComponent implements OnInit {
 
   public loadAnalizedDiseases(testresult: TestResult){
     console.log("analize Diseases");
-    this.diseaseService.createAnalizys(testresult).subscribe({
+    this.analysisService.createAnalizys(testresult).subscribe({
       next: data1 => {
         console.log('received analized Diseases', data1);
         this.analizedDiseases = data1;

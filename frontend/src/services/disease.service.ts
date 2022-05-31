@@ -25,9 +25,6 @@ export class DiseaseService {
     return this.httpClient.get<Disease[]>(baseUri);
   }
 
-  createAnalizys(testresult: TestResult): Observable<Array<DiseaseScore>>{
-    return this.httpClient.post<Array<DiseaseScore>>(baseUri + '/', testresult);
-  }
 
 
   getAnalizedDiseases(id: number): Observable<Array<DiseaseScore>[]>{

@@ -52,6 +52,21 @@ export class DiseaseComponent implements OnInit {
     });
   }
 
+  deleteDisease(disease: Disease) {
+    if (confirm('Disease "' + disease.diseaseName + '" wirklich löschen?')) {
+      this.diseaseService.deleteDisease(disease.id).subscribe({
+        next: () => {
+          console.log("Deleting Disease " + disease)
+          this.loadAllDiseases();
+        }
+        ,
+        error: (error: any) => {
+          this.defaultServiceErrorHandling(error);
+        }
+      });
+    }
+  }
+
 
   private defaultServiceErrorHandling(error: any) {
     console.log(error);

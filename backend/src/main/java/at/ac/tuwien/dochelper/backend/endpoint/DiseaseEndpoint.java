@@ -52,6 +52,12 @@ public class DiseaseEndpoint {
         return diseaseMapper.diseaseToDiseaseDto(disease);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{diseaseId}")
+    public void deletePatient(@PathVariable Long diseaseId) {
+        diseaseService.deleteDiseaseById(diseaseId);
+    }
+
 
 
 }

@@ -23,4 +23,8 @@ export class DiseaseService {
     return this.httpClient.get<Disease[]>(baseUri);
   }
 
+  deleteDisease(id: number): Observable<Disease> {
+    return this.httpClient.delete<Disease>(baseUri + '/' + id)
+  }
+
 }

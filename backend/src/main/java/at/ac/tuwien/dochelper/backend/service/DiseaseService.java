@@ -41,4 +41,8 @@ public class DiseaseService {
         diseaseValidator.validateUpdateDisease(disease);
         return diseaseRepository.save(disease);
     }*/
+
+    public void deleteDiseaseById(Long id) {
+        diseaseRepository.deleteById(id);
+    }
 }

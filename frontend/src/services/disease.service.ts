@@ -23,8 +23,13 @@ export class DiseaseService {
     return this.httpClient.get<Disease[]>(baseUri);
   }
 
+  getDiseaseById(id: string | null): Observable<Disease> {
+    console.log('Load diseases');
+    return this.httpClient.get<Disease>(baseUri + '/' + id);
+  }
+
   deleteDisease(id: number): Observable<Disease> {
-    return this.httpClient.delete<Disease>(baseUri + '/' + id)
+    return this.httpClient.delete<Disease>(baseUri + '/' + id);
   }
 
 }

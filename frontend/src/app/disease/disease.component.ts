@@ -3,6 +3,7 @@ import {Patient} from "../../dtos/patient";
 import {Disease} from "../../dtos/disease";
 import {DiseaseService} from "../../services/disease.service";
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-disease',
@@ -30,6 +31,7 @@ export class DiseaseComponent implements OnInit {
 
   constructor(
     private diseaseService: DiseaseService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {

@@ -4,6 +4,8 @@ import {Disease} from "../../dtos/disease";
 import {DiseaseService} from "../../services/disease.service";
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {AddDiseaseComponent} from "./add-disease/add-disease.component";
 
 @Component({
   selector: 'app-disease',
@@ -31,7 +33,8 @@ export class DiseaseComponent implements OnInit {
 
   constructor(
     private diseaseService: DiseaseService,
-    private router: Router
+    private router: Router,
+    private readonly dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +55,13 @@ export class DiseaseComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
+  }
+
+  addDisease() {
+    const dialog = this.dialog.open(AddDiseaseComponent, {width: '1500px'});
+    dialog.afterClosed().subscribe(() => {
+      this.loadAllDiseases();
+    })
   }
 
   deleteDisease(disease: Disease) {

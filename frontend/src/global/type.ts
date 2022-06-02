@@ -1,10 +1,10 @@
 export enum Type {
-  elevated = 'ELEVATED',
-  decreased = 'DECREASED',
-  normal = 'NORMAL',
-  notzero = 'NOTZERO',
-  notElevated = 'NOTELEVATED',
-  notDecreased = 'NOTDECREASED',
-  positive = 'POSITIVE',
-  negative = 'NEGATIVE',
+  ELEVATED = 'ELEVATED',
+  DECREASED = 'DECREASED',
+  NORMAL = 'NORMAL',
+  NOTZERO = 'NOTZERO',
+  NOTELEVATED = 'NOTELEVATED',
+  NOTDECREASED= 'NOTDECREASED',
+  POSITIVE = 'POSITIVE',
+  NEGATIVE = 'NEGATIVE',
 }

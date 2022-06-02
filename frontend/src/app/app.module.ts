@@ -38,6 +38,7 @@ import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
 import {ViewDiseaseComponent} from "./disease/view-disease/view-disease.component";
 import {ViewByIdComponent} from "./disease/view-disease/view-by-id/view-by-id.component";
+import {AddDiseaseComponent} from "./disease/add-disease/add-disease.component";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {ViewByIdComponent} from "./disease/view-disease/view-by-id/view-by-id.co
     AddLabMeasureComponent,
     EditTestResultComponent,
     ViewDiseaseComponent,
-    ViewByIdComponent
+    ViewByIdComponent,
+    AddDiseaseComponent
   ],
   imports: [
     MatSelectModule,

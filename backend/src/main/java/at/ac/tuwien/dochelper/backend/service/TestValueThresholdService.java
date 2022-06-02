@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,6 +32,22 @@ public class TestValueThresholdService {
     {
         testValue_tresholdValidator.validateNewThreshold(testValue_threshold);
         return testValue_thresholdRepository.save(testValue_threshold);
+    }
+
+    @Transactional
+    public List<TestValueThreshold> createThresholds(List<TestValueThreshold> testValue_thresholdList)
+    {
+        for (TestValueThreshold testValueThreshold : testValue_thresholdList) {
+            testValue_tresholdValidator.validateNewThreshold(testValueThreshold);
+        }
+
+        List<TestValueThreshold> result = new ArrayList<>();
+
+        for (TestValueThreshold testValueThreshold : testValue_thresholdList) {
+            result.add(testValue_thresholdRepository.save(testValueThreshold));
+        }
+
+        return result;
     }
 }
 

@@ -37,6 +37,8 @@ import {AddTestResultComponent} from "./testresult/add-test result/add-testresul
 import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
 import { LabValueComponent } from './lab-value/lab-value.component';
+import { AddLabValueComponent } from './lab-value/add-lab-value/add-lab-value.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { LabValueComponent } from './lab-value/lab-value.component';
     AddTestResultComponent,
     AddLabMeasureComponent,
     EditTestResultComponent,
-    LabValueComponent
+    LabValueComponent,
+    AddLabValueComponent
   ],
   imports: [
     MatSelectModule,

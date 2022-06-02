@@ -21,4 +21,12 @@ export class LabValService {
     return this.httpClient.get<LabValue[]>(baseUri);
   }
 
+  createLabValue(labValue: LabValue): Observable<LabValue> {
+    return this.httpClient.post<LabValue>(baseUri + '/', labValue);
+  }
+
+  deleteLabValue(id: number): Observable<LabValue> {
+    return this.httpClient.delete<LabValue>(baseUri + '/' + id);
+  }
+
 }

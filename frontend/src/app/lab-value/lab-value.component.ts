@@ -7,6 +7,7 @@ import {EditPatientComponent} from "../patient/edit-patient/edit-patient.compone
 import {TestresultOverviewComponent} from "../testresult/testresult-overview/testresult-overview.component";
 import {LabValue} from "../../dtos/labValue";
 import {LabValService} from "../../services/lab-val.service";
+import {AddLabValueComponent} from "./add-lab-value/add-lab-value.component";
 
 @Component({
   selector: 'app-lab-value',
@@ -20,7 +21,7 @@ export class LabValueComponent implements OnInit {
   // @ts-ignore
   labValues: LabValue[];
 
-  displayedColumns: string[] = ['name', 'unit', 'category','action'];
+  displayedColumns: string[] = ['name', 'unit', 'category'];
 
   constructor(
     private labValueService: LabValService,
@@ -33,7 +34,7 @@ export class LabValueComponent implements OnInit {
   }
 
   addLabValue(){
-    const dialog = this.dialog.open(AddPatientComponent, {width: '500px'});
+    const dialog = this.dialog.open(AddLabValueComponent, {width: '500px'});
     dialog.afterClosed().subscribe(() => {
       this.loadAllLabValues();
     })
@@ -47,6 +48,7 @@ export class LabValueComponent implements OnInit {
       next: data => {
         console.log('received patients', data);
         this.labValues = data;
+
         console.log(this.labValues);
       },
       error: error => {
@@ -54,18 +56,13 @@ export class LabValueComponent implements OnInit {
       }
     });
   }
-/*
-  /**
-   * Deletes horse from the backend.
-   *
-   * @param patient to be deleted.
-   */
-  /*deletePatient(patient: Patient) {
-    if (confirm('Patient "' + patient.firstName + ' ' + patient.lastName + '" wirklich löschen?')) {
-      this.patientService.deletePatient(patient.id).subscribe({
+
+  deletePatient(labValue: LabValue) {
+    if (confirm('LabValue "' + labValue.labValName + '" wirklich löschen?')) {
+      this.labValueService.deleteLabValue(labValue.labValId).subscribe({
         next: () => {
-          console.log("Deleting Patient " + patient)
-          this.loadAllPatients();
+          console.log("Deleting labValue " + labValue)
+          this.loadAllLabValues();
         }
         ,
         error: error => {
@@ -73,7 +70,7 @@ export class LabValueComponent implements OnInit {
         }
       });
     }
-  }*/
+  }
 
   private defaultServiceErrorHandling(error: any) {
     console.log(error);

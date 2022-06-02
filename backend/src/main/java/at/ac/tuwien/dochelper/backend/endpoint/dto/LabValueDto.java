@@ -17,12 +17,15 @@ public class LabValueDto {
     @NotNull
     private  String unit ;
 
+    private String category;
 
 
-    public LabValueDto(@Nullable Long labValId, String labValName, String unit) {
+
+    public LabValueDto(@Nullable Long labValId, String labValName, String unit, String category) {
         this.labValId = labValId;
         this.labValName = labValName;
         this.unit = unit;
+        this.category = category;
     }
 
     @Nullable
@@ -50,13 +53,11 @@ public class LabValueDto {
         this.unit = unit;
     }
 
+    public String getCategory() {
+        return category;
+    }
 
-    @Override
-    public String toString() {
-        return "LabValueDto{" +
-                "labValId=" + labValId +
-                ", labValName='" + labValName + '\'' +
-                ", unit='" + unit + '\'' +
-                '}';
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

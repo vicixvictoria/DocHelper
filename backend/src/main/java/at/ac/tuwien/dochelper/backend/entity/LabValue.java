@@ -23,15 +23,19 @@ public class LabValue {
     @Column(name = "unit")
     private String unit ;
 
+    @Column(name = "category")
+    private  String category;
+
 
     public LabValue(){
 
     }
 
-    public LabValue(Long labValId, String labValName, String unit) {
+    public LabValue(Long labValId, String labValName, String unit, String category) {
         this.labValId = labValId;
         this.labValName = labValName;
         this.unit = unit;
+        this.category = category;
     }
 
 
@@ -59,12 +63,21 @@ public class LabValue {
         this.unit = unit;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "LabValue{" +
                 "labValId=" + labValId +
                 ", labValName='" + labValName + '\'' +
                 ", unit='" + unit + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }

@@ -36,6 +36,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {AddTestResultComponent} from "./testresult/add-test result/add-testresult.component";
 import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
+import { LabValueComponent } from './lab-value/lab-value.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {EditTestResultComponent} from "./testresult/edit-test result/edit-testre
     DiseaseComponent,
     AddTestResultComponent,
     AddLabMeasureComponent,
-    EditTestResultComponent
+    EditTestResultComponent,
+    LabValueComponent
   ],
   imports: [
     MatSelectModule,

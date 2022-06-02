@@ -1,5 +1,6 @@
 package at.ac.tuwien.dochelper.backend.endpoint.dto;
 
+import at.ac.tuwien.dochelper.backend.util.LabValueCategory;
 import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotNull;
@@ -17,11 +18,11 @@ public class LabValueDto {
     @NotNull
     private  String unit ;
 
-    private String category;
+    private LabValueCategory category;
 
 
 
-    public LabValueDto(@Nullable Long labValId, String labValName, String unit, String category) {
+    public LabValueDto(@Nullable Long labValId, String labValName, String unit, LabValueCategory category) {
         this.labValId = labValId;
         this.labValName = labValName;
         this.unit = unit;
@@ -53,11 +54,11 @@ public class LabValueDto {
         this.unit = unit;
     }
 
-    public String getCategory() {
+    public LabValueCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(LabValueCategory category) {
         this.category = category;
     }
 }

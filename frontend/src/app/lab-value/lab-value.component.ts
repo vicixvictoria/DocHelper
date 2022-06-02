@@ -20,7 +20,7 @@ export class LabValueComponent implements OnInit {
   // @ts-ignore
   labValues: LabValue[];
 
-  displayedColumns: string[] = ['name', 'address', 'svnr', 'birthday', 'gender', 'pregnant', 'aktion'];
+  displayedColumns: string[] = ['name', 'unit', 'category','action'];
 
   constructor(
     private labValueService: LabValService,

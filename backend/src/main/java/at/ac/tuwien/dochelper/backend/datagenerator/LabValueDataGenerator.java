@@ -3,6 +3,7 @@ package at.ac.tuwien.dochelper.backend.datagenerator;
 
 import at.ac.tuwien.dochelper.backend.entity.LabValue;
 import at.ac.tuwien.dochelper.backend.repository.LabValueRepository;
+import at.ac.tuwien.dochelper.backend.util.LabValueCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -30,56 +31,67 @@ public class LabValueDataGenerator {
         LabValue labVal1 = new LabValue();
         labVal1.setLabValName("Bilirubin gesamt");
         labVal1.setUnit("mg/dl");
+        labVal1.setCategory(LabValueCategory.AUTO);
         save(labVal1);
 
         LabValue labVal2 = new LabValue();
         labVal2.setLabValName("Bilirubin direkt");
         labVal2.setUnit("mg/dl");
+        labVal2.setCategory(LabValueCategory.BLUTSENKUNG);
         save(labVal2);
 
         LabValue labVal3 = new LabValue();
         labVal3.setLabValName("Bilirubin indirekt");
         labVal3.setUnit("mg/dl");
+        labVal3.setCategory(LabValueCategory.CHEMISCH);
         save(labVal3);
 
         LabValue labVal4 = new LabValue();
         labVal4.setLabValName("GGT");
         labVal4.setUnit("U/l");
+        labVal4.setCategory(LabValueCategory.DIFFERENTIAL);
         save(labVal4);
 
         LabValue labVal5 = new LabValue();
         labVal5.setLabValName("Alkalische Phosphatase (AP)");
         labVal5.setUnit("U/l");
+        labVal5.setCategory(LabValueCategory.GERINNUNG);
         save(labVal5);
 
         LabValue labVal6 = new LabValue();
         labVal6.setLabValName("GOT (AST)");
         labVal6.setUnit("U/l");
+        labVal6.setCategory(LabValueCategory.HAEMATOLOGISCH);
         save(labVal6);
 
         LabValue labVal7 = new LabValue();
         labVal7.setLabValName("GPT (ALT)");
         labVal7.setUnit("U/l");
+        labVal7.setCategory(LabValueCategory.HORMONE);
         save(labVal7);
 
         LabValue labVal8 = new LabValue();
         labVal8.setLabValName("Kreatinin");
         labVal8.setUnit("mg/dl");
+        labVal8.setCategory(LabValueCategory.INFEKTION);
         save(labVal8);
 
         LabValue labVal9 = new LabValue();
         labVal9.setLabValName("Thrombozyten");
         labVal9.setUnit("G/l");
+        labVal9.setCategory(LabValueCategory.INFEKTION);
         save(labVal9);
 
         LabValue labVal10 = new LabValue();
         labVal10.setLabValName("Thromboplastinzeit (TPZ; Quick)");
         labVal10.setUnit("%");
+        labVal10.setCategory(LabValueCategory.URIN);
         save(labVal10);
 
         LabValue labVal11 = new LabValue();
         labVal11.setLabValName("Glukose (nüchtern)");
         labVal11.setUnit("mg/dl");
+        labVal11.setCategory(LabValueCategory.VITAMIN);
         save(labVal11);
 
         LabValue labVal12 = new LabValue();

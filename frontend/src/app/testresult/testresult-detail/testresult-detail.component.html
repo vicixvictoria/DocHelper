@@ -71,7 +71,7 @@
     <button mat-button color="warn" (click)="deleteTestResult(testResult)">Löschen</button>
     <button mat-button color="primary" (click)="editTestResult(testResult)">Editieren</button>
 
-    <button mat-button>Analysieren</button>
+    <button color="primary" mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="testResult" type ="button">Analsieren</button>
 
   </mat-card-actions>
 

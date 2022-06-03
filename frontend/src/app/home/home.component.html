@@ -73,8 +73,8 @@
     <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
     <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Mögliche Krankheiten:</h1>
     <div>
-      <button mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="testResultControl.value" type ="button">analsieren</button>
       <div style="display: flex; justify-content: center;">
+        <button color="primary" mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="testResultControl.value" type ="button">Analsieren</button>
       <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" mat-button matStepperPrevious>Zurück</button>
       <button style=" height: 50px;font-size: x-large; font-weight: lighter" color="warn" mat-button (click)="stepper.reset()">Neustart</button>
       </div>

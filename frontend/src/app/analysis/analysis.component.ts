@@ -27,6 +27,7 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions| any;
   xaxis: ApexXAxis| any;
   stroke: ApexStroke |any ;
+  fill: ApexFill |any;
 };
 
 
@@ -37,12 +38,15 @@ export type ChartOptions = {
 })
 export class AnalysisComponent implements OnInit {
 
-  @ViewChild("chart") chart: ChartComponent | undefined;
+  // @ts-ignore
+  @ViewChild("chart", { static: true }) chart: ChartComponent;
   // @ts-ignore
   public chartOptions: Partial<ChartOptions>;
 
   error = false;
   errorMessage = '';
+  // @ts-ignore
+  patient: Patient;
   // @ts-ignore
   analizedDiseases1: Array<Disease>;
   // @ts-ignore
@@ -78,6 +82,48 @@ export class AnalysisComponent implements OnInit {
     private analysisService: AnalysisService,
     private testResultService: TestResultService
   ) {
+    this.chartOptions = {
+      series: [
+        {
+          name: "serie1",
+          data: [44, 55, 41, 64, 22, 43, 21]
+        },
+        {
+          name: "serie2",
+
+          data: [53, 32, 33, 52, 13, 44, 32]
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 430
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          dataLabels: {
+            position: "top"
+          }
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        offsetX: -6,
+        style: {
+          fontSize: "12px",
+          colors: ["#fff"]
+        }
+      },
+      stroke: {
+        show: true,
+        width: 1,
+        colors: ["#fff"]
+      },
+      xaxis: {
+        categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007]
+      }
+    };
+
 
   }
 
@@ -91,6 +137,7 @@ export class AnalysisComponent implements OnInit {
 
     this.loadTestResultsById(this.testResultId);
     console.log(this.testResultId);
+    //this.loadPatientById(this.testResult.patientId);
 
   }
 
@@ -131,6 +178,20 @@ export class AnalysisComponent implements OnInit {
     });
   }
 
+  public loadPatientById(id: number) {
+    // @ts-ignore
+    this.patientService.getPatientById(id).subscribe({
+      next: (data: Patient) => {
+        console.log('received patient', data);
+        this.patient = data;
+        console.log(this.patient);
+      },
+      error: (error: any) => {
+        this.defaultServiceErrorHandling(error);
+      }
+    });
+  }
+
   public analysis(data3: number[], data2: Disease[]){
     console.log('test' + data2);
     let dataScore = [];
@@ -152,16 +213,20 @@ export class AnalysisComponent implements OnInit {
     console.log(this.dataDname)
 
     // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     this.chartOptions = {
+      //colors: ['#4d3a96', '#4576b5'],
       series: [
         {
           name: "Krankheit",
           data: this.dataScore,
+          color: "#673AB7",
         },
         {
           name: "Threshold",
-
           data: this.dataDthreshold,
+          color: "#FF3C33",
         }
       ],
       chart: {
@@ -191,7 +256,7 @@ export class AnalysisComponent implements OnInit {
       },
       xaxis: {
         categories: this.dataDname
-      }
+      },
     };
   }
 

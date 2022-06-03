@@ -316,7 +316,7 @@ public class DiseaseDataGenerator {
         disease_dm2.setPregnant(false);
         disease_dm2.setMinAge(18);
         disease_dm2.setMaxAge(200);
-        disease_dm2.setThreshold(50);
+        disease_dm2.setThreshold(49);
         threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
         threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("HbA1c"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
         disease_dm2.setThreshold_DiseaseValues(threshold_dm1);

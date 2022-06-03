@@ -39,6 +39,7 @@ import {AddLabValueComponent} from "./lab-value/add-lab-value/add-lab-value.comp
 import {LabValueComponent} from "./lab-value/lab-value.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
 import {AnalysisComponent} from "./analysis/analysis.component";
+import {Category} from "../global/category";
 import {
   IgxDataChartCoreModule,
   IgxDataChartVerticalCategoryModule,

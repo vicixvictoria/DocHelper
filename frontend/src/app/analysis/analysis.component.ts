@@ -86,12 +86,12 @@ export class AnalysisComponent implements OnInit {
       series: [
         {
           name: "serie1",
-          data: [44, 55, 41, 64, 22, 43, 21]
+          data: [0]
         },
         {
           name: "serie2",
 
-          data: [53, 32, 33, 52, 13, 44, 32]
+          data: [0]
         }
       ],
       chart: {
@@ -120,7 +120,7 @@ export class AnalysisComponent implements OnInit {
         colors: ["#fff"]
       },
       xaxis: {
-        categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007]
+        categories: [0]
       }
     };
 

@@ -7,6 +7,7 @@ import {TestresultDetailComponent} from "./testresult/testresult-detail/testresu
 import {DiseaseComponent} from "./disease/disease.component";
 import {TestresultOverviewComponent} from "./testresult/testresult-overview/testresult-overview.component";
 import {LabValueComponent} from "./lab-value/lab-value.component";
+import {AnalysisComponent} from "./analysis/analysis.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'diseases', component: DiseaseComponent},
   {path: 'testresultsoverview', component: TestresultOverviewComponent},
   {path: 'labvalue', component: LabValueComponent}
+  {path: 'analysis', component: AnalysisComponent},
 ];
 
 @NgModule({

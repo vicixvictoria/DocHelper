@@ -1,0 +1,38 @@
+<div style="margin:auto; width:fit-content;">
+  <h1 class="header">Blutwert anlegen</h1>
+
+  <form (ngSubmit)="addLabValue()" [formGroup]="labValueForm">
+    <div style="width: max-content">
+      <mat-form-field class="input-field" style="margin-right: 5px; width: 250px" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="labValName" matInput required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field" appearance="outline" style="width: 120px">
+        <mat-label>Einheit</mat-label>
+        <input formControlName="unit" matInput required>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="input-field" style="margin-right: 5px; width: 375px" appearance="outline">
+      <mat-label>Kategorie</mat-label>
+      <mat-select formControlName="category" matNativeControl>
+        <mat-option>Keine Kategorie</mat-option>
+        <mat-option value="CHEMISCH">Chemische Befunde</mat-option>
+        <mat-option value="DIFFERENTIAL">Differentialblutbild</mat-option>
+        <mat-option value="BLUTSENKUNG">Blutsenkung</mat-option>
+        <mat-option value="HAEMATOLOGISCH">Hämatologische Befunde</mat-option>
+        <mat-option value="INFEKTION">Infektionserologie</mat-option>
+        <mat-option value="HORMONE">Hormone</mat-option>
+        <mat-option value="URIN">Urin</mat-option>
+        <mat-option value="AUTO">Autoantikörper</mat-option>
+        <mat-option value="VITAMIN">Spurenelemente, Vitamine</mat-option>
+        <mat-option value="GERINNUNG">Gerinnung</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <p></p>
+
+    <button color="primary" mat-raised-button type=submit>Submit</button>
+  </form>
+</div>

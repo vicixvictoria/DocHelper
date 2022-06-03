@@ -35,6 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from "@angular/material/radio";
 import {AddTestResultComponent} from "./testresult/add-test result/add-testresult.component";
 import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure.component";
+import {AddLabValueComponent} from "./lab-value/add-lab-value/add-lab-value.component";
+import {LabValueComponent} from "./lab-value/lab-value.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
 import {AnalysisComponent} from "./analysis/analysis.component";
 import {
@@ -49,6 +51,8 @@ import {NgApexchartsModule} from "ng-apexcharts";
 
 @NgModule({
   declarations: [
+    LabValueComponent,
+    AddLabValueComponent,
     AppComponent,
     HomeComponent,
     HeaderComponent,

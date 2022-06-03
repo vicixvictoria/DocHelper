@@ -7,6 +7,8 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {LabValue} from "../../../dtos/labValue";
 import {LabValService} from "../../../services/lab-val.service";
 
+
+
 @Component({
   selector: 'app-add-lab-value',
   templateUrl: './add-lab-value.component.html',

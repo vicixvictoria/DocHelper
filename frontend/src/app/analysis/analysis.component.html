@@ -8,20 +8,6 @@
   .tb th, .tb td { border: solid 1px #777; padding: 5px; }
 </style>
 
-<table class="tb" style="display: none">
-  <tr>
-  <th style="background-color:#673AB7;" colspan="1">Name:</th>
-  <th style="background-color:#673AB7;" colspan="1">Threshold:</th>
-  <th style="background-color:#673AB7;" colspan="1">Score:</th>
-  </tr>
-  <tr *ngFor="let scores of this.analizedDiseases">
-    <td> {{scores.disease.diseaseName}}</td>
-    <td> {{scores.disease.threshold}}</td>
-    <td> {{scores.score}}</td>
-  </tr>
-</table>
-
-
 
 <div id="chart">
   <apx-chart
@@ -34,4 +20,21 @@
   ></apx-chart>
 </div>
 
+
+<table class="tb">
+  <tr>
+    <th style="background-color:#673AB7;" colspan="1">Name:</th>
+    <th style="background-color:#673AB7;" colspan="1">Beschreibung:</th>
+    <th style="background-color:#673AB7;" colspan="1">Schwangerschaftsabhängigkeit:</th>
+    <th style="background-color:#673AB7;" colspan="1">Threshold:</th>
+    <th style="background-color:#673AB7;" colspan="1">Score:</th>
+  </tr>
+  <tr *ngFor="let scores of this.analizedDiseases">
+    <td> {{scores.disease.diseaseName}}</td>
+    <td> {{scores.disease.description}}</td>
+    <td> {{scores.disease.pregnant}}</td>
+    <td> {{scores.disease.threshold}}</td>
+    <td> {{scores.score}}</td>
+  </tr>
+</table>
 

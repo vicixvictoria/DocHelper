@@ -2,3 +2,10 @@
   max-width: 80%;
   margin: 35px auto;
 }
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center th, .center td { border: solid 1px #777; padding: 5px; }

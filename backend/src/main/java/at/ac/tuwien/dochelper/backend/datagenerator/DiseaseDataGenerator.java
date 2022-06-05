@@ -319,8 +319,59 @@ public class DiseaseDataGenerator {
         disease_dm2.setThreshold(49);
         threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
         threshold_dm2.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("HbA1c"), "Diabetes mellitus Typ 2",0,Type.ELEVATED,50));
-        disease_dm2.setThreshold_DiseaseValues(threshold_dm1);
+        disease_dm2.setThreshold_DiseaseValues(threshold_dm2);
         saveDisease(disease_dm2);
+
+
+        //Alkoholishce Steatosis hepatis
+        Disease disease_ash = new Disease();
+        List<TestValueThreshold> threshold_ash = new ArrayList<>();
+        disease_ash.setDiseaseName("Alkoholishce Steatosis hepatis");
+        disease_ash.setDescription("Die alkoholische Steatosis hepatis ist eine reversible alkoholtoxische Leberschädigung.");
+        disease_ash.setIcdCode("K70.9");
+        disease_ash.setPregnant(false);
+        disease_ash.setThreshold(80);
+        threshold_ash.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"), "Alkoholishce Steatosis hepatis",0,Type.ELEVATED,24));
+        threshold_ash.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Ferritin"), "Alkoholishce Steatosis hepatis",0,Type.ELEVATED,24));
+        threshold_ash.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("MCV"), "Alkoholishce Steatosis hepatis",0,Type.ELEVATED,28));
+        threshold_ash.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("CDT"), "Alkoholishce Steatosis hepatis",0,Type.ELEVATED,24));
+        disease_ash.setThreshold_DiseaseValues(threshold_ash);
+        saveDisease(disease_ash);
+
+
+        //Hepatozelluläres Karzinom (HCC)
+        Disease disease_hcc = new Disease();
+        List<TestValueThreshold> threshold_hcc = new ArrayList<>();
+        disease_hcc.setDiseaseName("Hepatozelluläres Karzinom (HCC)");
+        disease_hcc.setDescription("Hepatozelluläres Karzinom bedeutet ein von Leberzellen (Hepatozyten) ausgehender bösartiger (maligner) Tumor. Besonders häufig entwickelt es sich in einer Narbenleber (Leberzirrhose) oder einer Virus-bedingten Leberentzündung.");
+        disease_hcc.setIcdCode("C22.0");
+        disease_hcc.setPregnant(false);
+        disease_hcc.setThreshold(76);
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Natrium"), "Hepatozelluläres Karzinom (HCC)",0,Type.NORMAL,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GPT (ALT)"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,8));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GOT (AST)"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,8));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Glukose (nüchtern)"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("GGT"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,7));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Cholinesterase (ChE)"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,5));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin gesamt"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,7));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Bilirubin direkt"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,7));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alpha-1-Fetoproteins (AFP)"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,5));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Alkalische Phosphatase (AP)"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,7));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Albumin abs."), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,7));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Thromboplastinzeit (TPZ; Quick)"), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,8));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Antithrombin (AT III)"), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,5));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("MCV"), "Hepatozelluläres Karzinom (HCC)",0,Type.NORMAL,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Triglyceride"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Kalzium, gesamt"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("IgM"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Harnstoff"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Cholesterin"), "Hepatozelluläres Karzinom (HCC)",0,Type.ELEVATED,1));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Thrombozyten"), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,3));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämoglobin (Hb)"), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,5));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Hämatokrit"), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,5));
+        threshold_hcc.add(generateThresholdEntries(labValueRepository.findLabValueByLabValName("Erythrozyten"), "Hepatozelluläres Karzinom (HCC)",0,Type.DECREASED,5));
+        disease_hcc.setThreshold_DiseaseValues(threshold_hcc);
+        saveDisease(disease_hcc);
 
     }
 

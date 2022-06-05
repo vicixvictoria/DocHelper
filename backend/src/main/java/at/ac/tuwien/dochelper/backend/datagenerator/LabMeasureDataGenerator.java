@@ -694,7 +694,6 @@ public class LabMeasureDataGenerator {
         tryToSave(labMeasure86);
 
 
-
     }
 
     public void tryToSave(LabMeasure labMeasure) {

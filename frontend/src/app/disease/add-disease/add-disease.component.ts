@@ -59,7 +59,7 @@ export class AddDiseaseComponent implements OnInit {
 
     this.thresholdsForm = this.formBuilderThresholds.group({
       type: new FormControl(this.threshold.type, [Validators.required]),
-      refVal_overwrite: new FormControl(this.threshold.refVal_overwrite, [Validators.required, Validators.pattern('[0-9]*')]),
+      refVal_overwrite: new FormControl(this.threshold.refVal_overwrite, []),
       weightValue: new FormControl(this.threshold.weightValue, [Validators.required, Validators.pattern('[0-9]*')]),
       labVal: new FormControl(this.threshold.labVal, [Validators.required])
     })
@@ -144,8 +144,15 @@ export class AddDiseaseComponent implements OnInit {
     this.threshold?.labVal = result.pop();
     // @ts-ignore
     this.threshold?.labValName = labValName;
-    // @ts-ignore
-    this.threshold?.refVal_overwrite = this.thresholdsForm.get('refVal_overwrite')?.value
+
+    if (this.thresholdsForm.get('refVal_overwrite')?.value != null) {
+      // @ts-ignore
+      this.threshold?.refVal_overwrite = this.thresholdsForm.get('refVal_overwrite')?.value
+    } else {
+      // @ts-ignore
+      this.threshold?.refVal_overwrite = undefined
+    }
+
     // @ts-ignore
     this.threshold?.type = this.thresholdsForm.get('type')?.value
 

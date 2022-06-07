@@ -19,6 +19,7 @@ import {Patient} from "../../dtos/patient";
 import {TestResult} from "../../dtos/testResult";
 import {AnalysisService} from "../../services/analysis.service";
 import {TestResultService} from "../../services/test-result.service";
+import {PatientService} from "../../services/patient.service";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries| any;
@@ -46,7 +47,7 @@ export class AnalysisComponent implements OnInit {
   error = false;
   errorMessage = '';
   // @ts-ignore
-  patient: Patient;
+  patient: Patient = new Patient();
   // @ts-ignore
   analizedDiseases1: Array<Disease>;
   // @ts-ignore
@@ -58,6 +59,7 @@ export class AnalysisComponent implements OnInit {
   //dataD: DiseaseScore[];
   // @ts-ignore
   testResultId: number;
+  patientId: number = 0;
   // @ts-ignore
   testResult: Observable<TestResult>;
   // @ts-ignore
@@ -80,7 +82,8 @@ export class AnalysisComponent implements OnInit {
     private diseaseService: DiseaseService,
     private route: ActivatedRoute,
     private analysisService: AnalysisService,
-    private testResultService: TestResultService
+    private testResultService: TestResultService,
+    private patientService: PatientService
   ) {
     this.chartOptions = {
       series: [
@@ -135,9 +138,15 @@ export class AnalysisComponent implements OnInit {
       }
     )
 
+    this.route.queryParams.subscribe(
+      params => {
+        this.patientId = params['patientId']
+      }
+    )
+
     this.loadTestResultsById(this.testResultId);
     console.log(this.testResultId);
-    //this.loadPatientById(this.testResult.patientId);
+    this.loadPatientById(this.patientId);
 
   }
 
@@ -179,7 +188,6 @@ export class AnalysisComponent implements OnInit {
   }
 
   public loadPatientById(id: number) {
-    // @ts-ignore
     this.patientService.getPatientById(id).subscribe({
       next: (data: Patient) => {
         console.log('received patient', data);

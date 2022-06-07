@@ -52,7 +52,7 @@
         <mat-divider></mat-divider>
         <strong style="font-weight: bold; margin: 5px">Datum:</strong>   <a style="margin-right: 170px">{{testResult.date}}</a>
 
-        <mat-radio-button style="margin-top: 12px; margin-bottom: 12px" color="primary" class="mat-radio-button"  [value]="testResult">
+        <mat-radio-button style="margin-top: 12px; margin-bottom: 12px" color="primary" class="mat-radio-button" [value]="testResult">
           <a style="color: #673ab7" >Befund auswählen</a>
         </mat-radio-button>
 
@@ -70,9 +70,11 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Analyse</ng-template>
-    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse Ergebnis für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Analyse für {{selectedPatient?.firstName}} {{selectedPatient?.lastName}}:</h1>
+    <h1 style="text-align: center; font-weight: lighter; font-size: xx-large; margin: 20px">Mögliche Krankheiten:</h1>
     <div>
       <div style="display: flex; justify-content: center;">
+        <button color="primary" mat-raised-button class="btn btn-primary float-left" routerLink="/analysis" [queryParams]="testResultControl.value" type ="button">Analysieren</button>
       <button style="width: 100px; height: 50px;font-size: x-large; font-weight: lighter" mat-button matStepperPrevious>Zurück</button>
       <button style=" height: 50px;font-size: x-large; font-weight: lighter" color="warn" mat-button (click)="stepper.reset()">Neustart</button>
       </div>

@@ -32,6 +32,10 @@ public class LabValueService {
         return labValueRepository.save(labValue);
     }
 
+    public void deleteLabValue(Long labValId) {
+        labValueRepository.deleteById(labValId);
+    }
+
     public LabValue getByName(String name){
         return labValueRepository.findLabValueByLabValName(name);
     }

@@ -1,0 +1,40 @@
+<div style="margin-left:2%; margin-top:30px; align-content: center">
+  <h1 style="font-size: xxx-large; font-weight: lighter">Analyse der möglichen Krankheiten von Patient
+  </h1>
+</div>
+
+<style>
+  table.tb { width: 1000px; border-collapse: collapse; text-align: center !important;}
+  .tb th, .tb td { border: solid 1px #777; padding: 5px; }
+</style>
+
+
+<div id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [xaxis]="chartOptions.xaxis"
+    [stroke]="chartOptions.stroke"
+  ></apx-chart>
+</div>
+
+
+<table class="center">
+  <tr>
+    <th style="background-color:#673AB7;" colspan="1">Name:</th>
+    <th style="background-color:#673AB7;" colspan="1">Beschreibung:</th>
+    <th style="background-color:#673AB7;" colspan="1">Schwangerschaftsabhängigkeit:</th>
+    <th style="background-color:#673AB7;" colspan="1">Threshold:</th>
+    <th style="background-color:#673AB7;" colspan="1">Score:</th>
+  </tr>
+  <tr *ngFor="let scores of this.analizedDiseases">
+    <td> {{scores.disease.diseaseName}}</td>
+    <td> {{scores.disease.description}}</td>
+    <td> {{scores.disease.pregnant}}</td>
+    <td> {{scores.disease.threshold}}</td>
+    <td> {{scores.score}}</td>
+  </tr>
+</table>
+

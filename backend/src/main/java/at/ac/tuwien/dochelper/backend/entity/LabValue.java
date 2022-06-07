@@ -1,5 +1,6 @@
 package at.ac.tuwien.dochelper.backend.entity;
 
+import at.ac.tuwien.dochelper.backend.util.LabValueCategory;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -23,15 +24,19 @@ public class LabValue {
     @Column(name = "unit")
     private String unit ;
 
+    @Column(name = "category")
+    private LabValueCategory category;
+
 
     public LabValue(){
 
     }
 
-    public LabValue(Long labValId, String labValName, String unit) {
+    public LabValue(Long labValId, String labValName, String unit, LabValueCategory category) {
         this.labValId = labValId;
         this.labValName = labValName;
         this.unit = unit;
+        this.category = category;
     }
 
 
@@ -59,12 +64,21 @@ public class LabValue {
         this.unit = unit;
     }
 
+    public LabValueCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(LabValueCategory category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "LabValue{" +
                 "labValId=" + labValId +
                 ", labValName='" + labValName + '\'' +
                 ", unit='" + unit + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }

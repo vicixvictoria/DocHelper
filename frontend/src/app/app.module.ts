@@ -35,13 +35,28 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from "@angular/material/radio";
 import {AddTestResultComponent} from "./testresult/add-test result/add-testresult.component";
 import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure.component";
+import {AddLabValueComponent} from "./lab-value/add-lab-value/add-lab-value.component";
+import {LabValueComponent} from "./lab-value/lab-value.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
 import {ViewDiseaseComponent} from "./disease/view-disease/view-disease.component";
 import {ViewByIdComponent} from "./disease/view-disease/view-by-id/view-by-id.component";
 import {AddDiseaseComponent} from "./disease/add-disease/add-disease.component";
+import {AnalysisComponent} from "./analysis/analysis.component";
+import {Category} from "../global/category";
+import {
+  IgxDataChartCoreModule,
+  IgxDataChartVerticalCategoryModule,
+  IgxLegendModule,
+  IgxDataChartInteractivityModule
+} from "igniteui-angular-charts";
+import {NgChartsModule} from 'ng2-charts';
+import {NgApexchartsModule} from "ng-apexcharts";
+
 
 @NgModule({
   declarations: [
+    LabValueComponent,
+    AddLabValueComponent,
     AppComponent,
     HomeComponent,
     HeaderComponent,
@@ -56,7 +71,8 @@ import {AddDiseaseComponent} from "./disease/add-disease/add-disease.component";
     EditTestResultComponent,
     ViewDiseaseComponent,
     ViewByIdComponent,
-    AddDiseaseComponent
+    AddDiseaseComponent,
+    AnalysisComponent
   ],
   imports: [
     MatSelectModule,
@@ -83,7 +99,13 @@ import {AddDiseaseComponent} from "./disease/add-disease/add-disease.component";
     MatCheckboxModule,
     MatListModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    IgxDataChartCoreModule,
+    IgxDataChartVerticalCategoryModule,
+    IgxLegendModule,
+    IgxDataChartInteractivityModule,
+    NgChartsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

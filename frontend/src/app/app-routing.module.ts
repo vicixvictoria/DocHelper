@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'testresults/:id/view', component: TestresultDetailComponent},
   {path: 'diseases', component: DiseaseComponent},
   {path: 'testresultsoverview', component: TestresultOverviewComponent},
-  {path: 'diseases/:id', component: ViewByIdComponent}
+  {path: 'diseases/:id', component: ViewByIdComponent},
   {path: 'labvalue', component: LabValueComponent},
   {path: 'analysis', component: AnalysisComponent},
 ];

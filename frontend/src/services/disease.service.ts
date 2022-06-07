@@ -36,9 +36,10 @@ export class DiseaseService {
 
   deleteDisease(id: number): Observable<Disease> {
     return this.httpClient.delete<Disease>(baseUri + '/' + id);
+  }
 
 
-  getAnalizedDiseases(id: number): Observable<Array<DiseaseScore>[]>{
+  getAnalizedDiseases(id: number): Observable<Array<DiseaseScore>[]> {
     console.log('get analized diseases for Patient:'+id);
     return this.httpClient.get<Array<DiseaseScore>[]>(baseUri);
   }

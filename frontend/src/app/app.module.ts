@@ -38,6 +38,9 @@ import {AddLabMeasureComponent} from "./testresult/add-labmeasure/add-labmeasure
 import {AddLabValueComponent} from "./lab-value/add-lab-value/add-lab-value.component";
 import {LabValueComponent} from "./lab-value/lab-value.component";
 import {EditTestResultComponent} from "./testresult/edit-test result/edit-testresult.component";
+import {ViewDiseaseComponent} from "./disease/view-disease/view-disease.component";
+import {ViewByIdComponent} from "./disease/view-disease/view-by-id/view-by-id.component";
+import {AddDiseaseComponent} from "./disease/add-disease/add-disease.component";
 import {AnalysisComponent} from "./analysis/analysis.component";
 import {Category} from "../global/category";
 import {
@@ -66,6 +69,9 @@ import {NgApexchartsModule} from "ng-apexcharts";
     AddTestResultComponent,
     AddLabMeasureComponent,
     EditTestResultComponent,
+    ViewDiseaseComponent,
+    ViewByIdComponent,
+    AddDiseaseComponent,
     AnalysisComponent
   ],
   imports: [

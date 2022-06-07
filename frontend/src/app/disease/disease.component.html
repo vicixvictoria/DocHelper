@@ -1,6 +1,6 @@
 <div style="margin-left:2%; margin-top:30px; align-content: center">
   <h1 style="font-size: xxx-large; font-weight: lighter">Übersicht der Krankheiten
-    <button  mat-fab color="primary" aria-label="Example icon button with a home icon">
+    <button  mat-fab color="primary" aria-label="Example icon button with a home icon" (click)="addDisease()">
       <mat-icon>add</mat-icon>
     </button>
   </h1>
@@ -64,13 +64,15 @@
   <ng-container matColumnDef="aktion">
     <th mat-header-cell *matHeaderCellDef> Aktion </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" >
+      <a routerLink = "/diseases/{{element.id}}">
+      <button mat-icon-button color="secondary">
+        <mat-icon>info</mat-icon>
+      </button>
+      </a>
+      <button mat-icon-button color="primary">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="secondary" >
-        <mat-icon>assignment</mat-icon>
-      </button>
-      <button mat-icon-button color="warn" >
+      <button mat-icon-button color="warn" (click)="deleteDisease(element)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

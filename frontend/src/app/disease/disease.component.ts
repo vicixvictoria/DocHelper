@@ -3,6 +3,9 @@ import {Patient} from "../../dtos/patient";
 import {Disease} from "../../dtos/disease";
 import {DiseaseService} from "../../services/disease.service";
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {AddDiseaseComponent} from "./add-disease/add-disease.component";
 
 @Component({
   selector: 'app-disease',
@@ -30,6 +33,8 @@ export class DiseaseComponent implements OnInit {
 
   constructor(
     private diseaseService: DiseaseService,
+    private router: Router,
+    private readonly dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +55,28 @@ export class DiseaseComponent implements OnInit {
         this.defaultServiceErrorHandling(error);
       }
     });
+  }
+
+  addDisease() {
+    const dialog = this.dialog.open(AddDiseaseComponent, {width: '1500px'});
+    dialog.afterClosed().subscribe(() => {
+      this.loadAllDiseases();
+    })
+  }
+
+  deleteDisease(disease: Disease) {
+    if (confirm('Disease "' + disease.diseaseName + '" wirklich löschen?')) {
+      this.diseaseService.deleteDisease(disease.id).subscribe({
+        next: () => {
+          console.log("Deleting Disease " + disease)
+          this.loadAllDiseases();
+        }
+        ,
+        error: (error: any) => {
+          this.defaultServiceErrorHandling(error);
+        }
+      });
+    }
   }
 
 

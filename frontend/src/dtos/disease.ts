@@ -2,7 +2,7 @@ import {TestValueThreshold} from "./testValueThreshold";
 
 export class Disease {
   constructor(
-    public diseaseId: number,
+    public id: number,
     public diseaseName: string,
     public icdCode: string,
     public description: string,
@@ -10,7 +10,7 @@ export class Disease {
     public minAge: number,
     public maxAge: number,
     public threshold: number,
-    public threshold_DiseaseValue: TestValueThreshold[]
+    public threshold_DiseaseValues: TestValueThreshold[]
   )
   {
   }

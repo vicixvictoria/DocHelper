@@ -26,6 +26,10 @@ public class DiseaseService {
         return diseaseRepository.findAll();
     }
 
+    public Disease getDiseaseById(Long id) {
+        return diseaseRepository.getById(id);
+    }
+
     public Disease getDiseaseByName(String name){return diseaseRepository.findDiseaseByDiseaseName(name);}
 
     @Transactional
@@ -41,4 +45,8 @@ public class DiseaseService {
         diseaseValidator.validateUpdateDisease(disease);
         return diseaseRepository.save(disease);
     }*/
+
+    public void deleteDiseaseById(Long id) {
+        diseaseRepository.deleteById(id);
+    }
 }

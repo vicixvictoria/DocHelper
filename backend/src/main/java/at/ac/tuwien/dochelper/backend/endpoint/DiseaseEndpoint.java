@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,6 +35,13 @@ public class DiseaseEndpoint {
         return diseaseMapper.diseaseToDiseaseDto(diseaseService.getAllDiseases());
     }
 
+    @Transactional
+    @GetMapping("/{diseaseId}")
+    public DiseaseDto getDiseaseById(@PathVariable Long diseaseId) {
+        LOGGER.info("GET api/v1/diseases/{} ", diseaseId);
+        return diseaseMapper.diseaseToDiseaseDto(diseaseService.getDiseaseById(diseaseId));
+    }
+
 
     /*
     @GetMapping
@@ -50,6 +58,12 @@ public class DiseaseEndpoint {
         Disease disease = diseaseMapper.diseaseDtoToDisease(diseaseDto);
         disease = diseaseService.createDisease(disease);
         return diseaseMapper.diseaseToDiseaseDto(disease);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{diseaseId}")
+    public void deletePatient(@PathVariable Long diseaseId) {
+        diseaseService.deleteDiseaseById(diseaseId);
     }
 
 

@@ -37,8 +37,7 @@ public class TestValueThreshold {
     private String labValName;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    //Many to Many?
-   // @Column(name = "labVal", length = 64)
+    @JoinColumn(name = "labVal")
     private LabValue labVal;
 
 

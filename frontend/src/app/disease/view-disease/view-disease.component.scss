@@ -1,0 +1,38 @@
+.test-result-card {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 3%
+}
+
+.mat-grid-tile-content {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: left;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.mat-cell:first-of-type {
+  width: 250px;
+  text-align: left;
+}
+
+.mat-header-cell:first-of-type {
+  text-align: left;
+
+}
+
+.mat-header-cell {
+  text-align: left;
+}
+
+.mat-cell {
+  width: 150px;
+  text-align: left;
+}

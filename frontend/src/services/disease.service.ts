@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Patient} from "../dtos/patient";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment";
 import {Disease} from "../dtos/disease";
@@ -25,6 +24,18 @@ export class DiseaseService {
     return this.httpClient.get<Disease[]>(baseUri);
   }
 
+  getDiseaseById(id: string | null): Observable<Disease> {
+    console.log('Load diseases');
+    return this.httpClient.get<Disease>(baseUri + '/' + id);
+  }
+
+  createDisease(disease: Disease): Observable<Disease> {
+    console.log('Add disease', disease);
+    return this.httpClient.post<Disease>(baseUri + '/', disease);
+  }
+
+  deleteDisease(id: number): Observable<Disease> {
+    return this.httpClient.delete<Disease>(baseUri + '/' + id);
 
 
   getAnalizedDiseases(id: number): Observable<Array<DiseaseScore>[]>{

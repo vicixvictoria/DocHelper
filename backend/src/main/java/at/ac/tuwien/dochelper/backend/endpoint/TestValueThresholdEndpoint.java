@@ -33,6 +33,12 @@ public class TestValueThresholdEndpoint {
         return testValue_thresholdMapper.testvalue_thresholdTotestvalue_thresholdDto(testValue_thresholdService.getAllThresholds());
     }
 
+    @GetMapping("/{diseaseName}")
+    public List<TestValueThresholdDto> getThresholdsByDiseaseName(@PathVariable String diseaseName) {
+        LOGGER.info("GET /api/v1/thresholds/{}", diseaseName);
+        return testValue_thresholdMapper.testvalue_thresholdTotestvalue_thresholdDto(testValue_thresholdService.getThresholdsByDiseaseName(diseaseName));
+    }
+
    /* @GetMapping
     public List<TestValueThresholdDto> getThresholdsByDiseaseId(long id) {
         return testValue_thresholdMapper.testvalue_thresholdTotestvalue_thresholdDto(testValue_thresholdService.getAllThresholds());

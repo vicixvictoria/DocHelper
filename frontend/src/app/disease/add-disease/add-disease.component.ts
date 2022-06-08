@@ -49,8 +49,8 @@ export class AddDiseaseComponent implements OnInit {
       icdCode: new FormControl(this.disease.icdCode, [Validators.required,  Validators.pattern('[A-Z][0-9][0-9].[0-9]'), Validators.minLength(5), Validators.maxLength(5)]),
       description: new FormControl(this.disease.description, [Validators.required]),
       pregnant: new FormControl(this.disease.pregnant, []),
-      minAge: new FormControl(this.disease.minAge, [Validators.required,  Validators.pattern('[0-9][0-9]?'), Validators.minLength(1), Validators.maxLength(2)]),
-      maxAge: new FormControl(this.disease.maxAge, [Validators.required,  Validators.pattern('[0-9][0-9]?'), Validators.minLength(1), Validators.maxLength(2)]),
+      minAge: new FormControl(this.disease.minAge, [Validators.pattern('[0-9][0-9]?'), Validators.minLength(1), Validators.maxLength(2)]),
+      maxAge: new FormControl(this.disease.maxAge, [Validators.pattern('[0-9][0-9]?'), Validators.minLength(1), Validators.maxLength(2)]),
       threshold: new FormControl(this.disease.threshold, [Validators.required, Validators.pattern('[0-9]*')])
     })
 
@@ -66,9 +66,11 @@ export class AddDiseaseComponent implements OnInit {
 
   }
 
-
-
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    console.log(this.disease)
     this.getAllLabValues();
   }
 
@@ -197,5 +199,7 @@ export class AddDiseaseComponent implements OnInit {
       this.errorMessage = error.error.message;
     }
   }
+
+
 
 }

@@ -49,5 +49,9 @@ public class TestValueThresholdService {
 
         return result;
     }
+
+    public List<TestValueThreshold> getThresholdsByDiseaseName(String name) {
+        return testValue_thresholdRepository.findTestValueThresholdsByDiseaseName(name);
+    }
 }
 

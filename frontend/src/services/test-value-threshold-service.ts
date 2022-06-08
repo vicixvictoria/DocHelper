@@ -18,4 +18,8 @@ export class TestValueThresholdService {
     return this.httpClient.post<TestValueThreshold[]>(baseUri + '/', thresholds);
   }
 
+  getThresholdsByDiseaseName(diseaseName: String): Observable<TestValueThreshold[]> {
+    console.log('get thresholds');
+    return this.httpClient.get<TestValueThreshold[]>(baseUri + '/' + diseaseName);
+  }
 }

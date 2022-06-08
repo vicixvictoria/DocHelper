@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from "@angular/core";
 import {Disease} from "../../../dtos/disease";
 import {DiseaseService} from "../../../services/disease.service";
 import {Router} from "@angular/router";
+import {TestValueThresholdService} from "../../../services/test-value-threshold-service";
+import {Thread} from "igniteui-angular-core";
 
 @Component({
   selector: 'app-view-disease',
@@ -9,15 +11,40 @@ import {Router} from "@angular/router";
   styleUrls: ['./view-disease.component.scss']
 })
 export class ViewDiseaseComponent implements OnInit {
-  @Input() disease!: Disease;
+  @Input() disease: Disease | undefined;
 
   error = false;
   errorMessage="";
   displayedColumns: string[] = ['LabValue', 'Type', 'Weight']
 
-  constructor(private diseaseService: DiseaseService, private router: Router) {}
+  constructor(private diseaseService: DiseaseService, private router: Router, private thresholdService: TestValueThresholdService) {}
 
   ngOnInit(): void {
+    this.loadThresholds();
+  }
+
+  loadThresholds() {
+    if (typeof this.disease != undefined) {
+    setTimeout(this.loadThresholds, 1000);
+    // @ts-ignore
+      console.log(this.disease.diseaseName);
+      // @ts-ignore
+      this.thresholdService.getThresholdsByDiseaseName(this.disease.diseaseName).subscribe({
+
+        next: thresholds => {
+          console.log('received thresholds', thresholds);
+          // @ts-ignore
+          this.disease.threshold_DiseaseValues = thresholds;
+        },
+        error: (error: any) => {
+          this.defaultServiceErrorHandling(error);
+        }
+      })
+    } else {
+      console.log('Na super')
+      setTimeout(this.loadThresholds, 250);
+    }
+
   }
 
   deleteDisease(disease: Disease) {
@@ -26,8 +53,7 @@ export class ViewDiseaseComponent implements OnInit {
         next: () => {
           console.log("Deleting Disease " + disease)
           this.router.navigate(['diseases'])
-        }
-        ,
+        },
         error: (error: any) => {
           this.defaultServiceErrorHandling(error);
         }

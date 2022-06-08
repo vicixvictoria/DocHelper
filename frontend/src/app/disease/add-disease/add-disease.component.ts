@@ -133,6 +133,9 @@ export class AddDiseaseComponent implements OnInit {
   }
 
   addThreshold(): void {
+
+    // @ts-ignore
+    this.threshold = new TestValueThreshold()
     console.log('add threshold');
 
     let labValName = this.thresholdsForm.get('labVal')?.value

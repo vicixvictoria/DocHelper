@@ -20,12 +20,13 @@ export class ViewDiseaseComponent implements OnInit {
   constructor(private diseaseService: DiseaseService, private router: Router, private thresholdService: TestValueThresholdService) {}
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
     this.loadThresholds();
   }
 
   loadThresholds() {
-    if (typeof this.disease != undefined) {
-    setTimeout(this.loadThresholds, 1000);
     // @ts-ignore
       console.log(this.disease.diseaseName);
       // @ts-ignore
@@ -40,11 +41,6 @@ export class ViewDiseaseComponent implements OnInit {
           this.defaultServiceErrorHandling(error);
         }
       })
-    } else {
-      console.log('Na super')
-      setTimeout(this.loadThresholds, 250);
-    }
-
   }
 
   deleteDisease(disease: Disease) {

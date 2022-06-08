@@ -67,10 +67,6 @@ export class AddDiseaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(): void {
-    console.log(this.disease)
     this.getAllLabValues();
   }
 
@@ -109,6 +105,7 @@ export class AddDiseaseComponent implements OnInit {
 
     this.thresholdService.createThresholds(this.thresholds).subscribe({
       next: thresholds => {
+        console.log(thresholds)
         // @ts-ignore
         this.disease?.threshold_DiseaseValues = thresholds;
       },

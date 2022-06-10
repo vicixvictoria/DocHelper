@@ -14,6 +14,7 @@ import {AnalysisComponent} from "../analysis/analysis.component";
 import {DiseaseService} from "../../services/disease.service";
 import {DiseaseScore} from "../../dtos/diseaseScore";
 import {AnalysisService} from "../../services/analysis.service";
+import {TestresultOverviewComponent} from "../testresult/testresult-overview/testresult-overview.component";
 
 @Component({
   selector: 'app-home',

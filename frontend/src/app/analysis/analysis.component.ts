@@ -71,7 +71,7 @@ export class AnalysisComponent implements OnInit {
   dataDthreshold: any[] =[];
   dataScore: any[] = [];
 
-  displayedColumns: string[] = ['diseaseName', 'threshold'];
+  displayedColumns: string[] = ['diseaseName', 'desc', 'pregnant', 'threshold', 'score'];
   translations: string[] = ['Name', 'Threshold'];
   private dataDisease: Disease[] = [];
   private dataNumber: number[] = [];

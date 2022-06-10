@@ -53,6 +53,8 @@ import {NgChartsModule} from 'ng2-charts';
 import {NgApexchartsModule} from "ng-apexcharts";
 
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     LabValueComponent,

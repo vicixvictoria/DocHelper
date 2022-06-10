@@ -21,21 +21,36 @@
   ></apx-chart>
 </div>
 
+<table mat-table
+       [dataSource]="analizedDiseases" multiTemplateDataRows
+       class="mat-elevation-z8"
+        style="width: 96%; margin: auto; margin-bottom: 20px">
+  <ng-container matColumnDef="diseaseName">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.disease.diseaseName}} </td>
+  </ng-container>
 
-<table class="center">
-  <tr>
-    <th style="background-color:#673AB7;" colspan="1">Name:</th>
-    <th style="background-color:#673AB7;" colspan="1">Beschreibung:</th>
-    <th style="background-color:#673AB7;" colspan="1">Schwangerschaftsabhängigkeit:</th>
-    <th style="background-color:#673AB7;" colspan="1">Threshold:</th>
-    <th style="background-color:#673AB7;" colspan="1">Score:</th>
-  </tr>
-  <tr *ngFor="let scores of this.analizedDiseases">
-    <td> {{scores.disease.diseaseName}}</td>
-    <td> {{scores.disease.description}}</td>
-    <td> {{scores.disease.pregnant}}</td>
-    <td> {{scores.disease.threshold}}</td>
-    <td> {{scores.score}}</td>
-  </tr>
+  <ng-container matColumnDef="desc">
+    <th mat-header-cell *matHeaderCellDef> Beschreibung </th>
+    <td mat-cell *matCellDef="let element"> {{element.disease.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="pregnant">
+    <th mat-header-cell *matHeaderCellDef> Schwanger </th>
+    <td mat-cell *matCellDef="let element"> {{element.disease.pregnant}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="threshold" >
+    <th mat-header-cell *matHeaderCellDef style="padding: 10px"> Threshold</th>
+    <td mat-cell *matCellDef="let element"> {{element.disease.threshold}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef> Score </th>
+    <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 

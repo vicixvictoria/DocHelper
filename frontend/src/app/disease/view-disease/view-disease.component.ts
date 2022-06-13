@@ -28,6 +28,10 @@ export class ViewDiseaseComponent implements OnInit {
 
   loadThresholds() {
     // @ts-ignore
+
+
+    if (this.disease?.diseaseName !== undefined) {
+
       console.log(this.disease.diseaseName);
       // @ts-ignore
       this.thresholdService.getThresholdsByDiseaseName(this.disease.diseaseName).subscribe({
@@ -41,6 +45,9 @@ export class ViewDiseaseComponent implements OnInit {
           this.defaultServiceErrorHandling(error);
         }
       })
+
+    }
+
   }
 
   deleteDisease(disease: Disease) {

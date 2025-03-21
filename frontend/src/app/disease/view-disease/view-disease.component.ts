@@ -32,7 +32,7 @@ export class ViewDiseaseComponent implements OnInit {
 
     if (this.disease?.diseaseName !== undefined) {
 
-      console.log(this.disease.diseaseName);
+     // console.log(this.disease.diseaseName);
       // @ts-ignore
       this.thresholdService.getThresholdsByDiseaseName(this.disease.diseaseName).subscribe({
 

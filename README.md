@@ -1,4 +1,4 @@
-# DocHelper
+# DocHelper 
 
 DocHelper is a prototypical web application that supports automated bloood-analysis and gives suggestions on possible diseases a patient could have. This was a group project in rge course of a university lecture "eHealth applications". 
 

@@ -7,3 +7,5 @@ In the course of a patient journey, a diagnosis is made. Almost 10-15% of all di
 
 ## Results
 Our project is a web application to support doctors in making diagnoses. DocHelper is a disease lexicon based on blood values. Doctors can create patients and save the blood results for them. These findings can then be analyzed. The blood values and their reference values are compared with diseases from a database and all diseases that match the blood values of the findings are displayed in the analysis. Diseases are defined on the basis of increased, decreased and abnormal blood values and each value is given a certain weighting in percentage points. If some values in a blood count are conspicuous, which define a certain disease, and the percentage points of these blood values exceed an individually adjusted threshold value, the disease is displayed in a list. This suggests to doctors that they should take a closer look at this disease and possibly take further important diagnostic steps.
+
+<img width="485" height="533" alt="Screenshot 2025-07-21 at 17 55 35" src="https://github.com/user-attachments/assets/7ca9e0a7-2551-4dd3-bf23-48fd659970bf" />
